@@ -1,6 +1,6 @@
 import { AppCacheProvider } from "@mui/material-nextjs/v13-pagesRouter";
 
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 
 import localFont from "next/font/local";
