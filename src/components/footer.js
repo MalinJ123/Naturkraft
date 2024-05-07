@@ -16,7 +16,8 @@ function Footer() {
         width: "100%",
       }} 
     >
-      <div
+      <MUI.Box
+        component="div"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -25,14 +26,14 @@ function Footer() {
         }}
 
       >
-        <div
+        <MUI.Box
           style={{
             flex: 1,
             alignContent: "center",
             minWidth: "300px", 
           }}
         >
-          <div
+          <MUI.Box
             style={{
               flex: 1,
               padding: "8px",
@@ -79,9 +80,9 @@ function Footer() {
             > 
               070 - 34 26 345
             </MUI.Typography>
-          </div>
-        </div>
-        <div
+          </MUI.Box>
+        </MUI.Box>
+        <MUI.Box
           style={{
             padding: "8px",
             display: "flex",
@@ -96,16 +97,16 @@ function Footer() {
             src={CompanyLogo}
             style={{ width: 100, height: 55 }}
           />
-        </div>
+        </MUI.Box>
 
-        <div
+        <MUI.Box
           style={{
             flex: 1,
             flexWrap: "wrap",
             alignContent: "center",
           }}
         >
-          <div style={{ textAlign: "center" }}>
+          <MUI.Box style={{ textAlign: "center" }}>
             <MUI.Typography
               style={{
                 textAlign: "right",
@@ -136,9 +137,9 @@ function Footer() {
             >
               Scaaler IoT Labs, Strandvägen 2, 671 51 Arvika
             </MUI.Typography>
-          </div>
-        </div>
-      </div>
+          </MUI.Box>
+        </MUI.Box>
+      </MUI.Box>
     </MUI.Container>
   );
 }
