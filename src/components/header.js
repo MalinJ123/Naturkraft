@@ -137,7 +137,7 @@ export default function Header() {
               disableElevation
               variant="outlined"
               type="button"
-              onClick={() => router.push("/kontakt")}
+              onClick={() => router.push("/contact")}
               sx={{
                 backgroundColor: "transparent",
                 color: "#fff",
@@ -284,7 +284,7 @@ export default function Header() {
                         },
                       }}
                       onClick={() => {
-                        router.push("/kontakt");
+                        router.push("/contact");
                         setHeaderDrawer(!headerDrawer);
                       }}
                     >
