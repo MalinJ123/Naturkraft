@@ -5,16 +5,18 @@ import Image from "next/image";
 function Footer() {
   return (
     <MUI.Container
+      position="relative"
+      bottom={0}
+      height="auto"
+      margin={0}
+      padding={2}
+      maxWidth="100%"
+      width="100%"
       id="footer"
       sx={{
-        marginTop: 4,
         backgroundColor: "black",
         color: "white",
-        padding: 2,
-        position: "absolute",
-        bottom: "0",
-        width: "100%",
-      }} 
+      }}
     >
       <MUI.Box
         component="div"
@@ -22,48 +24,45 @@ function Footer() {
           display: "flex",
           justifyContent: "space-between",
           flexWrap: "wrap",
-          
         }}
-
       >
         <MUI.Box
           style={{
             flex: 1,
-            alignContent: "center", 
+            alignContent: "center",
             "@media (max-width:570px)": {
               alignContent: "center",
               justifyContent: "space-between",
-             
-            },  
-          }}  sx={{      
-
+            },
+          }}
+          sx={{
             "@media (max-width:750px)": {
-             maxWidth:"auto",
-           },   
-         }} 
+              maxWidth: "auto",
+            },
+          }}
         >
           <MUI.Box
             style={{
               flex: 1,
               padding: "8px",
-              alignContent: "center", 
-            }}  sx={{
+              alignContent: "center",
+            }}
+            sx={{
               "@media (max-width:1040px)": {
                 alignContent: "center",
                 justifyContent: "space-between",
-              }, 
-             
-            }} 
+              },
+            }}
           >
             <MUI.Typography
-              
               variant="body1"
-              fontSize="18px"  sx={{
+              fontSize="18px"
+              sx={{
                 "@media (max-width:1040px)": {
-                  fontSize: "12px",  
-                },  
+                  fontSize: "12px",
+                },
                 "@media (max-width:570px)": {
-                  width:"150px",
+                  width: "150px",
                 },
               }}
             >
@@ -71,15 +70,15 @@ function Footer() {
             </MUI.Typography>
 
             <MUI.Typography
-             
               variant="body2"
-              fontSize="16px"  sx={{
+              fontSize="16px"
+              sx={{
                 "@media (max-width:1040px)": {
-                  fontSize: "12px",  
-                },  
+                  fontSize: "12px",
+                },
                 "@media (max-width:570px)": {
-                  width:"150px",
-                   width:"150px",
+                  width: "150px",
+                  width: "150px",
                 },
               }}
             >
@@ -87,18 +86,18 @@ function Footer() {
             </MUI.Typography>
 
             <MUI.Typography
-             
               variant="body2"
-              fontSize="18px"  sx={{
+              fontSize="18px"
+              sx={{
                 "@media (max-width:1040px)": {
-                  fontSize: "12px",  
-                }, 
-                 "@media (max-width:570px)": {
-                  width:"150px",
-                   width:"150px",
+                  fontSize: "12px",
+                },
+                "@media (max-width:570px)": {
+                  width: "150px",
+                  width: "150px",
                 },
               }}
-            > 
+            >
               070 - 34 26 345
             </MUI.Typography>
           </MUI.Box>
@@ -108,14 +107,14 @@ function Footer() {
             padding: "8px",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center", width:"300px" }} 
-
-            sx={{      
-
-             "@media (max-width:750px)": {
-              maxWidth:"100px",
-            },   
-          }} 
+            alignItems: "center",
+            width: "300px",
+          }}
+          sx={{
+            "@media (max-width:750px)": {
+              maxWidth: "100px",
+            },
+          }}
         >
           <Image
             priority
@@ -124,10 +123,8 @@ function Footer() {
             style={{ width: 100, height: 55 }}
             sx={{
               "@media (max-width:700px)": {
-                width:"150px",
-              },   
-             
-          
+                width: "150px",
+              },
             }}
           />
         </MUI.Box>
@@ -145,9 +142,10 @@ function Footer() {
                 textAlign: "right",
                 marginTop: "1em",
                 flex: 1,
-              }}   sx={{
+              }}
+              sx={{
                 "@media (max-width:1040px)": {
-                  fontSize: "12px", 
+                  fontSize: "12px",
                 },
               }}
               variant="body1"
