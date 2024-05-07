@@ -29,9 +29,18 @@ function Footer() {
         <MUI.Box
           style={{
             flex: 1,
-            alignContent: "center",
-            minWidth: "300px", 
-          }}
+            alignContent: "center", 
+            "@media (max-width:570px)": {
+              alignContent: "center",
+              justifyContent: "space-between",
+             
+            },  
+          }}  sx={{      
+
+            "@media (max-width:750px)": {
+             maxWidth:"auto",
+           },   
+         }} 
         >
           <MUI.Box
             style={{
@@ -39,18 +48,22 @@ function Footer() {
               padding: "8px",
               alignContent: "center", 
             }}  sx={{
-              "@media (max-width:600px)": {
+              "@media (max-width:1040px)": {
                 alignContent: "center",
                 justifyContent: "space-between",
-              },
-            }}
+              }, 
+             
+            }} 
           >
             <MUI.Typography
               
               variant="body1"
               fontSize="18px"  sx={{
-                "@media (max-width:600px)": {
-                  fontSize: "12px", textAlign: "center", 
+                "@media (max-width:1040px)": {
+                  fontSize: "12px",  
+                },  
+                "@media (max-width:570px)": {
+                  width:"150px",
                 },
               }}
             >
@@ -61,8 +74,12 @@ function Footer() {
              
               variant="body2"
               fontSize="16px"  sx={{
-                "@media (max-width:600px)": {
-                  fontSize: "12px",  textAlign: "center", 
+                "@media (max-width:1040px)": {
+                  fontSize: "12px",  
+                },  
+                "@media (max-width:570px)": {
+                  width:"150px",
+                   width:"150px",
                 },
               }}
             >
@@ -73,8 +90,12 @@ function Footer() {
              
               variant="body2"
               fontSize="18px"  sx={{
-                "@media (max-width:600px)": {
-                  fontSize: "12px", textAlign: "center", 
+                "@media (max-width:1040px)": {
+                  fontSize: "12px",  
+                }, 
+                 "@media (max-width:570px)": {
+                  width:"150px",
+                   width:"150px",
                 },
               }}
             > 
@@ -87,15 +108,27 @@ function Footer() {
             padding: "8px",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
-            minWidth: "300px", 
-          }}
+            alignItems: "center", width:"300px" }} 
+
+            sx={{      
+
+             "@media (max-width:750px)": {
+              maxWidth:"100px",
+            },   
+          }} 
         >
           <Image
             priority
             alt="Hillringsbergs logga"
             src={CompanyLogo}
             style={{ width: 100, height: 55 }}
+            sx={{
+              "@media (max-width:700px)": {
+                width:"150px",
+              },   
+             
+          
+            }}
           />
         </MUI.Box>
 
@@ -113,7 +146,7 @@ function Footer() {
                 marginTop: "1em",
                 flex: 1,
               }}   sx={{
-                "@media (max-width:600px)": {
+                "@media (max-width:1040px)": {
                   fontSize: "12px", 
                 },
               }}
@@ -130,7 +163,7 @@ function Footer() {
                 textAlign: "right",
               }}
               sx={{
-                "@media (max-width:600px)": {
+                "@media (max-width:1040px)": {
                   fontSize: "12px",
                 },
               }}
