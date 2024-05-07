@@ -14,9 +14,11 @@ function Footer() {
         position: "absolute",
         bottom: "0",
         width: "100%",
+        // fontSize: { xs: "12px", sm: "14px", md: "16px", lg: "18px" },
       }}
     >
-      <div
+      <MUI.Box
+        component="div"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -25,7 +27,7 @@ function Footer() {
           flexWrap: "wrap",
         }}
       >
-        <div
+        <MUI.Box
           style={{
             border: "1px solid hotpink",
             flex: 1,
@@ -33,27 +35,23 @@ function Footer() {
             alignContent: "center",
           }}
         >
-          <div
+          <MUI.Box
             style={{
               flex: 1,
               padding: "8px",
               alignContent: "center",
             }}
           >
-            <MUI.Typography
-              style={{
-                // fontFamily: "jura",
-              }}
-              variant="body1"
-              fontSize="18px"
-            >
+            <MUI.Typography variant="body1" fontSize="18px">
               Hillringsberg 671 97 Glava
             </MUI.Typography>
 
             <MUI.Typography
-              style={{
-                // fontFamily: "jura",
-              }}
+              style={
+                {
+                  // fontFamily: "jura",
+                }
+              }
               variant="body2"
               fontSize="16px"
             >
@@ -69,9 +67,9 @@ function Footer() {
             >
               070 - 34 26 345
             </MUI.Typography>
-          </div>
-        </div>
-        <div
+          </MUI.Box>
+        </MUI.Box>
+        <MUI.Box
           style={{
             border: "1px solid green",
             padding: "8px",
@@ -86,9 +84,9 @@ function Footer() {
             src={CompanyLogo}
             style={{ width: 100, height: 55 }}
           />
-        </div>
+        </MUI.Box>
 
-        <div
+        <MUI.Box
           style={{
             border: "1px solid hotpink",
             flex: 1,
@@ -96,7 +94,7 @@ function Footer() {
             alignContent: "center",
           }}
         >
-          <div style={{ textAlign: "center" }}>
+          <MUI.Box style={{ textAlign: "center" }}>
             <MUI.Typography
               style={{
                 textAlign: "right",
@@ -117,9 +115,9 @@ function Footer() {
             >
               Scaaler IoT Labs, Strandvägen 2, 671 51 Arvika
             </MUI.Typography>
-          </div>
-        </div>
-      </div>
+          </MUI.Box>
+        </MUI.Box>
+      </MUI.Box>
     </MUI.Container>
   );
 }

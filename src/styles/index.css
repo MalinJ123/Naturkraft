@@ -1,14 +1,13 @@
-/* Importing fonts */
-@import url("@fontsource/jura/300.css");
-@import url("@fontsource/jura/400.css");
-@import url("@fontsource/jura/500.css");
-@import url("@fontsource/jura/700.css");
-
 /* Main */
 * {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+}
+
+@font-face {
+  font-family: "Jura";
+  src: url("../fonts/Jura.ttf");
 }
 
 html,
@@ -29,12 +28,10 @@ body {
   background-position: center;
 }
 
-
 /* footer */
 
 .mui-s80m6r-MuiContainer-root {
-  max-width: none !important; 
-
+  max-width: none !important;
 }
 #footer {
   font-family: "Jura", sans-serif;
