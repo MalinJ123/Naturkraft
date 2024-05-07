@@ -108,7 +108,7 @@ export default function Header() {
               <MUI.MenuItem
                 disableRipple
                 onClick={() => {
-                  router.push("/projektet-naturkraft");
+                  router.push("/project");
                   setHeaderDropdown(false);
                 }}
               >
@@ -126,7 +126,7 @@ export default function Header() {
               <MUI.MenuItem
                 disableRipple
                 onClick={() => {
-                  router.push("/vill-du-veta-mer");
+                  router.push("/information");
                   setHeaderDropdown(false);
                 }}
               >
@@ -230,7 +230,7 @@ export default function Header() {
                               },
                             }}
                             onClick={() => {
-                              router.push("/projektet-naturkraft");
+                              router.push("/project");
                               setHeaderDrawer(!headerDrawer);
                             }}
                           >
@@ -264,7 +264,7 @@ export default function Header() {
                               },
                             }}
                             onClick={() => {
-                              router.push("/vill-du-veta-mer");
+                              router.push("/information");
                               setHeaderDrawer(!headerDrawer);
                             }}
                           >

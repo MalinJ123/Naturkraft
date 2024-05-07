@@ -142,7 +142,7 @@ function Footer() {
           <MUI.Box style={{ textAlign: "center" }}>
             <MUI.Typography
               style={{
-                textAlign: "right",
+               
                 marginTop: "1em",
                 flex: 1,
               }}   sx={{
@@ -159,9 +159,7 @@ function Footer() {
             <MUI.Typography
               variant="body2"
               fontSize="18px"
-              style={{
-                textAlign: "right",
-              }}
+              
               sx={{
                 "@media (max-width:1040px)": {
                   fontSize: "12px",
