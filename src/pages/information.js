@@ -4,13 +4,15 @@ import * as MUI from "@mui/material/";
 export default function Information() {
   return (
     <>
-      <MUI.Box
+    <MUI.Container 
+  sx={{ marginTop: 8, marginBottom:8, padding: {xs: 0}}}>
+
+      <MUI.Box    
         component="section"
         display="flex"
         flexDirection="column"
         justifyContent="center"
         gap={12}
-        marginTop={8}
       >
         <MUI.Container sx={{padding: {xs: 0}}}>
           <MUI.Card
@@ -19,9 +21,9 @@ export default function Information() {
           >
             <MUI.CardHeader
               title="Vill du veta mer"
-              titleTypographyProps={{ textAlign: "center",fontSize: {xs: 32, md: 36}, marginTop: 5, fontWeight: "bold"}}    
+              titleTypographyProps={{ textAlign: "center",fontSize: {xs: 30, md: 32}, marginTop: 5, fontWeight: "bold"}}    
             />
-            <MUI.CardContent >
+            <MUI.CardContent  sx={{ padding: 0 }}>
               <MUI.Box
                 component="div"
                 display="flex"
@@ -30,6 +32,7 @@ export default function Information() {
                 alignItems="center"
                 gap={2}
                 margin={2}
+               
               >
                 <MUI.Stack spacing={4} direction="column">
                   <MUI.Typography
@@ -38,7 +41,7 @@ export default function Information() {
                     style={{ fontWeight: "bolder" }}
                     sx={{
                       paddingX: {xs: 0.5, md: 6},
-                      fontSize: {xs: 18, md: 24},
+                      fontSize: {xs: 18, md: 20},
                       color: "black", 
                     }}>
                     Glava elljusspår visar att idrottsföreningar och kommuner
@@ -51,7 +54,7 @@ export default function Information() {
                   <MUI.Typography variant="body1" component="p"
                   sx={{
                       paddingX: {xs: 0.5, md: 6},
-                      fontSize: {xs: 18, md: 20},
+                      fontSize: {xs: 16, md: 18},
                       color: "black",
                       fontWeight: 500, 
                   }}>
@@ -89,10 +92,10 @@ export default function Information() {
                   <MUI.Typography
                     variant="body1"
                     component="p"
-                    style={{ fontWeight: "bold" }}
+                    
                     sx={{
                       paddingX: {xs: 0.5, md: 6},
-                      fontSize: {xs: 20,md: 22}
+                      fontSize: {xs: 18,md: 21}
                   }}>
                     Vill du veta mer eller ta del av guiden? Mer information om
                     projektet och kontaktpersoner hittar du på Glava Energy
@@ -127,6 +130,7 @@ export default function Information() {
           </MUI.Card>
         </MUI.Container>
       </MUI.Box>
+      </MUI.Container>
     </>
   );
 }
