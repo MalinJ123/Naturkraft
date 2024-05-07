@@ -14,70 +14,80 @@ function Footer() {
         position: "absolute",
         bottom: "0",
         width: "100%",
-      }}
+      }} 
     >
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          marginLeft: "1em",
-          border: "1px solid blue",
           flexWrap: "wrap",
+          
         }}
+
       >
         <div
           style={{
-            border: "1px solid hotpink",
             flex: 1,
-            flexWrap: "wrap",
             alignContent: "center",
+            minWidth: "300px", 
           }}
         >
           <div
             style={{
               flex: 1,
               padding: "8px",
-              alignContent: "center",
+              alignContent: "center", 
+            }}  sx={{
+              "@media (max-width:600px)": {
+                alignContent: "center",
+                justifyContent: "space-between",
+              },
             }}
           >
             <MUI.Typography
-              style={{
-                // fontFamily: "jura",
-              }}
+              
               variant="body1"
-              fontSize="18px"
+              fontSize="18px"  sx={{
+                "@media (max-width:600px)": {
+                  fontSize: "12px", textAlign: "center", 
+                },
+              }}
             >
               Hillringsberg 671 97 Glava
             </MUI.Typography>
 
             <MUI.Typography
-              style={{
-                // fontFamily: "jura",
-              }}
+             
               variant="body2"
-              fontSize="16px"
+              fontSize="16px"  sx={{
+                "@media (max-width:600px)": {
+                  fontSize: "12px",  textAlign: "center", 
+                },
+              }}
             >
               Bengt@delabglava.se
             </MUI.Typography>
 
             <MUI.Typography
-              style={{
-                fontFamily: "jura",
-              }}
+             
               variant="body2"
-              fontSize="18px"
-            >
+              fontSize="18px"  sx={{
+                "@media (max-width:600px)": {
+                  fontSize: "12px", textAlign: "center", 
+                },
+              }}
+            > 
               070 - 34 26 345
             </MUI.Typography>
           </div>
         </div>
         <div
           style={{
-            border: "1px solid green",
             padding: "8px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            minWidth: "300px", 
           }}
         >
           <Image
@@ -90,7 +100,6 @@ function Footer() {
 
         <div
           style={{
-            border: "1px solid hotpink",
             flex: 1,
             flexWrap: "wrap",
             alignContent: "center",
@@ -102,7 +111,10 @@ function Footer() {
                 textAlign: "right",
                 marginTop: "1em",
                 flex: 1,
-                // fontFamily: "jura",
+              }}   sx={{
+                "@media (max-width:600px)": {
+                  fontSize: "12px", 
+                },
               }}
               variant="body1"
               fontSize="18px"
@@ -113,7 +125,14 @@ function Footer() {
             <MUI.Typography
               variant="body2"
               fontSize="18px"
-              style={{ textAlign: "right", fontFamily: "jura" }}
+              style={{
+                textAlign: "right",
+              }}
+              sx={{
+                "@media (max-width:600px)": {
+                  fontSize: "12px",
+                },
+              }}
             >
               Scaaler IoT Labs, Strandvägen 2, 671 51 Arvika
             </MUI.Typography>
