@@ -23,7 +23,7 @@ export default function Header() {
         backgroundColor: "#111",
         height: "80px",
         justifyContent: "center",
-        width: "100vw",
+        width: "100%",
       }}
     >
       <MUI.Container
