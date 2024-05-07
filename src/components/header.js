@@ -1,7 +1,32 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
-import * as MUI from "@mui/material/";
-import * as MUIIcons from "@mui/icons-material";
+import {
+  Container,
+  Box,
+  Typography,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Button,
+  Menu,
+  MenuItem,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
+import {
+  KeyboardArrowUp,
+  KeyboardArrowDown,
+  Close,
+  ExpandMore,
+  Person,
+} from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 
 import hillringsbergIFLogo from "@/images/main/logotype.png";
@@ -17,7 +42,7 @@ export default function Header() {
   const [headerDrawer, setHeaderDrawer] = useState(false);
 
   return (
-    <MUI.AppBar
+    <AppBar
       position="static"
       sx={{
         backgroundColor: "#111",
@@ -26,7 +51,7 @@ export default function Header() {
         width: "100%",
       }}
     >
-      <MUI.Container
+      <Container
         maxWidth="xl"
         sx={{
           paddingLeft: {
@@ -43,11 +68,11 @@ export default function Header() {
           },
         }}
       >
-        <MUI.Toolbar
+        <Toolbar
           disableGutters
           sx={{ flexDirection: "row", justifyItems: "center" }}
         >
-          <MUI.IconButton
+          <IconButton
             size="small"
             title="Navigera till startsidan"
             onClick={() => {
@@ -61,12 +86,12 @@ export default function Header() {
               alt="Hillringsbergslogga"
               style={{ height: "55px", width: "100px", aspectRatio: "1 / 1" }}
             />
-          </MUI.IconButton>
-          <MUI.Box
+          </IconButton>
+          <Box
             justifyContent="flex-end"
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            <MUI.Button
+            <Button
               id="header__dropdown-button"
               aria-controls={
                 headerDropdown ? "header__dropdown-menu" : undefined
@@ -81,11 +106,7 @@ export default function Header() {
               }}
               disableElevation
               endIcon={
-                headerDropdown ? (
-                  <MUIIcons.KeyboardArrowUp />
-                ) : (
-                  <MUIIcons.KeyboardArrowDown />
-                )
+                headerDropdown ? <KeyboardArrowUp /> : <KeyboardArrowDown />
               }
               sx={{
                 backgroundColor: "transparent",
@@ -94,8 +115,8 @@ export default function Header() {
               }}
             >
               Om Eljusspåret
-            </MUI.Button>
-            <MUI.Menu
+            </Button>
+            <Menu
               id="header__dropdown-menu"
               MenuListProps={{ "aria-labelledby": "header__dropdown-button" }}
               open={headerDropdown}
@@ -105,7 +126,7 @@ export default function Header() {
                 "& .MuiMenu-paper": { backgroundColor: "#111", color: "#fff" },
               }}
             >
-              <MUI.MenuItem
+              <MenuItem
                 disableRipple
                 onClick={() => {
                   router.push("/project");
@@ -113,8 +134,8 @@ export default function Header() {
                 }}
               >
                 Projektet Naturkraft
-              </MUI.MenuItem>
-              <MUI.MenuItem
+              </MenuItem>
+              <MenuItem
                 disableRipple
                 onClick={() => {
                   router.push("/cooperation");
@@ -122,8 +143,8 @@ export default function Header() {
                 }}
               >
                 Samarbetspartners
-              </MUI.MenuItem>
-              <MUI.MenuItem
+              </MenuItem>
+              <MenuItem
                 disableRipple
                 onClick={() => {
                   router.push("/information");
@@ -131,9 +152,9 @@ export default function Header() {
                 }}
               >
                 Vill du veta mer?
-              </MUI.MenuItem>
-            </MUI.Menu>
-            <MUI.Button
+              </MenuItem>
+            </Menu>
+            <Button
               disableElevation
               variant="outlined"
               type="button"
@@ -145,8 +166,8 @@ export default function Header() {
               }}
             >
               Hitta hit
-            </MUI.Button>
-            <MUI.Button
+            </Button>
+            <Button
               variant="outlined"
               type="button"
               onClick={() => router.push("/login")}
@@ -156,14 +177,14 @@ export default function Header() {
                 border: "1px solid transparent",
               }}
             >
-              <MUIIcons.Person />
-            </MUI.Button>
-          </MUI.Box>
-          <MUI.Box
+              <Person />
+            </Button>
+          </Box>
+          <Box
             justifyContent="flex-end"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            <MUI.IconButton
+            <IconButton
               id="header__drawer-button"
               aria-controls={headerDrawer ? "header__drawer" : undefined}
               aria-expanded={headerDrawer ? "true" : undefined}
@@ -178,9 +199,9 @@ export default function Header() {
                 border: "1px solid transparent",
               }}
             >
-              {headerDrawer ? <MUIIcons.Close /> : <MUIIcons.Menu />}
-            </MUI.IconButton>
-            <MUI.Drawer
+              {headerDrawer ? <Close /> : <MenuIcon />}
+            </IconButton>
+            <Drawer
               anchor="right"
               id="header__menu"
               open={headerDrawer}
@@ -198,13 +219,13 @@ export default function Header() {
                 },
               }}
             >
-              <MUI.Box component="section" role="presentation">
-                <MUI.List>
-                  <MUI.Accordion
+              <Box component="section" role="presentation">
+                <List>
+                  <Accordion
                     defaultExpanded
                     sx={{ backgroundColor: "#111", color: "#fff" }}
                   >
-                    <MUI.AccordionSummary
+                    <AccordionSummary
                       sx={{
                         "& .MuiAccordionSummary-content": {
                           display: "grid",
@@ -212,16 +233,14 @@ export default function Header() {
                           textAlign: "center",
                         },
                       }}
-                      expandIcon={
-                        <MUIIcons.ExpandMore sx={{ color: "#fff" }} />
-                      }
+                      expandIcon={<ExpandMore sx={{ color: "#fff" }} />}
                     >
-                      <MUI.Typography>Om Eljusspåret</MUI.Typography>
-                    </MUI.AccordionSummary>
-                    <MUI.AccordionDetails>
-                      <MUI.List>
-                        <MUI.ListItem disablePadding>
-                          <MUI.ListItemButton
+                      <Typography>Om Eljusspåret</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <List>
+                        <ListItem disablePadding>
+                          <ListItemButton
                             sx={{
                               "& .MuiListItemText-root": {
                                 display: "grid",
@@ -234,11 +253,11 @@ export default function Header() {
                               setHeaderDrawer(!headerDrawer);
                             }}
                           >
-                            <MUI.ListItemText primary="Projektet Naturkraft" />
-                          </MUI.ListItemButton>
-                        </MUI.ListItem>
-                        <MUI.ListItem disablePadding>
-                          <MUI.ListItemButton
+                            <ListItemText primary="Projektet Naturkraft" />
+                          </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                          <ListItemButton
                             sx={{
                               "& .MuiListItemText-root": {
                                 display: "grid",
@@ -251,11 +270,11 @@ export default function Header() {
                               setHeaderDrawer(!headerDrawer);
                             }}
                           >
-                            <MUI.ListItemText primary="Samarbetspartners" />
-                          </MUI.ListItemButton>
-                        </MUI.ListItem>
-                        <MUI.ListItem disablePadding>
-                          <MUI.ListItemButton
+                            <ListItemText primary="Samarbetspartners" />
+                          </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                          <ListItemButton
                             sx={{
                               "& .MuiListItemText-root": {
                                 display: "grid",
@@ -268,14 +287,14 @@ export default function Header() {
                               setHeaderDrawer(!headerDrawer);
                             }}
                           >
-                            <MUI.ListItemText primary="Vill du veta mer?" />
-                          </MUI.ListItemButton>
-                        </MUI.ListItem>
-                      </MUI.List>
-                    </MUI.AccordionDetails>
-                  </MUI.Accordion>
-                  <MUI.ListItem disablePadding>
-                    <MUI.ListItemButton
+                            <ListItemText primary="Vill du veta mer?" />
+                          </ListItemButton>
+                        </ListItem>
+                      </List>
+                    </AccordionDetails>
+                  </Accordion>
+                  <ListItem disablePadding>
+                    <ListItemButton
                       sx={{
                         "& .MuiListItemText-root": {
                           display: "grid",
@@ -288,15 +307,15 @@ export default function Header() {
                         setHeaderDrawer(!headerDrawer);
                       }}
                     >
-                      <MUI.ListItemText primary="Hitta hit" />
-                    </MUI.ListItemButton>
-                  </MUI.ListItem>
-                </MUI.List>
-              </MUI.Box>
-            </MUI.Drawer>
-          </MUI.Box>
-        </MUI.Toolbar>
-      </MUI.Container>
-    </MUI.AppBar>
+                      <ListItemText primary="Hitta hit" />
+                    </ListItemButton>
+                  </ListItem>
+                </List>
+              </Box>
+            </Drawer>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }

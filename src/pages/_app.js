@@ -8,22 +8,36 @@ import localFont from "next/font/local";
 import RootLayout from "@/components/layout";
 import "@/styles/index.css";
 
-const jura = localFont({
+const juraFont = localFont({
   src: "../fonts/Jura.ttf",
   weights: [300, 400, 500, 700],
   subsets: ["latin-ext"],
   display: "swap",
 });
 
-const juraFontTheme = createTheme({
+const mainTheme = createTheme({
   typography: {
-    fontFamily: jura.style.fontFamily,
+    fontFamily: juraFont.style.fontFamily,
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          fontFamily: juraFont.style.fontFamily,
+        },
+      },
+    },
+  },
+  palette: {
+    opacityWhite: {
+      main: "rgba(255, 255, 255, 0.90)",
+    },
   },
 });
 
 export default function App({ Component, pageProps, props }) {
   return (
-    <ThemeProvider theme={juraFontTheme}>
+    <ThemeProvider theme={mainTheme}>
       <AppCacheProvider {...props}>
         <RootLayout>
           <Component {...pageProps} />

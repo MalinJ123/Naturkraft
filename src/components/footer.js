@@ -1,10 +1,11 @@
-import * as MUI from "@mui/material";
-import CompanyLogo from "@/images/main/logotype.png";
+import { Box, Typography, Container } from "@mui/material";
 import Image from "next/image";
+
+import CompanyLogo from "@/images/main/logotype.png";
 
 function Footer() {
   return (
-    <MUI.Container
+    <Container
       position="relative"
       bottom={0}
       height="auto"
@@ -18,7 +19,7 @@ function Footer() {
         color: "white",
       }}
     >
-      <MUI.Box
+      <Box
         component="div"
         style={{
           display: "flex",
@@ -26,7 +27,7 @@ function Footer() {
           flexWrap: "wrap",
         }}
       >
-        <MUI.Box
+        <Box
           style={{
             flex: 1,
             alignContent: "center",
@@ -41,7 +42,7 @@ function Footer() {
             },
           }}
         >
-          <MUI.Box
+          <Box
             style={{
               flex: 1,
               padding: "8px",
@@ -54,7 +55,7 @@ function Footer() {
               },
             }}
           >
-            <MUI.Typography
+            <Typography
               variant="body1"
               fontSize="18px"
               sx={{
@@ -67,9 +68,9 @@ function Footer() {
               }}
             >
               Hillringsberg 671 97 Glava
-            </MUI.Typography>
+            </Typography>
 
-            <MUI.Typography
+            <Typography
               variant="body2"
               fontSize="16px"
               sx={{
@@ -83,9 +84,9 @@ function Footer() {
               }}
             >
               Bengt@delabglava.se
-            </MUI.Typography>
+            </Typography>
 
-            <MUI.Typography
+            <Typography
               variant="body2"
               fontSize="18px"
               sx={{
@@ -99,10 +100,10 @@ function Footer() {
               }}
             >
               070 - 34 26 345
-            </MUI.Typography>
-          </MUI.Box>
-        </MUI.Box>
-        <MUI.Box
+            </Typography>
+          </Box>
+        </Box>
+        <Box
           style={{
             padding: "8px",
             display: "flex",
@@ -127,19 +128,18 @@ function Footer() {
               },
             }}
           />
-        </MUI.Box>
+        </Box>
 
-        <MUI.Box
+        <Box
           style={{
             flex: 1,
             flexWrap: "wrap",
             alignContent: "center",
           }}
         >
-          <MUI.Box style={{ textAlign: "center" }}>
-            <MUI.Typography
+          <Box style={{ textAlign: "center" }}>
+            <Typography
               style={{
-               
                 marginTop: "1em",
                 flex: 1,
               }}
@@ -152,12 +152,11 @@ function Footer() {
               fontSize="18px"
             >
               Isac.Myren.Andersson@GlavaEnergyCenter.se
-            </MUI.Typography>
+            </Typography>
 
-            <MUI.Typography
+            <Typography
               variant="body2"
               fontSize="18px"
-              
               sx={{
                 "@media (max-width:1040px)": {
                   fontSize: "12px",
@@ -165,11 +164,11 @@ function Footer() {
               }}
             >
               Scaaler IoT Labs, Strandvägen 2, 671 51 Arvika
-            </MUI.Typography>
-          </MUI.Box>
-        </MUI.Box>
-      </MUI.Box>
-    </MUI.Container>
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </Container>
   );
 }
 

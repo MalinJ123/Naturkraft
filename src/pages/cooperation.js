@@ -1,5 +1,15 @@
 import Image from "next/image";
-import * as MUI from "@mui/material/";
+import {
+  Box,
+  Container,
+  Typography,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Stack,
+  Link,
+} from "@mui/material/";
 
 import glavaEnergyCenterLogo from "@/images/cooperation/Glava_Energy_Center.png";
 import energimyndighetenLogo from "@/images/cooperation/Energimyndigheten.png";
@@ -11,10 +21,11 @@ import teknikiVastLogo from "@/images/cooperation/TeknikiVast.png";
 import hillringsbergsIFLogo from "@/images/cooperation/Hillringsberg_IF.png";
 import glavaGymnastikföreningLogo from "@/images/cooperation/Glava_Gymnastikförening.png";
 import sCBurmanAbLogo from "@/images/cooperation/SC_Burman_AB.png";
+import Title from "@/components/title";
 
 export default function Cooperation() {
   return (
-    <MUI.Box
+    <Box
       component="section"
       display="flex"
       flexDirection="column"
@@ -22,12 +33,10 @@ export default function Cooperation() {
       gap={12}
       marginTop={10}
     >
-      <MUI.Container>
-        <MUI.Card
-          sx={{ backgroundColor: "rgba(255, 255, 255, 0.90)" }}
-          elevation={2}
-        >
-          <MUI.CardHeader
+      <Title />
+      <Container>
+        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2}>
+          <CardHeader
             title="Samarbetspartners"
             titleTypographyProps={{
               textAlign: "center",
@@ -36,16 +45,16 @@ export default function Cooperation() {
               marginTop: 4,
             }}
           />
-          <MUI.CardContent>
-            <MUI.Box
+          <CardContent>
+            <Box
               component="div"
               display="flex"
               flexDirection="column"
               alignItems="center"
               gap={2}
             >
-              <MUI.Stack spacing={4} direction="column">
-                <MUI.Typography
+              <Stack spacing={4} direction="column">
+                <Typography
                   variant="body1"
                   component="p"
                   lineHeight={1.8}
@@ -66,8 +75,8 @@ export default function Cooperation() {
                   anläggningar, samtidigt som de kan spara energi och få
                   intäkter från överskottsenergi som produceras under den ljusa
                   delen av året.
-                </MUI.Typography>
-                <MUI.Typography
+                </Typography>
+                <Typography
                   variant="body1"
                   component="p"
                   lineHeight={1.8}
@@ -87,12 +96,12 @@ export default function Cooperation() {
                   genom att sprida kunskap och ge förslag till samhället för
                   framtidens motionsanläggningar. Projektet ska också resultera
                   i en guide som kan användas av andra kommuner och föreningar.
-                </MUI.Typography>
-              </MUI.Stack>
-            </MUI.Box>
-          </MUI.CardContent>
-          <MUI.CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <MUI.Link
+                </Typography>
+              </Stack>
+            </Box>
+          </CardContent>
+          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Link
               underline="hover"
               component="button"
               variant="body1"
@@ -110,16 +119,16 @@ export default function Cooperation() {
               }}
             >
               Klicka här om du vill veta mer eller ta del av guiden
-            </MUI.Link>
-          </MUI.CardActions>
-        </MUI.Card>
-      </MUI.Container>
-      <MUI.Box
+            </Link>
+          </CardActions>
+        </Card>
+      </Container>
+      <Box
         component="section"
         width="100%"
-        sx={{ backgroundColor: "rgba(255, 255, 255, 0.90)" }}
+        sx={{ backgroundColor: "opacityWhite.main" }}
       >
-        <MUI.Stack
+        <Stack
           sx={{
             flexDirection: {
               xs: "column",
@@ -165,8 +174,8 @@ export default function Cooperation() {
             src={lundsUniversitetLogo}
             alt="Lunds Universitet logotyp"
           />
-        </MUI.Stack>
-        <MUI.Stack
+        </Stack>
+        <Stack
           sx={{
             flexDirection: {
               xs: "column",
@@ -187,7 +196,7 @@ export default function Cooperation() {
             src={teknikiVastLogo}
             alt="Teknik i Väst logotyp"
           />
-          <MUI.Box
+          <Box
             component="div"
             display="flex"
             flexDirection="column"
@@ -195,10 +204,10 @@ export default function Cooperation() {
             justifyContent="center"
             width="200px"
           >
-            <MUI.Typography variant="body1" textAlign="center" component="p">
+            <Typography variant="body1" textAlign="center" component="p">
               Teknik o Gårdstjänster
-            </MUI.Typography>
-          </MUI.Box>
+            </Typography>
+          </Box>
           <Image
             className="cooperation__image"
             src={hillringsbergsIFLogo}
@@ -214,8 +223,8 @@ export default function Cooperation() {
             src={sCBurmanAbLogo}
             alt="SC Burman AB logotyp"
           />
-        </MUI.Stack>
-      </MUI.Box>
-    </MUI.Box>
+        </Stack>
+      </Box>
+    </Box>
   );
 }
