@@ -28,3 +28,14 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+
+
+/* footer */
+
+.mui-s80m6r-MuiContainer-root {
+  max-width: none !important; 
+
+}
+#footer {
+  font-family: "Jura", sans-serif;
+}

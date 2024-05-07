@@ -59,7 +59,7 @@ export default function Header() {
               priority
               src={hillringsbergIFLogo}
               alt="Hillringsbergslogga"
-              style={{ height: "65px", width: "65px", aspectRatio: "1 / 1" }}
+              style={{ height: "55px", width: "100px", aspectRatio: "1 / 1" }}
             />
           </MUI.IconButton>
           <MUI.Box
