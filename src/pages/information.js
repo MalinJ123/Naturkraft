@@ -30,7 +30,8 @@ export default function Information() {
                 titleTypographyProps={{
                   textAlign: "center",
                   fontSize: { xs: 30, md: 32 },
-                  marginTop: 5,
+                  marginTop: 4,
+                  marginBottom: 2,
                   fontWeight: "bold",
                 }}
               />

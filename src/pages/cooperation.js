@@ -25,16 +25,15 @@ import Title from "@/components/title";
 
 export default function Cooperation() {
   return (
-    <Container sx={{ marginTop: 8, marginBottom: 8, padding: { xs: 0 } }}>
-    <Title />
     <Box
-      component="section"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      gap={12}
-      marginTop={10}
+    component="section"
+    display="flex"
+    flexDirection="column"
+    justifyContent="center"
+    gap={12}
+    marginTop={10}
     >
+    <Title />
       <Container sx={{ padding: { xs: 0 } }} >
         <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2} >
           <CardHeader
@@ -90,7 +89,7 @@ export default function Cooperation() {
               </Stack>
             </Box>
           </CardContent>
-          <CardActions sx={{ display: "flex", justifyContent: "flex-end", marginRight: 8, }}>
+          <CardActions sx={{ display: "flex", justifyContent: "flex-end", marginRight:{xs: 0, md: 8} }}>
             <Link
             className="link-hover"
               underline="none"
@@ -113,7 +112,8 @@ export default function Cooperation() {
       <Box
         component="section"
         width="100%"
-        sx={{ backgroundColor: "opacityWhite.main" }}
+        sx={{ backgroundColor: "opacityWhite.main" ,
+            }}
       >
         <Stack
           sx={{
@@ -127,9 +127,11 @@ export default function Cooperation() {
           }}
           alignItems="center"
           justifyContent="center"
+          flexWrap={"wrap"}
           spacing={4}
           gap={2}
           p={4}
+  
         >
           <Image
             className="cooperation__image"
@@ -160,6 +162,12 @@ export default function Cooperation() {
             className="cooperation__image"
             src={lundsUniversitetLogo}
             alt="Lunds Universitet logotyp"
+            sx={{
+              "@media (max-width:1290px)": {
+                width: "50px",
+                height: "50px"
+              },
+            }}
           />
         </Stack>
         <Stack
@@ -174,6 +182,7 @@ export default function Cooperation() {
           }}
           alignItems="center"
           justifyContent="center"
+          flexWrap="wrap"
           spacing={4}
           gap={2}
           p={4}
@@ -213,6 +222,5 @@ export default function Cooperation() {
         </Stack>
       </Box>
     </Box>
-    </Container>
   );
 }

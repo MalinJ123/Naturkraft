@@ -30,7 +30,6 @@ export default function Project() {
               fontSize: { xs: 28, md: 32 },
               marginBottom: 4,
               marginTop: 5,
-              padding: 1,
             }}
             subheader="Glava elljusspår har något så speciellt som ett smart, behovsdrivet
               och modulärt energisystem baserat i solenergi. Kombinationen av
