@@ -130,7 +130,7 @@ export default function Information() {
                   sx={{
                     display: "flex",
                     justifyContent: "flex-end",
-                    marginRight: 10,
+                    marginRight: {xs: 0, md: 10}
                   }}
                 >
                   <Link

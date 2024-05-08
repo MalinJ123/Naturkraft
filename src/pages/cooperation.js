@@ -25,6 +25,8 @@ import Title from "@/components/title";
 
 export default function Cooperation() {
   return (
+    <Container sx={{ marginTop: 8, marginBottom: 8, padding: { xs: 0 } }}>
+    <Title />
     <Box
       component="section"
       display="flex"
@@ -33,14 +35,14 @@ export default function Cooperation() {
       gap={12}
       marginTop={10}
     >
-      <Title />
-      <Container>
-        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2}>
+      <Container sx={{ padding: { xs: 0 } }} >
+        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2} >
           <CardHeader
             title="Samarbetspartners"
             titleTypographyProps={{
               textAlign: "center",
-              fontSize: { xs: 32, md: 36 },
+              fontWeight: "bold",
+              fontSize: { xs: 28, md: 32 },
               marginBottom: 2,
               marginTop: 4,
             }}
@@ -59,17 +61,11 @@ export default function Cooperation() {
                   component="p"
                   lineHeight={1.8}
                   sx={{
-                    paddingX: {
-                      xs: 4,
-                      md: 6,
-                    },
-                    fontSize: {
-                      xs: 18,
-                      md: 20,
-                    },
+                    paddingX: {xs: 0.55, md: 6},
+                    fontSize: {xs: 18, md: 20},
                   }}
                 >
-                  Syftet med projektet var att utveckla och testa ett modulärt,
+                  <b>Syftet med projektet</b> var att utveckla och testa ett modulärt,
                   säkert, smart och lokalt energisystem som möjliggör att
                   idrottsföreningar och kommuner får bra belysning på sina
                   anläggningar, samtidigt som de kan spara energi och få
@@ -81,17 +77,11 @@ export default function Cooperation() {
                   component="p"
                   lineHeight={1.8}
                   sx={{
-                    paddingX: {
-                      xs: 4,
-                      md: 6,
-                    },
-                    fontSize: {
-                      xs: 18,
-                      md: 20,
-                    },
+                    paddingX: {xs: 0.55, md: 6},
+                    fontSize: {xs: 18, md: 20},
                   }}
                 >
-                  Målet var också att öka medvetenhet hos projektdeltagare och
+                  <b>Målet var också</b> att öka medvetenhet hos projektdeltagare och
                   allmänhet om effektiv energianvändning och skapa mervärden
                   genom att sprida kunskap och ge förslag till samhället för
                   framtidens motionsanläggningar. Projektet ska också resultera
@@ -100,22 +90,19 @@ export default function Cooperation() {
               </Stack>
             </Box>
           </CardContent>
-          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <CardActions sx={{ display: "flex", justifyContent: "flex-end", marginRight: 8, }}>
             <Link
-              underline="hover"
+            className="link-hover"
+              underline="none"
               component="button"
               variant="body1"
               role="button"
               type="button"
               sx={{
-                padding: {
-                  xs: 3,
-                  md: 4,
-                },
-                fontSize: {
-                  xs: 15,
-                  md: 20,
-                },
+                padding: {xs: 2, md: 3},
+                fontSize: {xs: 15, md: 20},
+                color: "black",
+                fontWeight: "bold",
               }}
             >
               Klicka här om du vill veta mer eller ta del av guiden
@@ -226,5 +213,6 @@ export default function Cooperation() {
         </Stack>
       </Box>
     </Box>
+    </Container>
   );
 }
