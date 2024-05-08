@@ -130,10 +130,13 @@ export default function Cooperation() {
               lg: "row",
               xl: "row",
             },
+            width: {
+              
+            }
           }}
           alignItems="center"
           justifyContent="center"
-          flexWrap={"wrap"}
+          // flexWrap={"wrap"}
           spacing={4}
           gap={2}
           p={4}
@@ -142,36 +145,54 @@ export default function Cooperation() {
             className="cooperation__image"
             src={glavaEnergyCenterLogo}
             alt="Glava Energy Center logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Image
             className="cooperation__image"
             src={energimyndighetenLogo}
             alt="Energimyndigheten logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Image
             className="cooperation__image"
             src={sun4EnergyLogo}
             alt="Sun 4 Energy logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Image
             className="cooperation__image"
             src={sweModuleLogo}
             alt="SWEMODULE logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Image
             className="cooperation__image"
             src={karlstadsUniversitetLogo}
             alt="Karlstads Universitet logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Image
             className="cooperation__image"
             src={lundsUniversitetLogo}
             alt="Lunds Universitet logotyp"
             sx={{
-              "@media (max-width:1290px)": {
-                width: "50px",
-                height: "50px",
-              },
+              width: "auto",
+              height: "auto"
             }}
           />
         </Stack>
@@ -196,6 +217,10 @@ export default function Cooperation() {
             className="cooperation__image"
             src={teknikiVastLogo}
             alt="Teknik i Väst logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Box
             component="div"
@@ -213,16 +238,28 @@ export default function Cooperation() {
             className="cooperation__image"
             src={hillringsbergsIFLogo}
             alt="Hillringsbergs IF logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Image
             className="cooperation__image"
             src={glavaGymnastikföreningLogo}
             alt="Glava Gymnastikförening"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
           <Image
             className="cooperation__image"
             src={sCBurmanAbLogo}
             alt="SC Burman AB logotyp"
+            sx={{
+              width: "auto",
+              height: "auto"
+            }}
           />
         </Stack>
       </Box>
