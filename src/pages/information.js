@@ -24,7 +24,7 @@ export default function Information() {
           gap={12}
         >
           <Container sx={{ padding: { xs: 0 } }}>
-            <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2}>
+            <Card sx={{ backgroundColor: "opacityLight.main" }} elevation={2}>
               <CardHeader
                 title="Vill du veta mer"
                 titleTypographyProps={{

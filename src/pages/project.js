@@ -21,7 +21,7 @@ export default function Project() {
         alignItems="center"
         gap={12}
       >
-        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2}>
+        <Card sx={{ backgroundColor: "opacityLight.main" }} elevation={2}>
           <CardHeader
             title="Elljusspåret i Glava"
             titleTypographyProps={{

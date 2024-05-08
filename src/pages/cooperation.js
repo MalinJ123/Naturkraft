@@ -35,7 +35,7 @@ export default function Cooperation() {
     >
       <Title />
       <Container>
-        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2}>
+        <Card sx={{ backgroundColor: "opacityLight.main" }} elevation={2}>
           <CardHeader
             title="Samarbetspartners"
             titleTypographyProps={{
@@ -126,7 +126,7 @@ export default function Cooperation() {
       <Box
         component="section"
         width="100%"
-        sx={{ backgroundColor: "opacityWhite.main" }}
+        sx={{ backgroundColor: "opacityLight.main" }}
       >
         <Stack
           sx={{

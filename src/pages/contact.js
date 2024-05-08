@@ -24,7 +24,7 @@ export default function Contact() {
       <Title />
       <Container
         sx={{
-          backgroundColor: "opacityWhite.main",
+          backgroundColor: "opacityLight.main",
           paddingTop: 0,
           py: 6,
           borderRadius: "10px",
