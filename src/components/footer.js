@@ -18,7 +18,7 @@ function Footer() {
       component="footer"
       position="relative"
       bottom={0}
-      height="205px"
+      height="110px"
       width="100%"
       display="flex"
       alignContent="center"
@@ -31,11 +31,12 @@ function Footer() {
             sm: "14px",
             md: "16px",
             lg: "18px",
+           
           },
         },
         backgroundColor: "#000",
-        color: "#fff",
-      }}
+        color: "#fff",  
+      }} 
     >
       <Grid
         container
@@ -77,7 +78,7 @@ function Footer() {
           type="button"
           sx={{
             "*": {
-              width: { xs: "75px", sm: "95px", md: "105px" },
+              width: { xs: "60px" },
               height: "auto",
             },
           }}
