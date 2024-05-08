@@ -10,9 +10,18 @@ import {
   Link,
 } from "@mui/material/";
 
+import { contentHeight } from "@/components/layout";
+
 export default function Project() {
   return (
-    <Container sx={{ marginTop: 8, marginBottom: 8, padding: { xs: 0 } }}>
+    <Container
+      sx={{
+        marginTop: 8,
+        marginBottom: 8,
+        padding: { xs: 0 },
+        height: { contentHeight },
+      }}
+    >
       <Title />
       <Box
         component="section"

@@ -9,6 +9,7 @@ import {
 import { useRouter } from "next/router";
 import Image from "next/image";
 
+import { footerHeight } from "./layout";
 import CompanyLogo from "@/images/main/logotype.png";
 
 function Footer() {
@@ -18,7 +19,7 @@ function Footer() {
       component="footer"
       position="relative"
       bottom={0}
-      height="110px"
+      height={footerHeight}
       width="100%"
       display="flex"
       alignContent="center"
@@ -27,26 +28,24 @@ function Footer() {
       sx={{
         "& .MuiTypography-body1": {
           fontSize: {
-            xs: "12px",
-            sm: "14px",
-            md: "16px",
-            lg: "18px",
-           
+            xs: 12,
+            sm: 12,
+            md: 14,
+            lg: 18,
           },
         },
         backgroundColor: "#000",
-        color: "#fff",  
-      }} 
+        color: "#fff",
+      }}
     >
-      <Grid 
-        container 
+      <Grid
+        container
         columns={{ xs: 2, sm: 1 }}
-        justifyItems="center"
         justifyContent="space-between"
         alignItems="center"
         maxWidth="xl"
-      
         sx={{
+          height: "100%",
           paddingLeft: {
             xs: "1.15em",
             md: "1.45em",
@@ -61,7 +60,16 @@ function Footer() {
           },
         }}
       >
-        <List>
+        <List
+          sx={{
+            width: { xs: "auto", sm: "auto", md: "28vw", lg: "30w" },
+            justifyContent: "flex-start",
+            display: "inline-grid",
+            "& .MuiListItem-root": {
+              display: "inline-flex",
+            },
+          }}
+        >
           <ListItem disablePadding>
             <Typography variant="body1">Hillringsberg 671 97 Glava</Typography>
           </ListItem>
@@ -79,7 +87,7 @@ function Footer() {
           type="button"
           sx={{
             "*": {
-              width: { xs: "60px" },
+              width: "75px",
               height: "auto",
             },
           }}
@@ -96,7 +104,16 @@ function Footer() {
           />
         </IconButton>
 
-        <List>
+        <List
+          sx={{
+            width: { xs: "auto", sm: "auto", md: "28vw", lg: "30w" },
+            justifyContent: "flex-end",
+            display: "inline-grid",
+            "& .MuiListItem-root": {
+              display: "inline-flex",
+            },
+          }}
+        >
           <ListItem disablePadding>
             <Typography variant="body1">
               Isac.Myren.Andersson@GlavaEnergyCenter.se
