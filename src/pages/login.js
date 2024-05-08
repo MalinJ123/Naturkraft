@@ -12,6 +12,7 @@ export default function Login() {
   const darkTheme = MUI.createTheme({
     palette: {
       mode: "dark",
+      
     },
   });
 
