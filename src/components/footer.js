@@ -21,7 +21,9 @@ function Footer() {
       height="205px"
       width="100%"
       display="flex"
-      alignItems="center"
+      alignContent="center"
+      justifyContent="center"
+      flexDirection="row"
       sx={{
         "& .MuiTypography-body1": {
           fontSize: {
@@ -32,9 +34,6 @@ function Footer() {
           },
         },
         backgroundColor: "#000",
-        flexDirection: {
-          ["@media (max-width:400)"]: ["column", "row"],
-        },
         color: "#fff",
       }}
     >
@@ -44,7 +43,21 @@ function Footer() {
         justifyItems="center"
         justifyContent="space-between"
         alignItems="center"
-        p={2}
+        maxWidth="xl"
+        sx={{
+          paddingLeft: {
+            xs: "1.15em",
+            md: "1.45em",
+            lg: "1.55em",
+            xl: "1.55em",
+          },
+          paddingRight: {
+            xs: "1.15em",
+            md: "1.45em",
+            lg: "1.55em",
+            xl: "1.55em",
+          },
+        }}
       >
         <List>
           <ListItem disablePadding>
