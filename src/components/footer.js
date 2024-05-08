@@ -1,174 +1,101 @@
-import { Box, Typography, Container } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  List,
+  ListItem,
+  IconButton,
+} from "@mui/material";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 import CompanyLogo from "@/images/main/logotype.png";
 
 function Footer() {
+  const router = useRouter();
   return (
-    <Container
+    <Box
+      component="footer"
       position="relative"
       bottom={0}
-      height="auto"
-      margin={0}
-      padding={2}
-      maxWidth="100%"
+      height="205px"
       width="100%"
-      id="footer"
+      display="flex"
+      alignItems="center"
       sx={{
-        backgroundColor: "black",
-        color: "white",
+        "& .MuiTypography-body1": {
+          fontSize: {
+            xs: "12px",
+            sm: "14px",
+            md: "16px",
+            lg: "18px",
+          },
+        },
+        backgroundColor: "#000",
+        flexDirection: {
+          ["@media (max-width:400)"]: ["column", "row"],
+        },
+        color: "#fff",
       }}
     >
-      <Box
-        component="div"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-        }}
+      <Grid
+        container
+        columns={{ xs: 2, sm: 1 }}
+        justifyItems="center"
+        justifyContent="space-between"
+        alignItems="center"
+        p={2}
       >
-        <Box
-          style={{
-            flex: 1,
-            alignContent: "center",
-            "@media (max-width:570px)": {
-              alignContent: "center",
-              justifyContent: "space-between",
-            },
-          }}
-          sx={{
-            "@media (max-width:750px)": {
-              maxWidth: "auto",
-            },
-          }}
-        >
-          <Box
-            style={{
-              flex: 1,
-              padding: "8px",
-              alignContent: "center",
-            }}
-            sx={{
-              "@media (max-width:1040px)": {
-                alignContent: "center",
-                justifyContent: "space-between",
-              },
-            }}
-          >
-            <Typography
-              variant="body1"
-              fontSize="18px"
-              sx={{
-                "@media (max-width:1040px)": {
-                  fontSize: "12px",
-                },
-                "@media (max-width:570px)": {
-                  width: "150px",
-                },
-              }}
-            >
-              Hillringsberg 671 97 Glava
-            </Typography>
+        <List>
+          <ListItem disablePadding>
+            <Typography variant="body1">Hillringsberg 671 97 Glava</Typography>
+          </ListItem>
 
-            <Typography
-              variant="body2"
-              fontSize="16px"
-              sx={{
-                "@media (max-width:1040px)": {
-                  fontSize: "12px",
-                },
-                "@media (max-width:570px)": {
-                  width: "150px",
-                  width: "150px",
-                },
-              }}
-            >
-              Bengt@delabglava.se
-            </Typography>
+          <ListItem disablePadding>
+            <Typography variant="body1">Bengt@delabglava.se</Typography>
+          </ListItem>
 
-            <Typography
-              variant="body2"
-              fontSize="18px"
-              sx={{
-                "@media (max-width:1040px)": {
-                  fontSize: "12px",
-                },
-                "@media (max-width:570px)": {
-                  width: "150px",
-                  width: "150px",
-                },
-              }}
-            >
-              070 - 34 26 345
-            </Typography>
-          </Box>
-        </Box>
-        <Box
-          style={{
-            padding: "8px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "300px",
-          }}
+          <ListItem disablePadding>
+            <Typography variant="body1">070 - 34 26 345</Typography>
+          </ListItem>
+        </List>
+        <IconButton
+          size="small"
+          type="button"
           sx={{
-            "@media (max-width:750px)": {
-              maxWidth: "100px",
+            "*": {
+              width: { xs: "75px", sm: "95px", md: "105px" },
+              height: "auto",
             },
           }}
+          title="Navigera till startsidan"
+          onClick={() => router.push("/")}
         >
           <Image
             priority
             alt="Hillringsbergs logga"
+            width="auto"
             src={CompanyLogo}
-            style={{ width: 100, height: 55 }}
-            sx={{
-              "@media (max-width:700px)": {
-                width: "150px",
-              },
-            }}
+            quality={85}
+            style={{ aspectRatio: "1 / 1", objectFit: "cover" }}
           />
-        </Box>
+        </IconButton>
 
-        <Box
-          style={{
-            flex: 1,
-            flexWrap: "wrap",
-            alignContent: "center",
-          }}
-        >
-          <Box style={{ textAlign: "center" }}>
-            <Typography
-              style={{
-                marginTop: "1em",
-                flex: 1,
-              }}
-              sx={{
-                "@media (max-width:1040px)": {
-                  fontSize: "12px",
-                },
-              }}
-              variant="body1"
-              fontSize="18px"
-            >
+        <List>
+          <ListItem disablePadding>
+            <Typography variant="body1">
               Isac.Myren.Andersson@GlavaEnergyCenter.se
             </Typography>
+          </ListItem>
 
-            <Typography
-              variant="body2"
-              fontSize="18px"
-              sx={{
-                "@media (max-width:1040px)": {
-                  fontSize: "12px",
-                },
-              }}
-            >
+          <ListItem disablePadding>
+            <Typography variant="body1">
               Scaaler IoT Labs, Strandvägen 2, 671 51 Arvika
             </Typography>
-          </Box>
-        </Box>
-      </Box>
-    </Container>
+          </ListItem>
+        </List>
+      </Grid>
+    </Box>
   );
 }
 

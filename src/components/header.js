@@ -74,17 +74,29 @@ export default function Header() {
         >
           <IconButton
             size="small"
+            type="button"
             title="Navigera till startsidan"
             onClick={() => {
               router.push("/");
               setHeaderDrawer(false);
+            }}
+            sx={{
+              "*": {
+                width: "55px",
+                height: "auto",
+              },
             }}
           >
             <Image
               priority
               src={hillringsbergIFLogo}
               alt="Hillringsbergslogga"
-              style={{ height: "55px", width: "100px", aspectRatio: "1 / 1" }}
+              width="auto"
+              quality={85}
+              style={{
+                aspectRatio: "1 / 1",
+                objectFit: "cover",
+              }}
             />
           </IconButton>
           <Box
