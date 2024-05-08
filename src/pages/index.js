@@ -3,7 +3,7 @@ import { Container, Typography } from "@mui/material";
 
 function Start() {
   return (
-    <Container>
+    <Container style={{ height: "100vh" }}>
       <Title />
       <Typography variant="h1">Start</Typography>
     </Container>

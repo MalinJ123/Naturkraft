@@ -38,13 +38,14 @@ function Footer() {
         color: "#fff",  
       }} 
     >
-      <Grid
-        container
+      <Grid 
+        container 
         columns={{ xs: 2, sm: 1 }}
         justifyItems="center"
         justifyContent="space-between"
         alignItems="center"
         maxWidth="xl"
+      
         sx={{
           paddingLeft: {
             xs: "1.15em",
