@@ -26,16 +26,16 @@ import Title from "@/components/title";
 export default function Cooperation() {
   return (
     <Box
-    component="section"
-    display="flex"
-    flexDirection="column"
-    justifyContent="center"
-    gap={12}
-    marginTop={10}
+      component="section"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      gap={12}
+      marginTop={10}
     >
-    <Title />
-      <Container sx={{ padding: { xs: 0 } }} >
-        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2} >
+      <Title />
+      <Container sx={{ padding: { xs: 0 } }}>
+        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2}>
           <CardHeader
             title="Samarbetspartners"
             titleTypographyProps={{
@@ -60,13 +60,13 @@ export default function Cooperation() {
                   component="p"
                   lineHeight={1.8}
                   sx={{
-                    paddingX: {xs: 0.55, md: 6},
-                    fontSize: {xs: 18, md: 20},
+                    paddingX: { xs: 0.55, md: 6 },
+                    fontSize: { xs: 18, md: 20 },
                   }}
                 >
-                  <b>Syftet med projektet</b> var att utveckla och testa ett modulärt,
-                  säkert, smart och lokalt energisystem som möjliggör att
-                  idrottsföreningar och kommuner får bra belysning på sina
+                  <b>Syftet med projektet</b> var att utveckla och testa ett
+                  modulärt, säkert, smart och lokalt energisystem som möjliggör
+                  att idrottsföreningar och kommuner får bra belysning på sina
                   anläggningar, samtidigt som de kan spara energi och få
                   intäkter från överskottsenergi som produceras under den ljusa
                   delen av året.
@@ -76,30 +76,37 @@ export default function Cooperation() {
                   component="p"
                   lineHeight={1.8}
                   sx={{
-                    paddingX: {xs: 0.55, md: 6},
-                    fontSize: {xs: 18, md: 20},
+                    paddingX: { xs: 0.55, md: 6 },
+                    fontSize: { xs: 18, md: 20 },
                   }}
                 >
-                  <b>Målet var också</b> att öka medvetenhet hos projektdeltagare och
-                  allmänhet om effektiv energianvändning och skapa mervärden
-                  genom att sprida kunskap och ge förslag till samhället för
-                  framtidens motionsanläggningar. Projektet ska också resultera
-                  i en guide som kan användas av andra kommuner och föreningar.
+                  <b>Målet var också</b> att öka medvetenhet hos
+                  projektdeltagare och allmänhet om effektiv energianvändning
+                  och skapa mervärden genom att sprida kunskap och ge förslag
+                  till samhället för framtidens motionsanläggningar. Projektet
+                  ska också resultera i en guide som kan användas av andra
+                  kommuner och föreningar.
                 </Typography>
               </Stack>
             </Box>
           </CardContent>
-          <CardActions sx={{ display: "flex", justifyContent: "flex-end", marginRight:{xs: 0, md: 8} }}>
+          <CardActions
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginRight: { xs: 0, md: 8 },
+            }}
+          >
             <Link
-            className="link-hover"
+              className="link-hover"
               underline="none"
               component="button"
               variant="body1"
               role="button"
               type="button"
               sx={{
-                padding: {xs: 2, md: 3},
-                fontSize: {xs: 15, md: 20},
+                padding: { xs: 2, md: 3 },
+                fontSize: { xs: 15, md: 20 },
                 color: "black",
                 fontWeight: "bold",
               }}
@@ -112,8 +119,7 @@ export default function Cooperation() {
       <Box
         component="section"
         width="100%"
-        sx={{ backgroundColor: "opacityWhite.main" ,
-            }}
+        sx={{ backgroundColor: "opacityLight.main" }}
       >
         <Stack
           sx={{
@@ -131,7 +137,6 @@ export default function Cooperation() {
           spacing={4}
           gap={2}
           p={4}
-  
         >
           <Image
             className="cooperation__image"
@@ -165,7 +170,7 @@ export default function Cooperation() {
             sx={{
               "@media (max-width:1290px)": {
                 width: "50px",
-                height: "50px"
+                height: "50px",
               },
             }}
           />
