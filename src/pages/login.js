@@ -49,7 +49,7 @@ export default function Login() {
       console.log("Inloggning lyckades!");
       console.log("Username and password are filled in!");
       // just nu finns det ingen start sida för inloggad användare
-      router.push("/project");
+      router.push("/loggedinstart");
     } else {
       console.log("Fel användarnamn eller lösenord");
       console.log("användarnamn", username);
