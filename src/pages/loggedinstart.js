@@ -1,3 +1,5 @@
+import { contentHeight } from "@/components/layout";
+import { useState } from "react";
 import {
 	Box,
 	Container,
@@ -8,14 +10,34 @@ import {
 	CardActions,
 	Stack,
 	Link,
-	Button
+	Button,
+	Alert
   } from "@mui/material/";
 
-  import { contentHeight } from "@/components/layout";
-
 export default function LoggedInStart() {
+	const [systemStatus, setSystemStatus] = useState('fungerade')
+
+	const handleSystemStatusChange = (status) => {
+		setSystemStatus(status)
+	}
 
 	return (
+		<>
+		<Stack sx={{ width: '100%', marginTop: 2 }}spacing={2}>
+			{systemStatus === 'fungerade' ? (
+				<Alert variant="filled" severity="success">
+					Allt fungerar som det ska
+				</Alert>
+			):(
+				<Alert variant="filled" severity="error">
+					Varning, systemet är ur funktion
+				</Alert>
+			)}
+		</Stack>
+		      Knapp för att utlösa ändring av systemstatus
+			  <Button onClick={() => handleSystemStatusChange('ur funktion')} variant="contained" color="primary" sx={{ marginTop: 2 }}>
+        Simulera systemfel
+      </Button>
 		<Container
         sx={{
           marginTop: 8,
@@ -65,7 +87,7 @@ export default function LoggedInStart() {
                     >
 						I detta läge jobbar systemet för att minimera brukskostnaden. Systemet kommer att köpa från nätet när det är billigt och sälja från batteriet när det är dyrt.
                     </Typography>
-					{/* <Typography
+					<Typography
 						variant="body1"
 						component="ul"
 						style={{fontWeight: "bolder" }}
@@ -74,10 +96,12 @@ export default function LoggedInStart() {
 							fontSize: {xs: 18, md: 16},
 							color: "black", 
 						}}>
-							<li>Ljus</li>
+							<li
+							sx={{
+								marginLeft: 3
+							}}>Ljus</li>
 							<li>Belysning</li>
-
-					</Typography> */}
+					</Typography>
 
 				<Box
 				sx={{
@@ -120,7 +144,7 @@ export default function LoggedInStart() {
                   }}
                 >
 				<Link
-					underline="link"
+					underline="hover"
 					component="button"
 					variant="body1"
 					role="button"
@@ -173,10 +197,21 @@ export default function LoggedInStart() {
                       }}
 					>
 						I detta läge kommer systemet att köpa så lite från nätet som möjligt för att säkerställa användandet av grön energi från panelerna och därmed ha så låg klimatpåverkan som möjligt. Detta läge är dyrare då mindre el kommer säljas från batteriet. Belysningen kommer att hållas på minimal nivå för att inte störa djur och insekter i skogen.
-							{/* <ul>
-								<li>Batterisystem</li>
-								<li>Belysning</li>
-							</ul> */}
+						</Typography>
+						<Typography
+						variant="body1"
+						component="ul"
+						style={{fontWeight: "bolder" }}
+						sx={{
+							paddingX: {xs: 0.5, md: 6},
+							fontSize: {xs: 18, md: 16},
+							color: "black", 
+						}}>
+							<li
+							sx={{
+								marginLeft: 3
+							}}>Batterisystem</li>
+							<li>Belysning</li>		
                     </Typography>					
 				<CardActions
 					className="bold"
@@ -188,7 +223,7 @@ export default function LoggedInStart() {
                 >
 				<Link
 					className="link-hover"
-					underline="link"
+					underline="hover"
 					component="button"
 					variant="body1"
 					role="button"
@@ -250,7 +285,7 @@ export default function LoggedInStart() {
                 >
 				<Link
 					className="link-hover"
-					underline="link"
+					underline="hover"
 					component="button"
 					variant="body1"
 					role="button"
@@ -270,5 +305,6 @@ export default function LoggedInStart() {
 			</Container>
 		</Box>
 	</Container>
+	</>
 	)
 }
