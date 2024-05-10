@@ -33,5 +33,9 @@ export const mainTheme = createTheme({
       main: "rgba(0, 0, 0, 0.90)",
       contrastText: "#fff",
     },
+    wrapper: {
+      main: "#000",
+      contrastText: "#fff",
+    },
   },
 });

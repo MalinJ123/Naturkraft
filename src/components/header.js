@@ -47,7 +47,8 @@ export default function Header() {
       position="static"
       sx={{
         height: headerHeight,
-        backgroundColor: "#111",
+        backgroundColor: "wrapper.main",
+        color: "wrapper.contrastText",
         justifyContent: "center",
         width: "100%",
       }}
@@ -183,6 +184,7 @@ export default function Header() {
             <Button
               variant="outlined"
               type="button"
+              role="button"
               onClick={() => router.push("/login")}
               sx={{
                 backgroundColor: "transparent",
@@ -197,6 +199,19 @@ export default function Header() {
             justifyContent="flex-end"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
+            <IconButton
+              variant="outlined"
+              type="button"
+              role="button"
+              onClick={() => router.push("/login")}
+              sx={{
+                backgroundColor: "transparent",
+                color: "#fff",
+                border: "1px solid transparent",
+              }}
+            >
+              <Person />
+            </IconButton>
             <IconButton
               id="header__drawer-button"
               aria-controls={headerDrawer ? "header__drawer" : undefined}

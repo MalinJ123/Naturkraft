@@ -25,6 +25,8 @@ function Footer() {
       alignContent="center"
       justifyContent="center"
       flexDirection="row"
+      color="wrapper.contrastText"
+      bgcolor="wrapper.main"
       sx={{
         "& .MuiTypography-body1": {
           fontSize: {
@@ -34,8 +36,6 @@ function Footer() {
             lg: 18,
           },
         },
-        backgroundColor: "#000",
-        color: "#fff",
       }}
     >
       <Grid
