@@ -20,6 +20,9 @@ export default function LoggedInStart() {
 	const handleSystemStatusChange = (status) => {
 		setSystemStatus(status)
 	}
+	const listItemStyle = {
+		paddingLeft: '10px',
+	};
 
 	return (
 		<>
@@ -34,16 +37,16 @@ export default function LoggedInStart() {
 				</Alert>
 			)}
 		</Stack>
-		      Knapp för att utlösa ändring av systemstatus
+		      {/* Knapp för att utlösa ändring av systemstatus */}
 			  <Button onClick={() => handleSystemStatusChange('ur funktion')} variant="contained" color="primary" sx={{ marginTop: 2 }}>
         Simulera systemfel
       </Button>
 		<Container
         sx={{
-          marginTop: 8,
-          marginBottom: 8,
-          padding: { xs: 0 },
-          height: { contentHeight },
+			marginTop: 4, 
+			marginBottom: 4,
+          	padding: { xs: 0 },
+          	height: { contentHeight },
         }}
       >
 		<Box
@@ -72,7 +75,7 @@ export default function LoggedInStart() {
                   flexDirection="column"
                   alignItems="center"
                   gap={2}
-                  margin={2}
+                  margin={0.5}
                 >
                 <Stack spacing={4} direction="column">
                     <Typography
@@ -80,7 +83,7 @@ export default function LoggedInStart() {
                       component="p"
                       style={{ fontWeight: "bolder" }}
                       sx={{
-                        paddingX: { xs: 0.5, md: 6 },
+                        paddingX: { xs: 0.5, md: 10 },
                         fontSize: { xs: 18, md: 16 },
                         color: "black",
                       }}
@@ -96,11 +99,10 @@ export default function LoggedInStart() {
 							fontSize: {xs: 18, md: 16},
 							color: "black", 
 						}}>
-							<li
-							sx={{
-								marginLeft: 3
-							}}>Ljus</li>
+						<Box style={{paddingLeft: "50px"}}>
+							<li>Ljus</li>
 							<li>Belysning</li>
+						</Box>
 					</Typography>
 
 				<Box
@@ -207,11 +209,10 @@ export default function LoggedInStart() {
 							fontSize: {xs: 18, md: 16},
 							color: "black", 
 						}}>
-							<li
-							sx={{
-								marginLeft: 3
-							}}>Batterisystem</li>
-							<li>Belysning</li>		
+						<Box style={{paddingLeft: "20px"}}>
+							<li>Batterisystem</li>
+							<li>Belysning</li>
+						</Box>	
                     </Typography>					
 				<CardActions
 					className="bold"
