@@ -29,6 +29,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 
+import { headerHeight } from "./layout";
 import hillringsbergIFLogo from "@/images/main/logotype.png";
 
 export default function Header() {
@@ -45,8 +46,8 @@ export default function Header() {
     <AppBar
       position="static"
       sx={{
+        height: headerHeight,
         backgroundColor: "#111",
-        height: "80px",
         justifyContent: "center",
         width: "100%",
       }}

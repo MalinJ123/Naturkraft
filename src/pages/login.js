@@ -3,6 +3,8 @@ import * as MUI from "@mui/material/";
 import * as MUIIcons from "@mui/icons-material/";
 import { useRouter } from "next/router";
 
+import { contentHeight } from "@/components/layout";
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -12,7 +14,6 @@ export default function Login() {
   const darkTheme = MUI.createTheme({
     palette: {
       mode: "dark",
-      
     },
   });
 
@@ -60,11 +61,12 @@ export default function Login() {
 
   return (
     <MUI.ThemeProvider theme={darkTheme}>
-      <MUI.Box 
+      <MUI.Box
         component="section"
         // gap={10}
         marginTop={8}
         marginBottom={8}
+        height={contentHeight}
       >
         <MUI.Container fixed maxWidth="md" sx={{ padding: { xs: 0 } }}>
           <MUI.Box
@@ -168,7 +170,7 @@ export default function Login() {
                       minWidth: "60%",
                       borderRadius: "10px",
                       "@media (max-width: 500px)": {
-                       fontSize:"1rem"
+                        fontSize: "1rem",
                       },
                     }}
                   >
