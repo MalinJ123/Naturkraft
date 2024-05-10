@@ -3,6 +3,7 @@ import {
   Typography,
   Grid,
   List,
+  Container,
   ListItem,
   IconButton,
 } from "@mui/material";
@@ -38,14 +39,12 @@ function Footer() {
         },
       }}
     >
-      <Grid
-        container
-        columns={{ xs: 2, sm: 1 }}
-        justifyContent="space-between"
-        alignItems="center"
+      <Container
         maxWidth="xl"
         sx={{
-          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           paddingLeft: {
             xs: "1.15em",
             md: "1.45em",
@@ -60,73 +59,91 @@ function Footer() {
           },
         }}
       >
-        <List
-          sx={{
-            width: { xs: "auto", sm: "auto", md: "28vw", lg: "30w" },
-            justifyContent: "flex-start",
-            display: "inline-grid",
-            "& .MuiListItem-root": {
-              display: "inline-flex",
-            },
-          }}
+        <Grid
+          container
+          columns={{ xs: 2, sm: 1 }}
+          sx={{ width: "100%", justifyContent: "space-between" }}
         >
-          <ListItem disablePadding>
-            <Typography variant="body1">Hillringsberg 671 97 Glava</Typography>
-          </ListItem>
+          <List
+            sx={{
+              width: {
+                xs: "auto",
+                sm: "auto",
+                md: "25vw",
+                lg: "calc(50% - 70px)",
+              },
+              justifyContent: "flex-start",
+              display: "inline-grid",
+              "& .MuiListItem-root": {
+                display: "inline-flex",
+              },
+            }}
+          >
+            <ListItem disablePadding>
+              <Typography variant="body1">
+                Hillringsberg 671 97 Glava
+              </Typography>
+            </ListItem>
 
-          <ListItem disablePadding>
-            <Typography variant="body1">Bengt@delabglava.se</Typography>
-          </ListItem>
+            <ListItem disablePadding>
+              <Typography variant="body1">Bengt@delabglava.se</Typography>
+            </ListItem>
 
-          <ListItem disablePadding>
-            <Typography variant="body1">070 - 34 26 345</Typography>
-          </ListItem>
-        </List>
-        <IconButton
-          size="small"
-          type="button"
-          sx={{
-            "*": {
-              width: "75px",
-              height: "auto",
-            },
-          }}
-          title="Navigera till startsidan"
-          onClick={() => router.push("/")}
-        >
-          <Image
-            priority
-            alt="Hillringsbergs logga"
-            width="auto"
-            src={CompanyLogo}
-            quality={85}
-            style={{ aspectRatio: "1 / 1", objectFit: "cover" }}
-          />
-        </IconButton>
+            <ListItem disablePadding>
+              <Typography variant="body1">070 - 34 26 345</Typography>
+            </ListItem>
+          </List>
+          <IconButton
+            size="small"
+            type="button"
+            sx={{
+              "*": {
+                width: "70px",
+                height: "auto",
+              },
+            }}
+            title="Navigera till startsidan"
+            onClick={() => router.push("/")}
+          >
+            <Image
+              priority
+              alt="Hillringsbergs logga"
+              width="auto"
+              src={CompanyLogo}
+              quality={85}
+              style={{ aspectRatio: "1 / 1", objectFit: "cover" }}
+            />
+          </IconButton>
 
-        <List
-          sx={{
-            width: { xs: "auto", sm: "auto", md: "28vw", lg: "30w" },
-            justifyContent: "flex-end",
-            display: "inline-grid",
-            "& .MuiListItem-root": {
-              display: "inline-flex",
-            },
-          }}
-        >
-          <ListItem disablePadding>
-            <Typography variant="body1">
-              Isac.Myren.Andersson@GlavaEnergyCenter.se
-            </Typography>
-          </ListItem>
+          <List
+            sx={{
+              width: {
+                xs: "auto",
+                sm: "auto",
+                md: "25vw",
+                lg: "calc(50% - 70px)",
+              },
+              justifyContent: "flex-end",
+              display: "inline-grid",
+              "& .MuiListItem-root": {
+                display: "inline-flex",
+              },
+            }}
+          >
+            <ListItem disablePadding>
+              <Typography variant="body1">
+                Isac.Myren.Andersson@GlavaEnergyCenter.se
+              </Typography>
+            </ListItem>
 
-          <ListItem disablePadding>
-            <Typography variant="body1">
-              Scaaler IoT Labs, Strandvägen 2, 671 51 Arvika
-            </Typography>
-          </ListItem>
-        </List>
-      </Grid>
+            <ListItem disablePadding>
+              <Typography variant="body1">
+                Scaaler IoT Labs, Strandvägen 2, 671 51 Arvika
+              </Typography>
+            </ListItem>
+          </List>
+        </Grid>
+      </Container>
     </Box>
   );
 }
