@@ -59,7 +59,7 @@ export default function LoggedInStart() {
               title="Ekonomiläge"
               titleTypographyProps={{
                 textAlign: "center",
-                fontSize: { xs: 20, md: 25 },
+                fontSize: { xs: 25},
                 marginTop: 4,
                 fontWeight: "bold",
               }}
@@ -181,10 +181,10 @@ export default function LoggedInStart() {
             elevation={2}
           >
             <CardHeader
-              title="Ekoläge"
+              title="Miljöläge"
               titleTypographyProps={{
                 textAlign: "center",
-                fontSize: { xs: 30, md: 25 },
+                fontSize: { xs: 25},
                 marginTop: 4,
                 fontWeight: "bold",
               }}
@@ -197,7 +197,7 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                margin={2}
+                // margin={2}
               >
                 <Stack spacing={4} direction="column">
                   <Typography
@@ -276,7 +276,7 @@ export default function LoggedInStart() {
               title="Snöläge"
               titleTypographyProps={{
                 textAlign: "center",
-                fontSize: { xs: 30, md: 25 },
+                fontSize: { xs: 25 },
                 marginTop: 4,
                 fontWeight: "bold",
               }}
