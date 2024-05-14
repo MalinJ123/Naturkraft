@@ -15,12 +15,30 @@ import {
   AlertTitle,
   List,
   ListItem,
+  Popover,
 } from "@mui/material/";
 import { Check } from "@mui/icons-material";
 
 export default function LoggedInStart() {
   const [systemStatus, setSystemStatus] = useState(true);
-  const [currentMode, setCurrentMode] = useState("eco");
+  const [currentMode, setCurrentMode] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null); 
+
+  const handleModeChange = (mode) => {
+	setCurrentMode(mode)
+	setAnchorEl(null)
+  }
+
+  const handleClick = (event) => {
+	setAnchorEl(event.currentTarget); 
+}
+
+  const handleClose = () => {
+	setAnchorEl(null); 
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'change-mode-popover' : undefined
 
   return (
     <Box component="section" marginY={8} height={contentHeight}>
@@ -51,18 +69,31 @@ export default function LoggedInStart() {
             sx={{
               backgroundColor: "opacityLight.main",
               borderRadius: "30px",
-              backgroundColor: currentMode === "economy" ? "green" : undefined,
+              backgroundColor: currentMode === "economy" ? "rgba(162, 214, 163, 0.9)" : undefined,
             }}
             elevation={2}
           >
             <CardHeader
-              title="Ekonomiläge"
-              titleTypographyProps={{
-                textAlign: "center",
-                fontSize: { xs: 25},
-                marginTop: 4,
-                fontWeight: "bold",
-              }}
+			title={
+			<Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
+				<Typography
+				variant="h5"
+				sx={{fontWeight: "bold", marginTop: currentMode === "economy" ? 1 : 0, textAlign: "center", flex: 1}}>
+				Ekonomiläge
+				</Typography>
+				{currentMode === "economy" && (	
+					<Typography
+					variant="body1"
+					component="span"
+					sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
+						}}
+					>
+					AKTIV	
+				</Typography>
+					)}
+			</Box>
+			}
+			sx={{marginTop:4}}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -108,25 +139,27 @@ export default function LoggedInStart() {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "flex-end",
+					  justifyContent: "space-between",
                     }}
                   >
                     <CardActions
                       className="bold"
                       sx={{
                         display: "flex",
-                        justifyContent: "center",
-                        marginRight: { xs: 0, md: 10 },
+                        justifyContent: "flex-start",
+                        marginLeft: { xs: 0, md: 8 },
                       }}
                     >
+					{currentMode !== "economy" && (
+					<div>
                       <Button
-                        underline="link"
                         component="button"
-                        variant="body1"
+                        variant="contained"
+						color="success"
                         role="button"
                         type="button"
                         sx={{
-                          backgroundColor: "lightgrey",
+                          backgroundColor: "#33b249",
                           border: "1px solid grey",
                           borderRadius: "10px",
                           marginBottom: { xs: 2, md: 3 },
@@ -134,11 +167,69 @@ export default function LoggedInStart() {
                           color: "black",
                           fontWeight: "bold",
                           padding: 1.5,
+						  '&:hover': {
+							backgroundColor: "darkgreen",
+							color: "white", 
+						  }
                         }}
-                        onClick={() => setCurrentMode("economy")}
+                        onClick={handleClick}
                       >
-                        Välj detta läge
+                        Välj läge
                       </Button>
+						<Popover
+							id={id}
+							open={open}
+							anchorEl={anchorEl}
+							onClose={handleClose}
+							sx={{
+								'&MuiPaper-root': {
+									backgroundColor: 'lightgrey',
+      								borderRadius: '20px',
+      								boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1)',
+								}
+							}}	
+						>
+							<Typography sx={{ padding: 3, marginTop: 2, fontWeight: "bold"}}> Vill du byta till detta styrningsläge?
+							<Box sx={{ display: "flex", flexDirection: 'row', justifyContent: "center", gap: '8px', margin: 4}}>
+								<Button     
+								sx={{
+                          			backgroundColor: "#33b249",
+                          			border: "1px solid grey",
+                          			borderRadius: "10px",
+                          			marginBottom: { xs: 2, md: 3 },
+                          			fontSize: { xs: 16, md: 16 },
+                          			color: "black",
+                          			fontWeight: "bold",
+                          			padding: 2,
+									margin: 2, 
+						  			'&:hover': {
+										backgroundColor: "darkgreen",
+										color: "white", 
+						 			 }
+                        			}} 
+									onClick={() => handleModeChange("economy")}>Ja</Button>
+								<Button 
+									sx={{
+										backgroundColor: "#33b249",
+										border: "1px solid grey",
+										borderRadius: "10px", 
+										marginBottom: { xs: 2, md: 3 },
+										fontSize: { xs: 16, md: 16 },
+										color: "black",
+										fontWeight: "bold",
+										padding: 1.5,
+										margin: 2, 
+										'&:hover': {
+											backgroundColor: "darkgreen",
+											color: "white", 
+										}
+										}} 
+								onClick={handleClose}>Nej</Button>								
+							</Box>
+							</Typography>
+						</Popover>
+					</div>
+					)}
                     </CardActions>
                     <CardActions
                       className="bold"
@@ -176,19 +267,32 @@ export default function LoggedInStart() {
             sx={{
               backgroundColor: "opacityLight.main",
               borderRadius: "30px",
-              backgroundColor: currentMode === "eco" ? "green" : undefined,
+              backgroundColor: currentMode === "environment " ? "rgba(162, 214, 163, 0.9)" : undefined,
             }}
             elevation={2}
           >
             <CardHeader
-              title="Miljöläge"
-              titleTypographyProps={{
-                textAlign: "center",
-                fontSize: { xs: 25},
-                marginTop: 4,
-                fontWeight: "bold",
-              }}
-            />
+			title={
+				<Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
+					<Typography
+					variant="h5"
+					sx={{fontWeight: "bold", marginTop: currentMode === "environment " ? 1 : 0, textAlign: "center", flex: 1}}>
+					Miljöläge
+					</Typography>
+					{currentMode === "environment " && (	
+						<Typography
+						variant="body1"
+						component="span"
+						sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
+							}}
+						>
+						AKTIV	
+					</Typography>
+						)}
+				</Box>
+				}
+				sx={{marginTop:4}}
+				/>
             <CardContent sx={{ padding: 0 }}>
               <Box
                 component="div"
@@ -232,32 +336,128 @@ export default function LoggedInStart() {
                       <ListItem>Belysning</ListItem>
                     </List>
                   </Typography>
-                  <CardActions
-                    className="bold"
+                  <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "flex-end",
-                      marginRight: { xs: 0, md: 10 },
+					  justifyContent: "space-between",
                     }}
                   >
-                    <Link
-                      className="link-hover"
-                      underline="hover"
-                      component="button"
-                      variant="body1"
-                      role="button"
-                      type="button"
+                    <CardActions
+                      className="bold"
                       sx={{
-                        marginBottom: { xs: 2, md: 3 },
-                        fontSize: { xs: 16, md: 20 },
-                        color: "black",
-                        fontWeight: "bold",
-                        padding: 1,
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-                      Mer info
-                    </Link>
-                  </CardActions>
+					{currentMode !== "environment " && (
+					<div>
+                      <Button
+                        component="button"
+                        variant="contained"
+						color="success"
+                        role="button"
+                        type="button"
+                        sx={{
+                          backgroundColor: "#33b249",
+                          border: "1px solid grey",
+                          borderRadius: "10px",
+                          marginBottom: { xs: 2, md: 3 },
+                          fontSize: { xs: 16, md: 16 },
+                          color: "black",
+                          fontWeight: "bold",
+                          padding: 1.5,
+						  '&:hover': {
+							backgroundColor: "darkgreen",
+							color: "white", 
+						  }
+                        }}
+                        onClick={handleClick}
+                      >
+                        Välj läge
+                      </Button>
+					  <Popover
+							id={id}
+							open={open}
+							anchorEl={anchorEl}
+							onClose={handleClose}
+							sx={{
+								'&MuiPaper-root': {
+									backgroundColor: 'lightgrey',
+      								borderRadius: '20px',
+      								boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1)',
+								}
+							}}	
+						>
+							<Typography sx={{ padding: 3, marginTop: 2, fontWeight: "bold"}}> Vill du byta till detta styrningsläge?
+							<Box sx={{ display: "flex", flexDirection: 'row', justifyContent: "center", gap: '8px', margin: 4}}>
+								<Button     
+								sx={{
+                          			backgroundColor: "#33b249",
+                          			border: "1px solid grey",
+                          			borderRadius: "10px",
+                          			marginBottom: { xs: 2, md: 3 },
+                          			fontSize: { xs: 16, md: 16 },
+                          			color: "black",
+                          			fontWeight: "bold",
+                          			padding: 2,
+									margin: 2, 
+						  			'&:hover': {
+										backgroundColor: "darkgreen",
+										color: "white", 
+						 			 }
+                        			}} 
+									onClick={() => handleModeChange("environment")}>Ja</Button>
+								<Button 
+									sx={{
+										backgroundColor: "#33b249",
+										border: "1px solid grey",
+										borderRadius: "10px", 
+										marginBottom: { xs: 2, md: 3 },
+										fontSize: { xs: 16, md: 16 },
+										color: "black",
+										fontWeight: "bold",
+										padding: 1.5,
+										margin: 2, 
+										'&:hover': {
+											backgroundColor: "darkgreen",
+											color: "white", 
+										}
+										}} 
+								onClick={handleClose}>Nej</Button>								
+							</Box>
+							</Typography>
+					  </Popover>
+					  </div>
+
+						)}
+                    </CardActions>
+                    <CardActions
+                      className="bold"
+                      sx={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        marginRight: { xs: 0, md: 10 },
+                      }}
+                    >
+                      <Link
+                        underline="hover"
+                        component="button"
+                        variant="body1"
+                        role="button"
+                        type="button"
+                        sx={{
+                          marginBottom: { xs: 2, md: 3 },
+                          fontSize: { xs: 16, md: 20 },
+                          color: "black",
+                          fontWeight: "bold",
+                          padding: 1,
+                        }}
+                      >
+                        Mer info
+                      </Link>
+                    </CardActions>
+                  </Box>
                 </Stack>
               </Box>
             </CardContent>
@@ -268,19 +468,32 @@ export default function LoggedInStart() {
             sx={{
               backgroundColor: "opacityLight.main",
               borderRadius: "30px",
-              backgroundColor: currentMode === "snow" ? "green" : undefined,
+              backgroundColor: currentMode === "snow" ? "rgba(162, 214, 163, 0.9)" : undefined,
             }}
             elevation={2}
           >
             <CardHeader
-              title="Snöläge"
-              titleTypographyProps={{
-                textAlign: "center",
-                fontSize: { xs: 25 },
-                marginTop: 4,
-                fontWeight: "bold",
-              }}
-            />
+             title={
+				<Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
+					<Typography
+					variant="h5"
+					sx={{fontWeight: "bold", marginTop: currentMode === "snow" ? 1 : 0, textAlign: "center", flex: 1}}>
+					Snöläge
+					</Typography>
+					{currentMode === "snow" && (	
+						<Typography
+						variant="body1"
+						component="span"
+						sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
+							}}
+						>
+						AKTIV	
+					</Typography>
+						)}
+				</Box>
+				}
+				sx={{marginTop:4}}
+				/>
             <CardContent sx={{ padding: 0 }}>
               <Box
                 component="div"
@@ -306,32 +519,130 @@ export default function LoggedInStart() {
                     Belysningen kommer att dämpas så ljuset inte bländar pga
                     snöns reflektion.
                   </Typography>
-                  <CardActions
-                    className="bold"
+                  <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "flex-end",
-                      marginRight: { xs: 0, md: 10 },
+					  justifyContent: "space-between",
                     }}
                   >
-                    <Link
-                      className="link-hover"
-                      underline="hover"
-                      component="button"
-                      variant="body1"
-                      role="button"
-                      type="button"
+                    <CardActions
+                      className="bold"
                       sx={{
-                        marginBottom: { xs: 2, md: 3 },
-                        fontSize: { xs: 16, md: 20 },
-                        color: "black",
-                        fontWeight: "bold",
-                        padding: 1,
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-                      Mer info
-                    </Link>
-                  </CardActions>
+					{currentMode !== "snow" && (
+					<div>
+                      <Button
+                        component="button"
+                        variant="contained"
+						color="success"
+                        role="button"
+                        type="button"
+                        sx={{
+                          backgroundColor: "#33b249",
+                          border: "1px solid grey",
+                          borderRadius: "10px",
+                          marginBottom: { xs: 2, md: 3 },
+                          fontSize: { xs: 16, md: 16 },
+                          color: "black",
+                          fontWeight: "bold",
+                          padding: 1.5,
+						  '&:hover': {
+							backgroundColor: "darkgreen",
+							color: "white", 
+						  }
+                        }}
+                        onClick={handleClick}
+                      >
+                        Välj läge
+                      </Button>
+					  <Popover
+							id={id}
+							open={open}
+							anchorEl={anchorEl}
+							onClose={handleClose}
+							// anchorReference="anchorPosition"
+							// anchorPosition={{top: 450, left: 500}}
+							sx={{
+								'&MuiPaper-root': {
+									backgroundColor: 'lightgrey',
+      								borderRadius: '20px',
+      								boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1)',
+								}
+							}}	
+						>
+							<Typography sx={{ padding: 3, marginTop: 2, fontWeight: "bold"}}> Vill du byta till detta styrningsläge?
+							<Box sx={{ display: "flex", flexDirection: 'row', justifyContent: "center", gap: '8px', margin: 4}}>
+								<Button     
+								sx={{
+                          			backgroundColor: "#33b249",
+                          			border: "1px solid grey",
+                          			borderRadius: "10px",
+                          			marginBottom: { xs: 2, md: 3 },
+                          			fontSize: { xs: 16, md: 16 },
+                          			color: "black",
+                          			fontWeight: "bold",
+                          			padding: 2,
+									margin: 2, 
+						  			'&:hover': {
+										backgroundColor: "darkgreen",
+										color: "white", 
+						 			 }
+                        			}} 
+									onClick={() => handleModeChange("snow")}>Ja</Button>
+								<Button 
+									sx={{
+										backgroundColor: "#33b249",
+										border: "1px solid grey",
+										borderRadius: "10px", 
+										marginBottom: { xs: 2, md: 3 },
+										fontSize: { xs: 16, md: 16 },
+										color: "black",
+										fontWeight: "bold",
+										padding: 1.5,
+										margin: 2, 
+										'&:hover': {
+											backgroundColor: "darkgreen",
+											color: "white", 
+										}
+										}} 
+								onClick={handleClose}>Nej</Button>								
+							</Box>
+							</Typography>
+						</Popover>
+
+					</div>
+					)}
+                    </CardActions>
+                    <CardActions
+                      className="bold"
+                      sx={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        marginRight: { xs: 0, md: 10 },
+                      }}
+                    >
+                      <Link
+                        underline="hover"
+                        component="button"
+                        variant="body1"
+                        role="button"
+                        type="button"
+                        sx={{
+                          marginBottom: { xs: 2, md: 3 },
+                          fontSize: { xs: 16, md: 20 },
+                          color: "black",
+                          fontWeight: "bold",
+                          padding: 1,
+                        }}
+                      >
+                        Mer info
+                      </Link>
+                    </CardActions>
+                  </Box>
                 </Stack>
               </Box>
             </CardContent>
