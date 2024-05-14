@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+import axios from "axios";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import {
@@ -10,12 +13,14 @@ import {
   TextField,
   Button,
 } from "@mui/material/";
-import { Error, Login as LoginIcon } from "@mui/icons-material/";
-import { useRouter } from "next/router";
+
+import { Error as ErrorIcon, Login as LoginIcon } from "@mui/icons-material/";
 
 import { contentHeight } from "@/components/layout";
 import Title from "@/components/title";
 import { darkTheme } from "@/styles/darkTheme";
+
+dotenv.config();
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -47,13 +52,19 @@ export default function Login() {
       setPasswordError("");
     }
 
-    // Om användarnamn och lösenord matchar den hårdkodade användaren
-    if (
-      username.trim().toLowerCase() === hardcodedUsername &&
-      userPassword === hardcodedPassword
-    ) {
-      console.log("Inloggning lyckades!");
-      router.push("/loggedinstart");
+    try {
+      const response = await axios.post(process.env.BACKEND_LOCATION, {
+        username,
+        userPassword,
+      });
+
+      if (response.status === 200) {
+        router.push("/loggedinstart");
+      } else {
+        console.log("Något gick snett!", response.data.message);
+      }
+    } catch (error) {
+      throw new Error(error);
     }
   };
 
@@ -137,7 +148,7 @@ export default function Login() {
                     userCredentialsFilled ? (
                       <LoginIcon />
                     ) : usernameError || passwordError ? (
-                      <Error />
+                      <ErrorIcon />
                     ) : null
                   }
                   type="submit"

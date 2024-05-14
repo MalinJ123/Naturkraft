@@ -15,6 +15,9 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
+  env: {
+    BACKEND_LOCATION: process.env.BACKEND_LOCATION,
+  },
 };
 
 export default nextConfig;
