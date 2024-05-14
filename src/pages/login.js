@@ -32,10 +32,6 @@ export default function Login() {
 
   const userCredentialsFilled = username.length > 0 && userPassword.length > 0;
 
-  // Hårdkodat användarnamn och lösenord
-  const hardcodedUsername = "malin";
-  const hardcodedPassword = "12345";
-
   // För användare från ev backend
   const onHandleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +51,7 @@ export default function Login() {
     try {
       const response = await axios.post(process.env.BACKEND_LOCATION, {
         username,
-        userPassword,
+        password: userPassword,
       });
 
       if (response.status === 200) {
