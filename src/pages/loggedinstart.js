@@ -16,29 +16,45 @@ import {
   List,
   ListItem,
   Popover,
+  Dialog, 
+  DialogTitle, 
+  DialogContent, 
+  DialogActions,
 } from "@mui/material/";
 import { Check } from "@mui/icons-material";
 
 export default function LoggedInStart() {
   const [systemStatus, setSystemStatus] = useState(true);
   const [currentMode, setCurrentMode] = useState(null);
-  const [anchorEl, setAnchorEl] = useState(null); 
+  const [dialogOpen, setDialogOpen] = useState(false); 
+  const [selectedMode, setSelectedMode] = useState(null); 
 
   const handleModeChange = (mode) => {
 	setCurrentMode(mode)
-	setAnchorEl(null)
+	setDialogOpen(false)
   }
 
-  const handleClick = (event) => {
-	setAnchorEl(event.currentTarget); 
+  const handleClickOpen = (mode) => {
+    setSelectedMode(mode); 
+    setDialogOpen(true)
 }
 
   const handleClose = () => {
-	setAnchorEl(null); 
+	setDialogOpen(false); 
   }
 
-  const open = Boolean(anchorEl)
-  const id = open ? 'change-mode-popover' : undefined
+const renderDialogContent = () => {
+  switch (selectedMode) {
+    case "economy": 
+      return "Vill du byta styrningen till Ekonomiläge?"
+    case "environment": 
+      return "Vill du byta styrningen till Miljöläge?"
+    case "snow": 
+      return "Vill du byta styrningen till Snöläge?"
+    default: 
+      return ""; 
+  }
+}
 
   return (
     <Box component="section" marginY={8} height={contentHeight}>
@@ -74,26 +90,26 @@ export default function LoggedInStart() {
             elevation={2}
           >
             <CardHeader
-			title={
-			<Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
-				<Typography
-				variant="h5"
-				sx={{fontWeight: "bold", marginTop: currentMode === "economy" ? 1 : 0, textAlign: "center", flex: 1}}>
-				Ekonomiläge
-				</Typography>
-				{currentMode === "economy" && (	
-					<Typography
-					variant="body1"
-					component="span"
-					sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
-						}}
-					>
-					AKTIV	
-				</Typography>
-					)}
-			</Box>
-			}
-			sx={{marginTop:4}}
+            title={
+            <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
+              <Typography
+                variant="h5"
+                sx={{fontWeight: "bold", marginTop: currentMode === "economy" ? 1 : 0, textAlign: "center", flex: 1}}>
+                Ekonomiläge
+              </Typography>
+              {currentMode === "economy" && (	
+                <Typography
+                  variant="body1"
+                  component="span"
+                  sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
+                  }}
+					    >
+					      AKTIV	
+				      </Typography>
+					  )}
+			      </Box>
+			      }
+			      sx={{marginTop:4}}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -139,7 +155,7 @@ export default function LoggedInStart() {
                   <Box
                     sx={{
                       display: "flex",
-					  justifyContent: "space-between",
+					            justifyContent: "space-between",
                     }}
                   >
                     <CardActions
@@ -150,12 +166,11 @@ export default function LoggedInStart() {
                         marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-					{currentMode !== "economy" && (
-					<div>
+					          {currentMode !== "economy" && (
                       <Button
                         component="button"
                         variant="contained"
-						color="success"
+						            color="success"
                         role="button"
                         type="button"
                         sx={{
@@ -167,69 +182,16 @@ export default function LoggedInStart() {
                           color: "black",
                           fontWeight: "bold",
                           padding: 1.5,
-						  '&:hover': {
-							backgroundColor: "darkgreen",
-							color: "white", 
-						  }
+						              '&:hover': {
+							            backgroundColor: "darkgreen",
+							            color: "white", 
+						              }
                         }}
-                        onClick={handleClick}
+                        onClick={() => handleClickOpen('economy')}
                       >
-                        Välj läge
+                      Välj läge
                       </Button>
-						<Popover
-							id={id}
-							open={open}
-							anchorEl={anchorEl}
-							onClose={handleClose}
-							sx={{
-								'&MuiPaper-root': {
-									backgroundColor: 'lightgrey',
-      								borderRadius: '20px',
-      								boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1)',
-								}
-							}}	
-						>
-							<Typography sx={{ padding: 3, marginTop: 2, fontWeight: "bold"}}> Vill du byta till detta styrningsläge?
-							<Box sx={{ display: "flex", flexDirection: 'row', justifyContent: "center", gap: '8px', margin: 4}}>
-								<Button     
-								sx={{
-                          			backgroundColor: "#33b249",
-                          			border: "1px solid grey",
-                          			borderRadius: "10px",
-                          			marginBottom: { xs: 2, md: 3 },
-                          			fontSize: { xs: 16, md: 16 },
-                          			color: "black",
-                          			fontWeight: "bold",
-                          			padding: 2,
-									margin: 2, 
-						  			'&:hover': {
-										backgroundColor: "darkgreen",
-										color: "white", 
-						 			 }
-                        			}} 
-									onClick={() => handleModeChange("economy")}>Ja</Button>
-								<Button 
-									sx={{
-										backgroundColor: "#33b249",
-										border: "1px solid grey",
-										borderRadius: "10px", 
-										marginBottom: { xs: 2, md: 3 },
-										fontSize: { xs: 16, md: 16 },
-										color: "black",
-										fontWeight: "bold",
-										padding: 1.5,
-										margin: 2, 
-										'&:hover': {
-											backgroundColor: "darkgreen",
-											color: "white", 
-										}
-										}} 
-								onClick={handleClose}>Nej</Button>								
-							</Box>
-							</Typography>
-						</Popover>
-					</div>
-					)}
+					          )}
                     </CardActions>
                     <CardActions
                       className="bold"
@@ -267,7 +229,7 @@ export default function LoggedInStart() {
             sx={{
               backgroundColor: "opacityLight.main",
               borderRadius: "30px",
-              backgroundColor: currentMode === "environment " ? "rgba(162, 214, 163, 0.9)" : undefined,
+              backgroundColor: currentMode === "environment" ? "rgba(162, 214, 163, 0.9)" : undefined,
             }}
             elevation={2}
           >
@@ -276,10 +238,10 @@ export default function LoggedInStart() {
 				<Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
 					<Typography
 					variant="h5"
-					sx={{fontWeight: "bold", marginTop: currentMode === "environment " ? 1 : 0, textAlign: "center", flex: 1}}>
+					sx={{fontWeight: "bold", marginTop: currentMode === "environment" ? 1 : 0, textAlign: "center", flex: 1}}>
 					Miljöläge
 					</Typography>
-					{currentMode === "environment " && (	
+					{currentMode === "environment" && (	
 						<Typography
 						variant="body1"
 						component="span"
@@ -339,7 +301,7 @@ export default function LoggedInStart() {
                   <Box
                     sx={{
                       display: "flex",
-					  justifyContent: "space-between",
+					            justifyContent: "space-between",
                     }}
                   >
                     <CardActions
@@ -350,12 +312,11 @@ export default function LoggedInStart() {
                         marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-					{currentMode !== "environment " && (
-					<div>
+					      {currentMode !== "environment" && (
                       <Button
                         component="button"
                         variant="contained"
-						color="success"
+						            color="success"
                         role="button"
                         type="button"
                         sx={{
@@ -367,70 +328,16 @@ export default function LoggedInStart() {
                           color: "black",
                           fontWeight: "bold",
                           padding: 1.5,
-						  '&:hover': {
-							backgroundColor: "darkgreen",
-							color: "white", 
-						  }
+						              '&:hover': {
+							            backgroundColor: "darkgreen",
+							            color: "white", 
+						              }
                         }}
-                        onClick={handleClick}
+                        onClick={() => handleClickOpen('environment')}
                       >
                         Välj läge
                       </Button>
-					  <Popover
-							id={id}
-							open={open}
-							anchorEl={anchorEl}
-							onClose={handleClose}
-							sx={{
-								'&MuiPaper-root': {
-									backgroundColor: 'lightgrey',
-      								borderRadius: '20px',
-      								boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1)',
-								}
-							}}	
-						>
-							<Typography sx={{ padding: 3, marginTop: 2, fontWeight: "bold"}}> Vill du byta till detta styrningsläge?
-							<Box sx={{ display: "flex", flexDirection: 'row', justifyContent: "center", gap: '8px', margin: 4}}>
-								<Button     
-								sx={{
-                          			backgroundColor: "#33b249",
-                          			border: "1px solid grey",
-                          			borderRadius: "10px",
-                          			marginBottom: { xs: 2, md: 3 },
-                          			fontSize: { xs: 16, md: 16 },
-                          			color: "black",
-                          			fontWeight: "bold",
-                          			padding: 2,
-									margin: 2, 
-						  			'&:hover': {
-										backgroundColor: "darkgreen",
-										color: "white", 
-						 			 }
-                        			}} 
-									onClick={() => handleModeChange("environment")}>Ja</Button>
-								<Button 
-									sx={{
-										backgroundColor: "#33b249",
-										border: "1px solid grey",
-										borderRadius: "10px", 
-										marginBottom: { xs: 2, md: 3 },
-										fontSize: { xs: 16, md: 16 },
-										color: "black",
-										fontWeight: "bold",
-										padding: 1.5,
-										margin: 2, 
-										'&:hover': {
-											backgroundColor: "darkgreen",
-											color: "white", 
-										}
-										}} 
-								onClick={handleClose}>Nej</Button>								
-							</Box>
-							</Typography>
-					  </Popover>
-					  </div>
-
-						)}
+						      )}
                     </CardActions>
                     <CardActions
                       className="bold"
@@ -474,12 +381,12 @@ export default function LoggedInStart() {
           >
             <CardHeader
              title={
-				<Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
-					<Typography
-					variant="h5"
-					sx={{fontWeight: "bold", marginTop: currentMode === "snow" ? 1 : 0, textAlign: "center", flex: 1}}>
-					Snöläge
-					</Typography>
+				    <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
+					  <Typography
+					    variant="h5"
+					    sx={{fontWeight: "bold", marginTop: currentMode === "snow" ? 1 : 0, textAlign: "center", flex: 1}}>
+					    Snöläge
+					  </Typography>
 					{currentMode === "snow" && (	
 						<Typography
 						variant="body1"
@@ -522,7 +429,7 @@ export default function LoggedInStart() {
                   <Box
                     sx={{
                       display: "flex",
-					  justifyContent: "space-between",
+					            justifyContent: "space-between",
                     }}
                   >
                     <CardActions
@@ -533,12 +440,11 @@ export default function LoggedInStart() {
                         marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-					{currentMode !== "snow" && (
-					<div>
+					      {currentMode !== "snow" && (
                       <Button
                         component="button"
                         variant="contained"
-						color="success"
+						            color="success"
                         role="button"
                         type="button"
                         sx={{
@@ -550,72 +456,16 @@ export default function LoggedInStart() {
                           color: "black",
                           fontWeight: "bold",
                           padding: 1.5,
-						  '&:hover': {
-							backgroundColor: "darkgreen",
-							color: "white", 
-						  }
+						              '&:hover': {
+							            backgroundColor: "darkgreen",
+							            color: "white", 
+						              }
                         }}
-                        onClick={handleClick}
+                        onClick={() => handleClickOpen('snow')}
                       >
                         Välj läge
                       </Button>
-					  <Popover
-							id={id}
-							open={open}
-							anchorEl={anchorEl}
-							onClose={handleClose}
-							// anchorReference="anchorPosition"
-							// anchorPosition={{top: 450, left: 500}}
-							sx={{
-								'&MuiPaper-root': {
-									backgroundColor: 'lightgrey',
-      								borderRadius: '20px',
-      								boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1)',
-								}
-							}}	
-						>
-							<Typography sx={{ padding: 3, marginTop: 2, fontWeight: "bold"}}> Vill du byta till detta styrningsläge?
-							<Box sx={{ display: "flex", flexDirection: 'row', justifyContent: "center", gap: '8px', margin: 4}}>
-								<Button     
-								sx={{
-                          			backgroundColor: "#33b249",
-                          			border: "1px solid grey",
-                          			borderRadius: "10px",
-                          			marginBottom: { xs: 2, md: 3 },
-                          			fontSize: { xs: 16, md: 16 },
-                          			color: "black",
-                          			fontWeight: "bold",
-                          			padding: 2,
-									margin: 2, 
-						  			'&:hover': {
-										backgroundColor: "darkgreen",
-										color: "white", 
-						 			 }
-                        			}} 
-									onClick={() => handleModeChange("snow")}>Ja</Button>
-								<Button 
-									sx={{
-										backgroundColor: "#33b249",
-										border: "1px solid grey",
-										borderRadius: "10px", 
-										marginBottom: { xs: 2, md: 3 },
-										fontSize: { xs: 16, md: 16 },
-										color: "black",
-										fontWeight: "bold",
-										padding: 1.5,
-										margin: 2, 
-										'&:hover': {
-											backgroundColor: "darkgreen",
-											color: "white", 
-										}
-										}} 
-								onClick={handleClose}>Nej</Button>								
-							</Box>
-							</Typography>
-						</Popover>
-
-					</div>
-					)}
+					        )}
                     </CardActions>
                     <CardActions
                       className="bold"
@@ -649,6 +499,22 @@ export default function LoggedInStart() {
           </Card>
         </Container>
       </Box>
+      <Dialog open={dialogOpen} onClose={handleClose} aria-labelledby="mode-dialog-title">
+        <DialogTitle id="mode-dialog-title">Bekräfta läge</DialogTitle>
+        <DialogContent>
+          <Typography variant="body1">{renderDialogContent()}</Typography>
+        </DialogContent>
+          <DialogActions>
+            <Button 
+              onClick={() => handleModeChange(selectedMode)}
+              color="primary"
+              variant="contained"
+              > 
+              Ja
+            </Button>
+            <Button onClick={handleClose} color="primary">Nej</Button>
+          </DialogActions>
+      </Dialog>
     </Box>
   );
 }
