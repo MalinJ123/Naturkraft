@@ -79,11 +79,11 @@ const renderDialogContent = () => {
         justifyContent="center"
         gap={6}
       >
-        <Container sx={{ padding: { xs: 0 } }}>
+        <Container sx={{ padding: { xs: 0} }}>
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: "30px",
+              borderRadius: "56px",
               backgroundColor: currentMode === "economy" ? "rgba(162, 214, 163, 0.9)" : undefined,
             }}
             elevation={2}
@@ -119,6 +119,7 @@ const renderDialogContent = () => {
                 alignItems="center"
                 gap={2}
                 margin={0.5}
+                padding="30px"
               >
                 <Stack spacing={4} direction="column">
                   <Typography
@@ -150,7 +151,6 @@ const renderDialogContent = () => {
                       <ListItem>Belysning</ListItem>
                     </List>
                   </Typography>
-
                   <Box
                     sx={{
                       display: "flex",
@@ -233,13 +233,13 @@ const renderDialogContent = () => {
             elevation={2}
           >
             <CardHeader
-			title={
-				<Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
-					<Typography
-					variant="h5"
-					sx={{fontWeight: "bold", marginTop: currentMode === "environment" ? 1 : 0, textAlign: "center", flex: 1}}>
-					Miljöläge
-					</Typography>
+			      title={
+				    <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
+					  <Typography
+					    variant="h5"
+					    sx={{fontWeight: "bold", marginTop: currentMode === "environment" ? 1 : 0, textAlign: "center", flex: 1}}>
+					    Miljöläge
+					  </Typography>
 					{currentMode === "environment" && (	
 						<Typography
 						variant="body1"
