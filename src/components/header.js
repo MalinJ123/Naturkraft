@@ -4,7 +4,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import {
   Container,
   Box,
-  Typography,
   AppBar,
   Toolbar,
   IconButton,
@@ -16,27 +15,27 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
 } from "@mui/material";
 import {
   KeyboardArrowUp,
   KeyboardArrowDown,
   Close,
-  ExpandMore,
   Person,
 } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
 
 import { headerHeight } from "./layout";
+import { useStore } from "@/stores/store";
 import hillringsbergIFLogo from "@/images/main/logotype.png";
 import { darkTheme } from "@/styles/darkTheme";
 import { mainTheme } from "@/styles/mainTheme";
 
 export default function Header() {
   const router = useRouter();
+
+  const { authedState, setAuthedState } = useStore();
 
   // Dropdown
   const [headerDropdown, setHeaderDropdown] = useState(false);
@@ -191,19 +190,35 @@ export default function Header() {
               >
                 Hitta hit
               </Button>
-              <Button
-                variant="outlined"
-                type="button"
-                role="button"
-                onClick={() => router.push("/login")}
-                sx={{
-                  backgroundColor: "transparent",
-                  color: "#fff",
-                  border: "1px solid transparent",
-                }}
-              >
-                <Person />
-              </Button>
+              {!authedState ? (
+                <Button
+                  variant="outlined"
+                  type="button"
+                  role="button"
+                  onClick={() => router.push("/login")}
+                  sx={{
+                    backgroundColor: "transparent",
+                    color: "#fff",
+                    border: "1px solid transparent",
+                  }}
+                >
+                  <Person />
+                </Button>
+              ) : (
+                <Button
+                  variant="outlined"
+                  type="button"
+                  role="button"
+                  onClick={() => router.push("/")}
+                  sx={{
+                    backgroundColor: "transparent",
+                    color: "#fff",
+                    border: "1px solid transparent",
+                  }}
+                >
+                  <LogoutIcon />
+                </Button>
+              )}
             </Box>
             <Box
               justifyContent="flex-end"
