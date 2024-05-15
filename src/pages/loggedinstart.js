@@ -15,7 +15,6 @@ import {
   AlertTitle,
   List,
   ListItem,
-  Popover,
   Dialog, 
   DialogTitle, 
   DialogContent, 
@@ -500,19 +499,39 @@ const renderDialogContent = () => {
         </Container>
       </Box>
       <Dialog open={dialogOpen} onClose={handleClose} aria-labelledby="mode-dialog-title">
-        <DialogTitle id="mode-dialog-title">Bekräfta läge</DialogTitle>
+        <DialogTitle id="mode-dialog-title">Valt läge</DialogTitle>
         <DialogContent>
-          <Typography variant="body1">{renderDialogContent()}</Typography>
+          <Typography variant="body1" fontWeight="bold" marginTop="5px">{renderDialogContent()}</Typography>
         </DialogContent>
           <DialogActions>
-            <Button 
-              onClick={() => handleModeChange(selectedMode)}
-              color="primary"
-              variant="contained"
-              > 
-              Ja
-            </Button>
-            <Button onClick={handleClose} color="primary">Nej</Button>
+            <Box
+              sx={{
+                display: "flex", 
+                justifyContent: "center", 
+                width: "100%", 
+                marginBottom: '15px'
+            }}>
+              <Button 
+                onClick={() => handleModeChange(selectedMode)}
+                color="primary"
+                variant="contained"
+                sx={{
+                  margin: "15px"
+                }}
+                > 
+                Ja
+              </Button>
+              <Button 
+                onClick={handleClose} 
+                color="primary"
+                variant="contained"
+                sx={{
+                  margin: "15px"
+                }}
+                >
+                Nej
+              </Button>
+            </Box>
           </DialogActions>
       </Dialog>
     </Box>
