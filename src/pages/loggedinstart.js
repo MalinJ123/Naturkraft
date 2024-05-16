@@ -23,7 +23,7 @@ import {
   DialogActions,
 } from "@mui/material/";
 import { Check } from "@mui/icons-material";
-import {  FiberManualRecord} from "@mui/icons-material"
+import { FiberManualRecord } from "@mui/icons-material";
 import { useStore } from "@/stores/store";
 import dotenv from "dotenv";
 import axios from "axios";
@@ -34,16 +34,19 @@ export default function LoggedInStart() {
   const [currentMode, setCurrentMode] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
-  const [serverMode, setServerMode] = useState('')
-  const [selectedServerMode, setSelectedServerMode] = useState(null)
-  
+  const [serverMode, setServerMode] = useState("");
+  const [selectedServerMode, setSelectedServerMode] = useState(null);
+
   dotenv.config();
 
-  const handleModeChange = async(mode) => {
+  const handleModeChange = async (mode) => {
     try {
-      const response = await axios.post(`${process.env.BACKEND_LOCATION}pie/postMode`, {"mode": mode});
+      const response = await axios.post(
+        `${process.env.BACKEND_LOCATION}pie/postMode`,
+        { mode: mode }
+      );
       if (response.status === 200) {
-        setServerMode(response.data)
+        setServerMode(response.data);
       } else {
         console.error("Något gick snett!", response.data.message);
       }
@@ -86,9 +89,11 @@ export default function LoggedInStart() {
   useEffect(() => {
     const getMode = async () => {
       try {
-        const response = await axios.get(`${process.env.BACKEND_LOCATION}pie/getMode`);
+        const response = await axios.get(
+          `${process.env.BACKEND_LOCATION}pie/getMode`
+        );
         if (response.status === 200) {
-          return setServerMode(response.data)
+          return setServerMode(response.data);
         } else {
           console.error("Något gick snett!", response.data.message);
         }
@@ -96,10 +101,9 @@ export default function LoggedInStart() {
         console.error("Ett fel uppstod:", error.message);
       }
       return null;
-    }
-    getMode()
-  }, [])
-
+    };
+    getMode();
+  }, []);
 
   return (
     <Box component="section" marginY={8} height={contentHeight}>
@@ -118,9 +122,7 @@ export default function LoggedInStart() {
       >
         Simulera systemfel
       </Button>
-      <Typography>
-        {serverMode}
-      </Typography>
+      <Typography>{serverMode}</Typography>
       <Box
         component="section"
         display="flex"
@@ -128,13 +130,14 @@ export default function LoggedInStart() {
         justifyContent="center"
         gap={6}
       >
-        <Container sx={{ padding: { xs: 0} }}>
+        <Container sx={{ padding: { xs: 0 } }}>
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: {sm: 0, md: "56px"},
-              backgroundColor: serverMode === "EKO" ? "rgba(162, 214, 163, 0.9)" : undefined,
-              border: serverMode === "EKO" ? "3px solid green" : undefined
+              borderRadius: { sm: 0, md: "56px" },
+              backgroundColor:
+                serverMode === "EKO" ? "rgba(162, 214, 163, 0.9)" : undefined,
+              border: serverMode === "EKO" ? "3px solid green" : undefined,
             }}
             elevation={2}
           >
@@ -185,48 +188,70 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                paddingX={{xs: "10px",md: "30px"}}
+                paddingX={{ xs: "10px", md: "30px" }}
                 paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
                   <Box>
-                  <Typography
-                    variant="body1"
-                    component="p"
-                    style={{ fontWeight: "bolder" }}
-                    sx={{
-                      paddingX: { xs: 0.5, md: 8 },
-                      fontSize: { xs: 16, md: 18},
-                      color: "black",
-                    }}
-                  >
-                    I detta läge jobbar systemet för att minimera
-                    brukskostnaden. Systemet kommer att köpa från nätet när det
-                    är billigt och sälja från batteriet när det är dyrt.
-                </Typography>
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      style={{ fontWeight: "bolder" }}
+                      sx={{
+                        paddingX: { xs: 0.5, md: 8 },
+                        fontSize: { xs: 16, md: 18 },
+                        color: "black",
+                      }}
+                    >
+                      I detta läge jobbar systemet för att minimera
+                      brukskostnaden. Systemet kommer att köpa från nätet när
+                      det är billigt och sälja från batteriet när det är dyrt.
+                    </Typography>
                     <List>
-                      <ListItem sx={{ padding: 0, marginLeft:{sm: 0, md: 8} }}>
-                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
-                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                      <ListItem
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                      >
+                        <ListItemIcon
+                          sx={{ minWidth: "unset", paddingRight: 1 }}
+                        >
+                          <FiberManualRecord
+                            style={{ fontSize: 10, color: "black" }}
+                          />
                         </ListItemIcon>
-                        <ListItemText 
+                        <ListItemText
                           primary="Ljus"
                           primaryTypographyProps={{
-                            style: { fontWeight: "bold", color: "black", fontSize: "16px" }
-                          }}  />
+                            style: {
+                              fontWeight: "bold",
+                              color: "black",
+                              fontSize: "16px",
+                            },
+                          }}
+                        />
                       </ListItem>
-                      <ListItem sx={{ padding: 0, marginLeft:{sm: 0, md: 8}  }}>
-                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
-                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                      <ListItem
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                      >
+                        <ListItemIcon
+                          sx={{ minWidth: "unset", paddingRight: 1 }}
+                        >
+                          <FiberManualRecord
+                            style={{ fontSize: 10, color: "black" }}
+                          />
                         </ListItemIcon>
-                      <ListItemText 
-                        primary="Belysning" 
-                        primaryTypographyProps={{
-                          style: { fontWeight: "bold", color: "black", fontSize: "16px" }
-                        }} />
+                        <ListItemText
+                          primary="Belysning"
+                          primaryTypographyProps={{
+                            style: {
+                              fontWeight: "bold",
+                              color: "black",
+                              fontSize: "16px",
+                            },
+                          }}
+                        />
                       </ListItem>
                     </List>
-                    </Box>
+                  </Box>
                   <Box
                     sx={{
                       display: "flex",
@@ -302,45 +327,52 @@ export default function LoggedInStart() {
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: {sm: 0, md: "56px"},
+              borderRadius: { sm: 0, md: "56px" },
               backgroundColor:
-                serverMode === "ENV"
-                  ? "rgba(162, 214, 163, 0.9)"
-                  : undefined,
-              border: 
-                serverMode === "ENV" 
-                ? "3px solid green" 
-                : undefined
+                serverMode === "ENV" ? "rgba(162, 214, 163, 0.9)" : undefined,
+              border: serverMode === "ENV" ? "3px solid green" : undefined,
             }}
             elevation={2}
           >
             <CardHeader
-			      title={
-				    <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
-					  <Typography
-					    variant="h5"
-					    sx={{
-                fontWeight: "bolder",
-                color: "black",
-                marginTop: serverMode === "ENV" ? 1 : 0, 
-                textAlign: "center", 
-                flex: 1}}>
-					    Miljöläge
-					  </Typography>
-					  {serverMode === "ENV" && (	
-						<Typography
-						  variant="body1"
-						  component="span"
-						  sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
-							}}
-						>
-						AKTIV	
-					</Typography>
-						)}
-				</Box>
-				}
-				sx={{marginTop:4}}
-				/>
+              title={
+                <Box
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr auto",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: "bolder",
+                      color: "black",
+                      marginTop: serverMode === "ENV" ? 1 : 0,
+                      textAlign: "center",
+                      flex: 1,
+                    }}
+                  >
+                    Miljöläge
+                  </Typography>
+                  {serverMode === "ENV" && (
+                    <Typography
+                      variant="body1"
+                      component="span"
+                      sx={{
+                        fontWeight: "bold",
+                        color: "black",
+                        fontSize: "25px",
+                        marginRight: 1,
+                      }}
+                    >
+                      AKTIV
+                    </Typography>
+                  )}
+                </Box>
+              }
+              sx={{ marginTop: 4 }}
+            />
             <CardContent sx={{ padding: 0 }}>
               <Box
                 component="div"
@@ -349,49 +381,70 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                paddingX={{xs: "10px",md: "30px"}}
+                paddingX={{ xs: "10px", md: "30px" }}
                 paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
                   <Box>
-
-                  <Typography
-                    variant="body1"
-                    component="p"
-                    style={{ fontWeight: "bolder" }}
-                    sx={{
-                      paddingX: { xs: 0.5, md: 8 },
-                      fontSize: { xs: 16, md: 18 },
-                      color: "black",
-                    }}
-                  >
-                    I detta läge kommer systemet att köpa så lite från nätet som
-                    möjligt för att säkerställa användandet av grön energi från
-                    panelerna och därmed ha så låg klimatpåverkan som möjligt.
-                    Detta läge är dyrare då mindre el kommer säljas från
-                    batteriet. Belysningen kommer att hållas på minimal nivå för
-                    att inte störa djur och insekter i skogen.
-                  </Typography>
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      style={{ fontWeight: "bolder" }}
+                      sx={{
+                        paddingX: { xs: 0.5, md: 8 },
+                        fontSize: { xs: 16, md: 18 },
+                        color: "black",
+                      }}
+                    >
+                      I detta läge kommer systemet att köpa så lite från nätet
+                      som möjligt för att säkerställa användandet av grön energi
+                      från panelerna och därmed ha så låg klimatpåverkan som
+                      möjligt. Detta läge är dyrare då mindre el kommer säljas
+                      från batteriet. Belysningen kommer att hållas på minimal
+                      nivå för att inte störa djur och insekter i skogen.
+                    </Typography>
                     <List>
-                      <ListItem sx={{ padding: 0 , marginLeft:{sm: 0, md: 8} }}>
-                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
-                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                      <ListItem
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                      >
+                        <ListItemIcon
+                          sx={{ minWidth: "unset", paddingRight: 1 }}
+                        >
+                          <FiberManualRecord
+                            style={{ fontSize: 10, color: "black" }}
+                          />
                         </ListItemIcon>
-                        <ListItemText 
-                          primary="Batterisystem" 
+                        <ListItemText
+                          primary="Batterisystem"
                           primaryTypographyProps={{
-                            style: { fontWeight: "bold", color: "black", fontSize: "16px" }
-                          }}/>
+                            style: {
+                              fontWeight: "bold",
+                              color: "black",
+                              fontSize: "16px",
+                            },
+                          }}
+                        />
                       </ListItem>
-                      <ListItem sx={{ padding: 0 , marginLeft:{sm: 0, md: 8}}}>
-                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
-                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                      <ListItem
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                      >
+                        <ListItemIcon
+                          sx={{ minWidth: "unset", paddingRight: 1 }}
+                        >
+                          <FiberManualRecord
+                            style={{ fontSize: 10, color: "black" }}
+                          />
                         </ListItemIcon>
-                      <ListItemText 
-                        primary="Belysning"
-                        primaryTypographyProps={{
-                          style: { fontWeight: "bold", color: "black", fontSize: "16px" }
-                        }} />
+                        <ListItemText
+                          primary="Belysning"
+                          primaryTypographyProps={{
+                            style: {
+                              fontWeight: "bold",
+                              color: "black",
+                              fontSize: "16px",
+                            },
+                          }}
+                        />
                       </ListItem>
                     </List>
                   </Box>
@@ -470,15 +523,10 @@ export default function LoggedInStart() {
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: {sm: 0, md: "56px"},
+              borderRadius: { sm: 0, md: "56px" },
               backgroundColor:
-                serverMode === "SNO" 
-                ? "rgba(162, 214, 163, 0.9)" 
-                : undefined,
-              border: 
-                serverMode === "SNO" 
-                ? "3px solid green" 
-                : undefined
+                serverMode === "SNO" ? "rgba(162, 214, 163, 0.9)" : undefined,
+              border: serverMode === "SNO" ? "3px solid green" : undefined,
             }}
             elevation={2}
           >
@@ -529,7 +577,7 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                paddingX={{xs: "10px",md: "30px"}}
+                paddingX={{ xs: "10px", md: "30px" }}
                 paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
