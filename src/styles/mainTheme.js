@@ -26,7 +26,7 @@ export const mainTheme = createTheme({
   },
   palette: {
     opacityLight: {
-      main: "rgba(255, 255, 255, 0.90)",
+      main: "rgba(255, 255, 255, 0.80)",
       contrastText: "#000",
     },
     opacityDark: {
