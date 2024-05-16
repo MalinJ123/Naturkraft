@@ -1,5 +1,5 @@
 import { contentHeight } from "@/components/layout";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import {
   Box,
   Container,
@@ -35,16 +35,26 @@ export default function LoggedInStart() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
   const [serverMode, setServerMode] = useState('')
+  const [selectedServerMode, setSelectedServerMode] = useState(null)
   
-
   dotenv.config();
-  const handleModeChange = (mode) => {
-    setCurrentMode(mode);
+
+  const handleModeChange = async(mode) => {
+    try {
+      const response = await axios.post(`${process.env.BACKEND_LOCATION}pie/postMode`, {"mode": mode});
+      if (response.status === 200) {
+        setServerMode(response.data)
+      } else {
+        console.error("Något gick snett!", response.data.message);
+      }
+    } catch (error) {
+      console.error("Ett fel uppstod:", error.message);
+    }
     setDialogOpen(false);
   };
 
   const handleClickOpen = (mode) => {
-    setSelectedMode(mode);
+    setServerMode(mode);
     setDialogOpen(true);
   };
 
@@ -61,7 +71,7 @@ export default function LoggedInStart() {
   }, [authedState, setAuthedState]);
 
   const renderDialogContent = () => {
-    switch (selectedMode) {
+    switch (selectedServerMode) {
       case "economy":
         return "Vill du byta styrningen till Ekonomiläge?";
       case "environment":
@@ -123,8 +133,8 @@ export default function LoggedInStart() {
             sx={{
               backgroundColor: "opacityLight.main",
               borderRadius: {sm: 0, md: "56px"},
-              backgroundColor: currentMode === "economy" ? "rgba(162, 214, 163, 0.9)" : undefined,
-              border: currentMode === "economy" ? "3px solid green" : undefined
+              backgroundColor: serverMode === "EKO" ? "rgba(162, 214, 163, 0.9)" : undefined,
+              border: serverMode === "EKO" ? "3px solid green" : undefined
             }}
             elevation={2}
           >
@@ -142,14 +152,14 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
-                      marginTop: currentMode === "economy" ? 1 : 0,
+                      marginTop: serverMode === "EKO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
                     }}
                   >
                     Ekonomiläge
                   </Typography>
-                  {currentMode === "economy" && (
+                  {serverMode === "ECO" && (
                     <Typography
                       variant="body1"
                       component="span"
@@ -231,7 +241,7 @@ export default function LoggedInStart() {
                         marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-                      {currentMode !== "economy" && (
+                      {serverMode !== "EKO" && (
                         <Button
                           component="button"
                           variant="contained"
@@ -251,7 +261,7 @@ export default function LoggedInStart() {
                               color: "white",
                             },
                           }}
-                          onClick={() => handleClickOpen("economy")}
+                          onClick={() => handleClickOpen("EKO")}
                         >
                           Välj läge
                         </Button>
@@ -294,11 +304,11 @@ export default function LoggedInStart() {
               backgroundColor: "opacityLight.main",
               borderRadius: {sm: 0, md: "56px"},
               backgroundColor:
-                currentMode === "environment"
+                serverMode === "ENV"
                   ? "rgba(162, 214, 163, 0.9)"
                   : undefined,
               border: 
-                currentMode === "environment" 
+                serverMode === "ENV" 
                 ? "3px solid green" 
                 : undefined
             }}
@@ -312,12 +322,12 @@ export default function LoggedInStart() {
 					    sx={{
                 fontWeight: "bolder",
                 color: "black",
-                marginTop: currentMode === "environment" ? 1 : 0, 
+                marginTop: serverMode === "ENV" ? 1 : 0, 
                 textAlign: "center", 
                 flex: 1}}>
 					    Miljöläge
 					  </Typography>
-					  {currentMode === "environment" && (	
+					  {serverMode === "ENV" && (	
 						<Typography
 						  variant="body1"
 						  component="span"
@@ -399,7 +409,7 @@ export default function LoggedInStart() {
                         marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-                      {currentMode !== "environment" && (
+                      {serverMode !== "ENV" && (
                         <Button
                           component="button"
                           variant="contained"
@@ -419,7 +429,7 @@ export default function LoggedInStart() {
                               color: "white",
                             },
                           }}
-                          onClick={() => handleClickOpen("environment")}
+                          onClick={() => handleClickOpen("ENV")}
                         >
                           Välj läge
                         </Button>
@@ -462,11 +472,11 @@ export default function LoggedInStart() {
               backgroundColor: "opacityLight.main",
               borderRadius: {sm: 0, md: "56px"},
               backgroundColor:
-                currentMode === "snow" 
+                serverMode === "SNO" 
                 ? "rgba(162, 214, 163, 0.9)" 
                 : undefined,
               border: 
-                currentMode === "snow" 
+                serverMode === "SNO" 
                 ? "3px solid green" 
                 : undefined
             }}
@@ -486,14 +496,14 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
-                      marginTop: currentMode === "snow" ? 1 : 0,
+                      marginTop: serverMode === "SNO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
                     }}
                   >
                     Snöläge
                   </Typography>
-                  {currentMode === "snow" && (
+                  {serverMode === "SNO" && (
                     <Typography
                       variant="body1"
                       component="span"
@@ -551,7 +561,7 @@ export default function LoggedInStart() {
                         marginLeft: { xs: 0, md: 8 },
                       }}
                     >
-                      {currentMode !== "snow" && (
+                      {serverMode !== "SNO" && (
                         <Button
                           component="button"
                           variant="contained"
@@ -571,7 +581,7 @@ export default function LoggedInStart() {
                               color: "white",
                             },
                           }}
-                          onClick={() => handleClickOpen("snow")}
+                          onClick={() => handleClickOpen("SNO")}
                         >
                           Välj läge
                         </Button>
@@ -630,7 +640,7 @@ export default function LoggedInStart() {
             }}
           >
             <Button
-              onClick={() => handleModeChange(selectedMode)}
+              onClick={() => handleModeChange(setServerMode)}
               color="primary"
               variant="contained"
               sx={{
