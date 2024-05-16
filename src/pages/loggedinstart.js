@@ -15,12 +15,15 @@ import {
   AlertTitle,
   List,
   ListItem,
+  ListItemText,
+  ListItemIcon,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
 } from "@mui/material/";
 import { Check } from "@mui/icons-material";
+import {  FiberManualRecord} from "@mui/icons-material"
 
 import { useStore } from "@/stores/store";
 
@@ -95,8 +98,9 @@ export default function LoggedInStart() {
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: "56px",
+              borderRadius: {sm: 0, md: "56px"},
               backgroundColor: currentMode === "economy" ? "rgba(162, 214, 163, 0.9)" : undefined,
+              border: currentMode === "economy" ? "3px solid green" : undefined
             }}
             elevation={2}
           >
@@ -112,7 +116,8 @@ export default function LoggedInStart() {
                   <Typography
                     variant="h5"
                     sx={{
-                      fontWeight: "bold",
+                      fontWeight: "bolder",
+                      color: "black",
                       marginTop: currentMode === "economy" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
@@ -146,39 +151,48 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                margin={0.5}
-                padding="30px"
+                paddingX={{xs: "10px",md: "30px"}}
+                paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
+                  <Box>
                   <Typography
                     variant="body1"
                     component="p"
                     style={{ fontWeight: "bolder" }}
                     sx={{
-                      paddingX: { xs: 0.5, md: 10 },
-                      fontSize: { xs: 18, md: 16 },
+                      paddingX: { xs: 0.5, md: 8 },
+                      fontSize: { xs: 16, md: 18},
                       color: "black",
                     }}
                   >
                     I detta läge jobbar systemet för att minimera
                     brukskostnaden. Systemet kommer att köpa från nätet när det
                     är billigt och sälja från batteriet när det är dyrt.
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    component="ul"
-                    style={{ fontWeight: "bolder" }}
-                    sx={{
-                      paddingX: { xs: 0.5, md: 6 },
-                      fontSize: { xs: 18, md: 16 },
-                      color: "black",
-                    }}
-                  >
+                </Typography>
                     <List>
-                      <ListItem>Ljus</ListItem>
-                      <ListItem>Belysning</ListItem>
+                      <ListItem sx={{ padding: 0, marginLeft:{sm: 0, md: 8} }}>
+                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
+                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                        </ListItemIcon>
+                        <ListItemText 
+                          primary="Ljus"
+                          primaryTypographyProps={{
+                            style: { fontWeight: "bold", color: "black", fontSize: "16px" }
+                          }}  />
+                      </ListItem>
+                      <ListItem sx={{ padding: 0, marginLeft:{sm: 0, md: 8}  }}>
+                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
+                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                        </ListItemIcon>
+                      <ListItemText 
+                        primary="Belysning" 
+                        primaryTypographyProps={{
+                          style: { fontWeight: "bold", color: "black", fontSize: "16px" }
+                        }} />
+                      </ListItem>
                     </List>
-                  </Typography>
+                    </Box>
                   <Box
                     sx={{
                       display: "flex",
@@ -197,11 +211,10 @@ export default function LoggedInStart() {
                         <Button
                           component="button"
                           variant="contained"
-                          color="success"
+                          color="primary"
                           role="button"
                           type="button"
                           sx={{
-                            backgroundColor: "#33b249",
                             border: "1px solid grey",
                             borderRadius: "10px",
                             marginBottom: { xs: 2, md: 3 },
@@ -210,7 +223,7 @@ export default function LoggedInStart() {
                             fontWeight: "bold",
                             padding: 1.5,
                             "&:hover": {
-                              backgroundColor: "darkgreen",
+                              backgroundColor: "#33b249",
                               color: "white",
                             },
                           }}
@@ -255,11 +268,15 @@ export default function LoggedInStart() {
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: "30px",
+              borderRadius: {sm: 0, md: "56px"},
               backgroundColor:
                 currentMode === "environment"
                   ? "rgba(162, 214, 163, 0.9)"
                   : undefined,
+              border: 
+                currentMode === "environment" 
+                ? "3px solid green" 
+                : undefined
             }}
             elevation={2}
           >
@@ -268,14 +285,19 @@ export default function LoggedInStart() {
 				    <Box sx={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
 					  <Typography
 					    variant="h5"
-					    sx={{fontWeight: "bold", marginTop: currentMode === "environment" ? 1 : 0, textAlign: "center", flex: 1}}>
+					    sx={{
+                fontWeight: "bolder",
+                color: "black",
+                marginTop: currentMode === "environment" ? 1 : 0, 
+                textAlign: "center", 
+                flex: 1}}>
 					    Miljöläge
 					  </Typography>
-					{currentMode === "environment" && (	
+					  {currentMode === "environment" && (	
 						<Typography
-						variant="body1"
-						component="span"
-						sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
+						  variant="body1"
+						  component="span"
+						  sx={{fontWeight: "bold", color: "black", fontSize: "25px", marginRight: 1 
 							}}
 						>
 						AKTIV	
@@ -293,16 +315,19 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                // margin={2}
+                paddingX={{xs: "10px",md: "30px"}}
+                paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
+                  <Box>
+
                   <Typography
                     variant="body1"
                     component="p"
                     style={{ fontWeight: "bolder" }}
                     sx={{
-                      paddingX: { xs: 0.5, md: 6 },
-                      fontSize: { xs: 18, md: 16 },
+                      paddingX: { xs: 0.5, md: 8 },
+                      fontSize: { xs: 16, md: 18 },
                       color: "black",
                     }}
                   >
@@ -313,21 +338,29 @@ export default function LoggedInStart() {
                     batteriet. Belysningen kommer att hållas på minimal nivå för
                     att inte störa djur och insekter i skogen.
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    component="ul"
-                    style={{ fontWeight: "bolder" }}
-                    sx={{
-                      paddingX: { xs: 0.5, md: 6 },
-                      fontSize: { xs: 18, md: 16 },
-                      color: "black",
-                    }}
-                  >
                     <List>
-                      <ListItem>Batterisystem</ListItem>
-                      <ListItem>Belysning</ListItem>
+                      <ListItem sx={{ padding: 0 , marginLeft:{sm: 0, md: 8} }}>
+                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
+                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                        </ListItemIcon>
+                        <ListItemText 
+                          primary="Batterisystem" 
+                          primaryTypographyProps={{
+                            style: { fontWeight: "bold", color: "black", fontSize: "16px" }
+                          }}/>
+                      </ListItem>
+                      <ListItem sx={{ padding: 0 , marginLeft:{sm: 0, md: 8}}}>
+                        <ListItemIcon sx={{ minWidth: "unset", paddingRight: 1 }}>
+                          <FiberManualRecord style={{fontSize: 10, color: "black"}} />
+                        </ListItemIcon>
+                      <ListItemText 
+                        primary="Belysning"
+                        primaryTypographyProps={{
+                          style: { fontWeight: "bold", color: "black", fontSize: "16px" }
+                        }} />
+                      </ListItem>
                     </List>
-                  </Typography>
+                  </Box>
                   <Box
                     sx={{
                       display: "flex",
@@ -346,11 +379,10 @@ export default function LoggedInStart() {
                         <Button
                           component="button"
                           variant="contained"
-                          color="success"
+                          color="primary"
                           role="button"
                           type="button"
                           sx={{
-                            backgroundColor: "#33b249",
                             border: "1px solid grey",
                             borderRadius: "10px",
                             marginBottom: { xs: 2, md: 3 },
@@ -359,7 +391,7 @@ export default function LoggedInStart() {
                             fontWeight: "bold",
                             padding: 1.5,
                             "&:hover": {
-                              backgroundColor: "darkgreen",
+                              backgroundColor: "#33b249",
                               color: "white",
                             },
                           }}
@@ -404,9 +436,15 @@ export default function LoggedInStart() {
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: "30px",
+              borderRadius: {sm: 0, md: "56px"},
               backgroundColor:
-                currentMode === "snow" ? "rgba(162, 214, 163, 0.9)" : undefined,
+                currentMode === "snow" 
+                ? "rgba(162, 214, 163, 0.9)" 
+                : undefined,
+              border: 
+                currentMode === "snow" 
+                ? "3px solid green" 
+                : undefined
             }}
             elevation={2}
           >
@@ -422,7 +460,8 @@ export default function LoggedInStart() {
                   <Typography
                     variant="h5"
                     sx={{
-                      fontWeight: "bold",
+                      fontWeight: "bolder",
+                      color: "black",
                       marginTop: currentMode === "snow" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
@@ -456,7 +495,8 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                margin={2}
+                paddingX={{xs: "10px",md: "30px"}}
+                paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
                   <Typography
@@ -464,8 +504,8 @@ export default function LoggedInStart() {
                     component="p"
                     style={{ fontWeight: "bolder" }}
                     sx={{
-                      paddingX: { xs: 0.5, md: 6 },
-                      fontSize: { xs: 18, md: 16 },
+                      paddingX: { xs: 0.5, md: 8 },
+                      fontSize: { xs: 16, md: 18 },
                       color: "black",
                     }}
                   >
@@ -491,11 +531,10 @@ export default function LoggedInStart() {
                         <Button
                           component="button"
                           variant="contained"
-                          color="success"
+                          color="primary"
                           role="button"
                           type="button"
                           sx={{
-                            backgroundColor: "#33b249",
                             border: "1px solid grey",
                             borderRadius: "10px",
                             marginBottom: { xs: 2, md: 3 },
@@ -504,7 +543,7 @@ export default function LoggedInStart() {
                             fontWeight: "bold",
                             padding: 1.5,
                             "&:hover": {
-                              backgroundColor: "darkgreen",
+                              backgroundColor: "#33b249",
                               color: "white",
                             },
                           }}
@@ -572,6 +611,10 @@ export default function LoggedInStart() {
               variant="contained"
               sx={{
                 margin: "15px",
+                "&:hover": {
+                  backgroundColor: "#33b249",
+                  color: "white",
+                },
               }}
             >
               Ja
@@ -582,6 +625,10 @@ export default function LoggedInStart() {
               variant="contained"
               sx={{
                 margin: "15px",
+                "&:hover": {
+                  backgroundColor: "#33b249",
+                  color: "white",
+                },
               }}
             >
               Nej
