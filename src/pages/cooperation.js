@@ -39,7 +39,7 @@ export default function Cooperation() {
     >
       <Title />
       <Container sx={{ padding: { xs: 0 } }}>
-        <Card sx={{ backgroundColor: "opacityWhite.main" }} elevation={2}>
+        <Card sx={{ backgroundColor: "opacityLight.main" }} elevation={2}>
           <CardHeader
             title="Samarbetspartners"
             titleTypographyProps={{
@@ -134,9 +134,7 @@ export default function Cooperation() {
               lg: "row",
               xl: "row",
             },
-            width: {
-              
-            }
+            width: {},
           }}
           alignItems="center"
           justifyContent="center"
@@ -151,7 +149,7 @@ export default function Cooperation() {
             alt="Glava Energy Center logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Image
@@ -160,7 +158,7 @@ export default function Cooperation() {
             alt="Energimyndigheten logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Image
@@ -169,7 +167,7 @@ export default function Cooperation() {
             alt="Sun 4 Energy logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Image
@@ -178,7 +176,7 @@ export default function Cooperation() {
             alt="SWEMODULE logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Image
@@ -187,7 +185,7 @@ export default function Cooperation() {
             alt="Karlstads Universitet logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Image
@@ -196,7 +194,7 @@ export default function Cooperation() {
             alt="Lunds Universitet logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
         </Stack>
@@ -223,7 +221,7 @@ export default function Cooperation() {
             alt="Teknik i Väst logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Box
@@ -244,7 +242,7 @@ export default function Cooperation() {
             alt="Hillringsbergs IF logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Image
@@ -253,7 +251,7 @@ export default function Cooperation() {
             alt="Glava Gymnastikförening"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
           <Image
@@ -262,7 +260,7 @@ export default function Cooperation() {
             alt="SC Burman AB logotyp"
             sx={{
               width: "auto",
-              height: "auto"
+              height: "auto",
             }}
           />
         </Stack>
