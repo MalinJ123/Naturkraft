@@ -49,7 +49,7 @@ export default function Login() {
     }
 
     try {
-      const response = await axios.post(process.env.BACKEND_LOCATION, {
+      const response = await axios.post(`${process.env.BACKEND_LOCATION}login`, {
         username,
         password: userPassword,
       });

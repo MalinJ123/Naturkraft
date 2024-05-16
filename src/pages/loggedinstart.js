@@ -24,8 +24,8 @@ import {
 } from "@mui/material/";
 import { Check } from "@mui/icons-material";
 import {  FiberManualRecord} from "@mui/icons-material"
-
 import { useStore } from "@/stores/store";
+import { getModeHandler } from "@/helpers/worker";
 
 export default function LoggedInStart() {
   const { authedState, setAuthedState } = useStore();
@@ -69,6 +69,10 @@ export default function LoggedInStart() {
         return "";
     }
   };
+
+  useEffect(() => {
+    console.log(getModeHandler)
+  }, [getModeHandler])
 
   return (
     <Box component="section" marginY={8} height={contentHeight}>
