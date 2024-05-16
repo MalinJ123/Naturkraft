@@ -25,16 +25,19 @@ import {
 import { Check } from "@mui/icons-material";
 import {  FiberManualRecord} from "@mui/icons-material"
 import { useStore } from "@/stores/store";
-import { getModeHandler } from "@/helpers/worker";
+import dotenv from "dotenv";
+import axios from "axios";
 
 export default function LoggedInStart() {
   const { authedState, setAuthedState } = useStore();
-
   const [systemStatus, setSystemStatus] = useState(true);
   const [currentMode, setCurrentMode] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
+  const [serverMode, setServerMode] = useState('')
+  
 
+  dotenv.config();
   const handleModeChange = (mode) => {
     setCurrentMode(mode);
     setDialogOpen(false);
@@ -71,8 +74,22 @@ export default function LoggedInStart() {
   };
 
   useEffect(() => {
-    console.log(getModeHandler)
-  }, [getModeHandler])
+    const getMode = async () => {
+      try {
+        const response = await axios.get(`${process.env.BACKEND_LOCATION}pie/getMode`);
+        if (response.status === 200) {
+          return setServerMode(response.data)
+        } else {
+          console.error("Något gick snett!", response.data.message);
+        }
+      } catch (error) {
+        console.error("Ett fel uppstod:", error.message);
+      }
+      return null;
+    }
+    getMode()
+  }, [])
+
 
   return (
     <Box component="section" marginY={8} height={contentHeight}>
@@ -91,6 +108,9 @@ export default function LoggedInStart() {
       >
         Simulera systemfel
       </Button>
+      <Typography>
+        {serverMode}
+      </Typography>
       <Box
         component="section"
         display="flex"
