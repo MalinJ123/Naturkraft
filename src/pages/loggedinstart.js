@@ -27,6 +27,7 @@ import { FiberManualRecord } from "@mui/icons-material";
 import { useStore } from "@/stores/store";
 import dotenv from "dotenv";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function LoggedInStart() {
   const { authedState, setAuthedState } = useStore();
@@ -37,6 +38,8 @@ export default function LoggedInStart() {
   const [serverMode, setServerMode] = useState("");
   const [selectedServerMode, setSelectedServerMode] = useState(null);
 
+  const router = useRouter(); 
+
   dotenv.config();
 
   const handleModeChange = async (mode) => {
@@ -46,6 +49,7 @@ export default function LoggedInStart() {
         { mode: mode }
       );
       if (response.status === 200) {
+        console.log(response.data)
         setServerMode(response.data);
       } else {
         console.error("Något gick snett!", response.data.message);
@@ -53,6 +57,7 @@ export default function LoggedInStart() {
     } catch (error) {
       console.error("Ett fel uppstod:", error.message);
     }
+    console.log(mode)
     setDialogOpen(false);
   };
 
@@ -313,6 +318,7 @@ export default function LoggedInStart() {
                           fontWeight: "bold",
                           padding: 1,
                         }}
+                        onClick={() => router.push("/economyInfo")}
                       >
                         Mer info
                       </Link>
