@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Box,
   Container,
@@ -9,12 +8,15 @@ import {
   Stack,
   Button
 } from "@mui/material/";
-
 import { contentHeight } from "@/components/layout";
 import Title from "@/components/title";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useRouter } from "next/router";
 
-export default function Cooperation() {
+export default function EconomyInfo() {
+
+const router = useRouter(); 
+
   return (
     <Box
       component="section"
@@ -34,6 +36,7 @@ export default function Cooperation() {
 				variant="outlined"
 				startIcon={<ArrowBackIcon />}
 				sx={{color: "black", borderColor: "black", fontWeight: "bold", fontSize: "16px" }}
+				onClick={() => router.push("/loggedinstart")}
 				> 
 				Tillbaka</Button>
 			</Box>
@@ -56,20 +59,34 @@ export default function Cooperation() {
 			  paddingX={{ xs: "10px", md: "30px" }}
 			  paddingBottom="30px"
             >
-              <Stack spacing={4} direction="column">
-				<Box>
-                <Typography
-                 variant="body1"
-				 component="p"
-				 style={{ fontWeight: "bolder" }}
-				 sx={{
-				   paddingX: { xs: 0.5, md: 8 },
-				   fontSize: { xs: 16, md: 18 },
-				   color: "black",
-				 }}
-                >
-                I detta läge jobbar systemet för att minimera brukskostnaden. Systemet kommer att köpa från nätet när det är billigt och sälja från batteriet när det är dyrt.
+            <Stack spacing={4} direction="column">
+			<Box>
+				<Box
+					component="div"
+					sx={{
+						paddingX: {xs: 0.5, md: 8},
+						color: "black", 
+					}}
+				>
+				<Typography
+					variant="body1"
+					component="p"
+					sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 18, md: 20 }, }}
+				>
+					Beskrivning:
 				</Typography>
+					<Typography
+					variant="body1"
+					component="p"
+					// style={{ fontWeight: "bolder" }}
+					sx={{
+					fontSize: { xs: 16, md: 18 },
+					color: "black",
+					}}
+					>
+					I detta läge jobbar systemet för att minimera brukskostnaden. Systemet kommer att köpa från nätet när det är billigt och sälja från batteriet när det är dyrt.
+					</Typography>
+				</Box>
 				<Box
 					component="div"
 					sx={{
@@ -81,7 +98,7 @@ export default function Cooperation() {
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{ fontWeight: "bolder", marginBottom: 0.5 }}
+						sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 18, md: 20 } }}
 					>
 						Belysning:
 					</Typography>
@@ -100,7 +117,7 @@ export default function Cooperation() {
 						<b>Resten:</b> 5% passivt, 70% aktivt
 					</Typography>
 				</Box>
-				</Box>
+			</Box>
 				<Box
 					component="div"
 					sx={{
@@ -113,7 +130,7 @@ export default function Cooperation() {
 					 color="black"
 					 gutterBottom
 					 sx={{
-					   fontSize: { xs: 16, md: 18 },
+					   fontSize: { xs: 18, md: 20 },
 					   marginBottom: 0,
 					   color: "black",
 					   fontWeight: "bolder"
