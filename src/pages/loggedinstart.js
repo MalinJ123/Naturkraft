@@ -1,5 +1,5 @@
 import { contentHeight } from "@/components/layout";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   Box,
   Container,
@@ -32,24 +32,30 @@ import { useRouter } from "next/router";
 export default function LoggedInStart() {
   const { authedState, setAuthedState } = useStore();
   const [systemStatus, setSystemStatus] = useState(true);
-  const [currentMode, setCurrentMode] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedMode, setSelectedMode] = useState(null);
   const [serverMode, setServerMode] = useState("");
   const [selectedServerMode, setSelectedServerMode] = useState(null);
 
-  const router = useRouter(); 
+  const router = useRouter();
 
   dotenv.config();
 
   const handleModeChange = async (mode) => {
     try {
       const response = await axios.post(
-        `${process.env.BACKEND_LOCATION}pie/postMode`,
-        { mode: mode }
+        `${process.env.BACKEND_LOCATION}postMode`,
+        { mode: "EKO" }
+      );
+      console.log(
+        `${process.env.BACKEND_LOCATION}postMode`,
+        { mode: "EKO" },
+        "response",
+        response,
+        "response.data",
+        response.data
       );
       if (response.status === 200) {
-        console.log(response.data)
+        console.log(response.data);
         setServerMode(response.data);
       } else {
         console.error("Något gick snett!", response.data.message);
@@ -57,7 +63,6 @@ export default function LoggedInStart() {
     } catch (error) {
       console.error("Ett fel uppstod:", error.message);
     }
-    console.log(mode)
     setDialogOpen(false);
   };
 
@@ -91,24 +96,26 @@ export default function LoggedInStart() {
     }
   };
 
-  useEffect(() => {
-    const getMode = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.BACKEND_LOCATION}pie/getMode`
-        );
-        if (response.status === 200) {
-          return setServerMode(response.data);
-        } else {
-          console.error("Något gick snett!", response.data.message);
-        }
-      } catch (error) {
-        console.error("Ett fel uppstod:", error.message);
+  const getMode = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.BACKEND_LOCATION}getMode`
+      );
+      if (response.status === 200) {
+        return setServerMode(response.data);
+      } else {
+        console.error("Något gick snett!", response.data.message);
       }
-      return null;
-    };
+    } catch (error) {
+      console.error("Ett fel uppstod:", error.message);
+    }
+    return null;
+  }, []); // dependencies array is empty because getMode doesn't depend on any props or state
+
+  // Call the function
+  useEffect(() => {
     getMode();
-  }, []);
+  }, [getMode]);
 
   return (
     <Box component="section" marginY={8} height={contentHeight}>
