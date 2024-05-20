@@ -22,8 +22,7 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material/";
-import { Check } from "@mui/icons-material";
-import { FiberManualRecord } from "@mui/icons-material";
+import { FiberManualRecord, Check } from "@mui/icons-material";
 import { useStore } from "@/stores/store";
 import dotenv from "dotenv";
 import axios from "axios";
@@ -34,7 +33,7 @@ export default function LoggedInStart() {
   const [systemStatus, setSystemStatus] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [serverMode, setServerMode] = useState("");
-  const [selectedServerMode, setSelectedServerMode] = useState(null);
+  const [changeMode, setChangeMode] = useState("");
 
   const router = useRouter();
 
@@ -44,15 +43,7 @@ export default function LoggedInStart() {
     try {
       const response = await axios.post(
         `${process.env.BACKEND_LOCATION}postMode`,
-        { mode: "EKO" }
-      );
-      console.log(
-        `${process.env.BACKEND_LOCATION}postMode`,
-        { mode: "EKO" },
-        "response",
-        response,
-        "response.data",
-        response.data
+        { mode: mode }
       );
       if (response.status === 200) {
         console.log(response.data);
@@ -67,7 +58,7 @@ export default function LoggedInStart() {
   };
 
   const handleClickOpen = (mode) => {
-    setServerMode(mode);
+    setChangeMode(mode);
     setDialogOpen(true);
   };
 
@@ -83,14 +74,14 @@ export default function LoggedInStart() {
     };
   }, [authedState, setAuthedState]);
 
-  const renderDialogContent = () => {
-    switch (selectedServerMode) {
-      case "economy":
-        return "Vill du byta styrningen till Ekonomiläge?";
-      case "environment":
-        return "Vill du byta styrningen till Miljöläge?";
-      case "snow":
-        return "Vill du byta styrningen till Snöläge?";
+  const renderDialogModeContent = () => {
+    switch (serverMode) {
+      case "EKO":
+        return "Ekonomiläge";
+      case "ENV":
+        return "Miljöläge";
+      case "SNO":
+        return "Snöläge";
       default:
         return "";
     }
@@ -110,9 +101,8 @@ export default function LoggedInStart() {
       console.error("Ett fel uppstod:", error.message);
     }
     return null;
-  }, []); // dependencies array is empty because getMode doesn't depend on any props or state
+  }, []);
 
-  // Call the function
   useEffect(() => {
     getMode();
   }, [getMode]);
@@ -174,19 +164,14 @@ export default function LoggedInStart() {
                   >
                     Ekonomiläge
                   </Typography>
-                  {serverMode === "ECO" && (
-                    <Typography
-                      variant="body1"
-                      component="span"
+                  {serverMode === "EKO" && (
+                    <Check
                       sx={{
-                        fontWeight: "bold",
-                        color: "black",
+                        color: "#ff",
                         fontSize: "25px",
                         marginRight: 1,
                       }}
-                    >
-                      AKTIV
-                    </Typography>
+                    />
                   )}
                 </Box>
               }
@@ -369,18 +354,13 @@ export default function LoggedInStart() {
                     Miljöläge
                   </Typography>
                   {serverMode === "ENV" && (
-                    <Typography
-                      variant="body1"
-                      component="span"
+                    <Check
                       sx={{
-                        fontWeight: "bold",
-                        color: "black",
+                        color: "#ff",
                         fontSize: "25px",
                         marginRight: 1,
                       }}
-                    >
-                      AKTIV
-                    </Typography>
+                    />
                   )}
                 </Box>
               }
@@ -565,18 +545,13 @@ export default function LoggedInStart() {
                     Snöläge
                   </Typography>
                   {serverMode === "SNO" && (
-                    <Typography
-                      variant="body1"
-                      component="span"
+                    <Check
                       sx={{
-                        fontWeight: "bold",
-                        color: "black",
+                        color: "#ff",
                         fontSize: "25px",
                         marginRight: 1,
                       }}
-                    >
-                      AKTIV
-                    </Typography>
+                    />
                   )}
                 </Box>
               }
@@ -685,10 +660,10 @@ export default function LoggedInStart() {
         onClose={handleClose}
         aria-labelledby="mode-dialog-title"
       >
-        <DialogTitle id="mode-dialog-title">Valt läge</DialogTitle>
+        <DialogTitle id="mode-dialog-title">Byta styrläge?</DialogTitle>
         <DialogContent>
           <Typography variant="body1" fontWeight="bold" marginTop="5px">
-            {renderDialogContent()}
+            Vill du byta styrningen till {renderDialogModeContent()}?
           </Typography>
         </DialogContent>
         <DialogActions>
@@ -701,7 +676,7 @@ export default function LoggedInStart() {
             }}
           >
             <Button
-              onClick={() => handleModeChange(setServerMode)}
+              onClick={() => handleModeChange(changeMode)}
               color="primary"
               variant="contained"
               sx={{
