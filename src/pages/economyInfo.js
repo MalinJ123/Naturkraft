@@ -29,26 +29,29 @@ const router = useRouter();
       height={contentHeight}
     >
       <Title />
-      <Container sx={{ padding: { xs: 0 }}}>
-        <Card sx={{ backgroundColor: "white", borderRadius: { sm: 0, md: "25px"},}} elevation={2}>
-		<Box sx={{ display: "flex", justifyContent: "flex-start", padding: 2 }}>
-			<Button
-				variant="outlined"
-				startIcon={<ArrowBackIcon />}
-				sx={{color: "black", borderColor: "black", fontWeight: "bold", fontSize: "16px" }}
-				onClick={() => router.push("/loggedinstart")}
-				> 
-				Tillbaka</Button>
+      <Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "60%" },}}>
+        <Card sx={{padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", borderRadius: { sm: 0, sm:"25px"}}} elevation={2} >
+			<Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
+				<Button
+					variant="outlined"
+					startIcon={<ArrowBackIcon />}
+					sx={{color: "black", borderColor: "black", fontWeight: "bold", fontSize: "16px"}}
+					onClick={() => router.push("/loggedinstart")}
+					> 
+					Tillbaka</Button>
+			<Box sx={{ flexGrow: 1, textAlign: {xs: "flex-start", sm: "center", md: "left", }}}>
+			<CardHeader
+				title="Ekonomiläge"
+				titleTypographyProps={{
+					textAlign: {xs: "flex-start", sm: "center", md: "center" },
+					fontWeight: "bold",
+					fontSize: { xs: 28, md: 32 },
+					marginRight: {xs: 0, sm: 15},
+					padding: {xs: 0, sm: 0,}
+				}}
+				/>
 			</Box>
-          <CardHeader
-            title="Ekonomiläge"
-            titleTypographyProps={{
-				textAlign: "center",
-				fontWeight: "bold",
-				fontSize: { xs: 28, md: 32 },
-				marginBottom: 2,
-            }}
-          />
+			</Box>
           <CardContent sx={{ padding: 0 }}>
             <Box
               component="div"
@@ -56,15 +59,13 @@ const router = useRouter();
 			  flexDirection="column"
 			  alignItems="center"
 			  gap={2}
-			  paddingX={{ xs: "10px", md: "30px" }}
-			  paddingBottom="30px"
+			  marginTop={1}
             >
             <Stack spacing={4} direction="column">
 			<Box>
 				<Box
 					component="div"
 					sx={{
-						paddingX: {xs: 0.5, md: 8},
 						color: "black", 
 					}}
 				>
@@ -90,7 +91,7 @@ const router = useRouter();
 				<Box
 					component="div"
 					sx={{
-						paddingX: {xs: 0.5, md: 8},
+						// paddingX: {xs: 0.5, md: 8},
 						color: "black", 
 						marginTop: 2
 					}}
@@ -105,14 +106,14 @@ const router = useRouter();
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{marginleft: 2 }}
+						sx={{marginLeft: {sm: 0, md: 2 }}}
 					>
 						<b>Start:</b> 15% passivt, 70% aktivt
 					</Typography>
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{marginleft: 2 }}
+						sx={{marginLeft: {sm: 0, md: 2 }}}
 					>
 						<b>Resten:</b> 5% passivt, 70% aktivt
 					</Typography>
@@ -121,7 +122,7 @@ const router = useRouter();
 				<Box
 					component="div"
 					sx={{
-						paddingX: {xs: 0.5, md: 8},
+						// paddingX: {xs: 0.5, md: 8},
 						color: "black", 
 					}}
 				>
