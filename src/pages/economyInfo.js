@@ -31,7 +31,7 @@ const router = useRouter();
       <Title />
       <Container sx={{ padding: { xs: 0 }}}>
         <Card sx={{ backgroundColor: "white", borderRadius: { sm: 0, md: "25px"},}} elevation={2}>
-		<Box sx={{ display: "flex", justifyContent: "flex-start", padding: 2 }}>
+		<Box sx={{ display: "flex", justifyContent: "flex-start", padding: 2}}>
 			<Button
 				variant="outlined"
 				startIcon={<ArrowBackIcon />}
@@ -105,14 +105,14 @@ const router = useRouter();
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{marginleft: 2 }}
+						sx={{marginLeft: {sm: 0, md: 2 }}}
 					>
 						<b>Start:</b> 15% passivt, 70% aktivt
 					</Typography>
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{marginleft: 2 }}
+						sx={{marginLeft: {sm: 0, md: 2 }}}
 					>
 						<b>Resten:</b> 5% passivt, 70% aktivt
 					</Typography>

@@ -157,6 +157,7 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
+                      fontSize: { xs: 28, md: 32 },
                       marginTop: serverMode === "EKO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
@@ -346,6 +347,7 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
+                      fontSize: { xs: 28, md: 32 },
                       marginTop: serverMode === "ENV" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
@@ -537,6 +539,7 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
+                      fontSize: { xs: 28, md: 32 },
                       marginTop: serverMode === "SNO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
