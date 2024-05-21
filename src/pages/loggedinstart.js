@@ -42,7 +42,7 @@ export default function LoggedInStart() {
     try {
       const response = await axios.post(
         `${process.env.BACKEND_LOCATION}postMode`,
-        { mode: "KO" }
+        { mode: mode }
       );
       if (response.status === 200) {
         console.log(response.data);
