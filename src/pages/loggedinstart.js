@@ -1,4 +1,3 @@
-import { contentHeight } from "@/components/layout";
 import { useState, useEffect, useCallback } from "react";
 import {
   Box,
@@ -43,7 +42,7 @@ export default function LoggedInStart() {
     try {
       const response = await axios.post(
         `${process.env.BACKEND_LOCATION}postMode`,
-        { mode: mode }
+        { mode: "KO" }
       );
       if (response.status === 200) {
         console.log(response.data);
@@ -108,7 +107,7 @@ export default function LoggedInStart() {
   }, [getMode]);
 
   return (
-    <Box component="section" marginY={8} height={contentHeight}>
+    <Box component="section">
       <Alert variant="filled" severity={systemStatus ? "success" : "error"}>
         <AlertTitle>{systemStatus ? "Inget fel!" : "Kritiskt fel!"}</AlertTitle>
         {systemStatus

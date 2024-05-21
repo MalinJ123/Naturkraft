@@ -11,8 +11,6 @@ import {
   Link,
 } from "@mui/material/";
 
-import { contentHeight } from "@/components/layout";
-
 import glavaEnergyCenterLogo from "@/images/cooperation/Glava_Energy_Center.png";
 import energimyndighetenLogo from "@/images/cooperation/Energimyndigheten.png";
 import sun4EnergyLogo from "@/images/cooperation/Sun4Energy.png";
@@ -35,7 +33,6 @@ export default function Cooperation() {
       gap={12}
       marginTop={10}
       marginBottom={10}
-      height={contentHeight}
     >
       <Title />
       <Container sx={{ padding: { xs: 0 } }}>
