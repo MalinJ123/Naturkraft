@@ -44,7 +44,7 @@ function Start() {
           elevation={6}
         >
           <CardContent>
-            <Box p={12} component="div">
+            <Box p={12} sx={{ p: { xs: 4, sm: 6, md: 8 } }} component="div">
               <Stack spacing={2} direction="column">
                 <Stack spacing={-1} direction="column">
                   <ThemeProvider theme={themePoppins}>
