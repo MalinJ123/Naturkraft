@@ -29,9 +29,9 @@ const router = useRouter();
       height={contentHeight}
     >
       <Title />
-      <Container sx={{ padding: { xs: 0 }}}>
-        <Card sx={{ backgroundColor: "white", borderRadius: { sm: 0, md: "25px"},}} elevation={2}>
-		<Box sx={{ display: "flex", justifyContent: "flex-start", padding: 2}}>
+      <Container sx={{ padding: {xs: 0, sm: 0, md: 0}, width: { xs: "100%", md: "80%" },}}>
+        <Card sx={{padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", borderRadius: { sm: 0, sm:"25px"}}} elevation={2}  >
+	  	<Box sx={{ display: "flex", justifyContent: "flex-start", marginLeft: {sm: 0, md: 2}, marginTop: {sm: 0, md: 2}}}>
 			<Button
 				variant="outlined"
 				startIcon={<ArrowBackIcon />}
@@ -46,9 +46,8 @@ const router = useRouter();
 				textAlign: "center",
 				fontWeight: "bold",
 				fontSize: { xs: 28, md: 32 },
-				marginBottom: 2,
             }}
-          />
+			/>
           <CardContent sx={{ padding: 0 }}>
             <Box
               component="div"
@@ -56,15 +55,15 @@ const router = useRouter();
 			  flexDirection="column"
 			  alignItems="center"
 			  gap={2}
-			  paddingX={{ xs: "10px", md: "30px" }}
-			  paddingBottom="30px"
+			//   paddingX={{ xs: "10px", md: "30px" }}
+			//   paddingBottom="30px"
             >
             <Stack spacing={4} direction="column">
 			<Box>
 				<Box
 					component="div"
 					sx={{
-						paddingX: {xs: 0.5, md: 8},
+						// paddingX: {xs: 0.5, md: 8},
 						color: "black", 
 					}}
 				>
@@ -90,7 +89,7 @@ const router = useRouter();
 				<Box
 					component="div"
 					sx={{
-						paddingX: {xs: 0.5, md: 8},
+						// paddingX: {xs: 0.5, md: 8},
 						color: "black", 
 						marginTop: 2
 					}}
@@ -121,7 +120,7 @@ const router = useRouter();
 				<Box
 					component="div"
 					sx={{
-						paddingX: {xs: 0.5, md: 8},
+						// paddingX: {xs: 0.5, md: 8},
 						color: "black", 
 					}}
 				>
