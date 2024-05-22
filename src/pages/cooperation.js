@@ -1,4 +1,6 @@
 import Image from "next/image";
+import "../styles/image.css";
+
 import {
   Box,
   Container,
@@ -18,7 +20,7 @@ import sweModuleLogo from "@/images/cooperation/Swemodule.png";
 import karlstadsUniversitetLogo from "@/images/cooperation/Karlstads_Universitet.png";
 import lundsUniversitetLogo from "@/images/cooperation/Lunds_Universitet.png";
 import teknikiVastLogo from "@/images/cooperation/TeknikiVast.png";
-import hillringsbergsIFLogo from "@/images/cooperation/Hillringsberg_IF.png";
+// import hillringsbergsIFLogo from "@/images/cooperation/Hillringsberg_IF.png";
 import glavaGymnastikföreningLogo from "@/images/cooperation/Glava_Gymnastikförening.png";
 import sCBurmanAbLogo from "@/images/cooperation/SC_Burman_AB.png";
 import Title from "@/components/title";
@@ -30,20 +32,29 @@ export default function Cooperation() {
       display="flex"
       flexDirection="column"
       justifyContent="center"
-      gap={12}
-      marginTop={10}
+      // gap={12}
       marginBottom={10}
     >
       <Title />
-      <Container sx={{ padding: { xs: 0 } }}>
+      <Container
+        sx={{
+          marginTop: 8,
+          marginBottom: 6,
+          width: "70%",
+          padding: { xs: 0 },
+          "@media (max-width: 800px)": {
+            width: "100%",
+          },
+        }}
+      >
         <Card sx={{ backgroundColor: "opacityLight.main" }} elevation={2}>
           <CardHeader
             title="Samarbetspartners"
             titleTypographyProps={{
               textAlign: "center",
               fontWeight: "bold",
-              fontSize: { xs: 28, md: 32 },
-              marginBottom: 2,
+              fontSize: { xs: 20, md: 25 },
+              // marginBottom: 4,
               marginTop: 4,
             }}
           />
@@ -53,16 +64,16 @@ export default function Cooperation() {
               display="flex"
               flexDirection="column"
               alignItems="center"
-              gap={2}
+              // gap={2}
             >
               <Stack spacing={4} direction="column">
                 <Typography
                   variant="body1"
                   component="p"
-                  lineHeight={1.8}
+                  // lineHeight={1.8}
                   sx={{
                     paddingX: { xs: 0.55, md: 6 },
-                    fontSize: { xs: 18, md: 20 },
+                    fontSize: { xs: 16, md: 18 },
                   }}
                 >
                   <b>Syftet med projektet</b> var att utveckla och testa ett
@@ -75,10 +86,10 @@ export default function Cooperation() {
                 <Typography
                   variant="body1"
                   component="p"
-                  lineHeight={1.8}
+                  // lineHeight={1.8}
                   sx={{
                     paddingX: { xs: 0.55, md: 6 },
-                    fontSize: { xs: 18, md: 20 },
+                    fontSize: { xs: 16, md: 18 },
                   }}
                 >
                   <b>Målet var också</b> att öka medvetenhet hos
@@ -106,21 +117,28 @@ export default function Cooperation() {
               role="button"
               type="button"
               sx={{
-                padding: { xs: 2, md: 3 },
-                fontSize: { xs: 15, md: 20 },
-                color: "black",
+                marginBottom: { xs: 2, md: 4 },
+                fontSize: { xs: 14, md: 16 },
                 fontWeight: "bold",
+                padding: 1,
+                transition: "transform 0.3s ease-in-out",
+                "@media (min-width: 600px)": {
+                  "&:hover": {
+                    transform: "scale(1.1)",
+                  },
+                },
               }}
             >
-              Klicka här om du vill veta mer eller ta del av guiden
+              [Klicka här om du vill veta mer eller ta del av guiden]
             </Link>
           </CardActions>
         </Card>
       </Container>
+
       <Box
         component="section"
         width="100%"
-        sx={{ backgroundColor: "opacityLight.main" }}
+        sx={{ backgroundColor: "rgba(255, 255, 255, 0.80)" }}
       >
         <Stack
           sx={{
@@ -131,71 +149,46 @@ export default function Cooperation() {
               lg: "row",
               xl: "row",
             },
-            width: {},
+            width: "100%",
+            justifyContent: "space-around",
+            marginTop: "1em",
+            marginBottom: "1em",
           }}
           alignItems="center"
-          justifyContent="center"
-          // flexWrap={"wrap"}
-          spacing={4}
-          gap={2}
-          p={4}
+          spacing={3}
+          // gap={2}
+          // p={4}
         >
           <Image
-            className="cooperation__image"
-            src={glavaEnergyCenterLogo}
-            alt="Glava Energy Center logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
-          />
-          <Image
-            className="cooperation__image"
+            className="energimyndigheten"
             src={energimyndighetenLogo}
             alt="Energimyndigheten logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
           />
           <Image
-            className="cooperation__image"
-            src={sun4EnergyLogo}
-            alt="Sun 4 Energy logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
-          />
-          <Image
-            className="cooperation__image"
-            src={sweModuleLogo}
-            alt="SWEMODULE logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
-          />
-          <Image
-            className="cooperation__image"
-            src={karlstadsUniversitetLogo}
-            alt="Karlstads Universitet logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
-          />
-          <Image
-            className="cooperation__image"
+            className="image"
             src={lundsUniversitetLogo}
             alt="Lunds Universitet logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
+          />
+
+          <Image
+            className="image-text"
+            src={sweModuleLogo}
+            alt="SWEMODULE logotyp"
+          />
+          <Image
+            className="image"
+            src={karlstadsUniversitetLogo}
+            alt="Karlstads Universitet logotyp"
+          />
+          <Image
+            className="swemodule"
+            src={sun4EnergyLogo}
+            alt="Sun 4 Energy logotyp"
           />
         </Stack>
+
         <Stack
+          className="stack-column"
           sx={{
             flexDirection: {
               xs: "column",
@@ -204,61 +197,40 @@ export default function Cooperation() {
               lg: "row",
               xl: "row",
             },
+            width: "100%",
+            justifyContent: "space-around",
           }}
           alignItems="center"
-          justifyContent="center"
-          flexWrap="wrap"
           spacing={4}
           gap={2}
-          p={4}
+          // p={4}
         >
           <Image
-            className="cooperation__image"
-            src={teknikiVastLogo}
-            alt="Teknik i Väst logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
-          />
-          <Box
-            component="div"
-            display="flex"
-            flexDirection="column"
-            alignContent="center"
-            justifyContent="center"
-            width="200px"
-          >
-            <Typography variant="body1" textAlign="center" component="p">
-              Teknik o Gårdstjänster
-            </Typography>
-          </Box>
-          <Image
-            className="cooperation__image"
-            src={hillringsbergsIFLogo}
-            alt="Hillringsbergs IF logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
-          />
-          <Image
-            className="cooperation__image"
+            className="image"
             src={glavaGymnastikföreningLogo}
             alt="Glava Gymnastikförening"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
+          />
+          <Box className="teknik-loggo">
+            <Typography variant="body1">
+              <b>Teknik o Gårdstjänster</b>
+            </Typography>
+          </Box>
+
+          <Image
+            className="image-glavaenergy"
+            src={glavaEnergyCenterLogo}
+            alt="Glava Engergy Center logotyp"
+          />
+
+          <Image
+            className="teknikvast"
+            src={teknikiVastLogo}
+            alt="Teknik i Väst logotyp"
           />
           <Image
-            className="cooperation__image"
+            className="sCbruma"
             src={sCBurmanAbLogo}
             alt="SC Burman AB logotyp"
-            sx={{
-              width: "auto",
-              height: "auto",
-            }}
           />
         </Stack>
       </Box>

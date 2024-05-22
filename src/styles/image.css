@@ -1,0 +1,77 @@
+.image {
+  /* border: 2px solid hotpink; */
+  width: 6em;
+  height: auto;
+}
+.image-glavaenergy {
+  width: 8em;
+  height: auto;
+}
+.teknik-loggo {
+  font-size: 23px;
+  border: 2px solid rgb(179, 177, 177);
+}
+.teknikvast,
+.sCbruma,
+.swemodule,
+.energimyndigheten,
+.image-text {
+  width: 10em;
+  height: auto;
+  /* border: 2px solid rgb(105, 170, 255); */
+}
+
+@media screen and (max-width: 1000px) {
+  .image {
+    /* border: 2px solid rgb(120, 255, 105); */
+    width: 5em;
+    height: auto;
+  }
+  .image-text {
+    width: 9em;
+    height: auto;
+    /* border: 2px solid rgb(105, 170, 255); */
+  }
+
+  .image-glavaenergy {
+    width: 6em;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .image {
+    /* border: 2px solid hotpink; */
+    width: 6em;
+    height: auto;
+  }
+  .image-glavaenergy {
+    width: 8em;
+    height: auto;
+    /* border:2px solid yellow; */
+  }
+  .teknik-loggo {
+    font-size: 23px;
+  }
+  .image-text {
+    width: 10em;
+    height: 3em;
+    /* border: 2px solid rgb(105, 170, 255); */
+  }
+
+ 
+  .energimyndigheten {
+    width: 10em;
+    height: 3em;
+  }
+
+  .teknikvast {
+    width: 8em;
+    height: 2em;
+  }
+  .swemodule,
+  .sCbruma {
+    width: 12em;
+    height: 7em;
+  }
+}

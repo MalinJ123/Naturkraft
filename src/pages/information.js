@@ -13,6 +13,17 @@ import {
 
 export default function Information() {
   return (
+    <Container
+    sx={{
+      marginTop: 8,
+      marginBottom: 6,
+      width: "70%",
+      padding: { xs: 0 },
+      "@media (max-width: 600px)": {
+        width: "100%",
+      },
+    }}
+  >
     <Box
       component="section"
       display="flex"
@@ -27,7 +38,7 @@ export default function Information() {
             title="Vill du veta mer"
             titleTypographyProps={{
               textAlign: "center",
-              fontSize: { xs: 30, md: 32 },
+              fontSize: { xs: 20, md: 25 },
               marginTop: 4,
               marginBottom: 2,
               fontWeight: "bold",
@@ -50,7 +61,7 @@ export default function Information() {
                   style={{ fontWeight: "bolder" }}
                   sx={{
                     paddingX: { xs: 0.5, md: 6 },
-                    fontSize: { xs: 18, md: 20 },
+                    fontSize: { xs: 16, md: 18 },
                     color: "black",
                   }}
                 >
@@ -66,7 +77,7 @@ export default function Information() {
                   component="p"
                   sx={{
                     paddingX: { xs: 0.5, md: 6 },
-                    fontSize: { xs: 16, md: 18 },
+                    fontSize: { xs: 14, md: 18 },
                     color: "black",
                     fontWeight: 500,
                   }}
@@ -83,7 +94,7 @@ export default function Information() {
                   component="p"
                   sx={{
                     paddingX: { xs: 0.5, md: 6 },
-                    fontSize: { xs: 18, md: 20 },
+                    fontSize: { xs: 16, md: 18 },
                     color: "black",
                     fontWeight: 500,
                   }}
@@ -101,7 +112,7 @@ export default function Information() {
                   style={{ fontWeight: "bold" }}
                   sx={{
                     paddingX: { xs: 0.5, md: 6 },
-                    fontSize: { xs: 18, md: 20 },
+                    fontSize: { xs: 16, md: 18 },
                     color: "black",
                   }}
                 >
@@ -114,7 +125,7 @@ export default function Information() {
                   component="p"
                   sx={{
                     paddingX: { xs: 0.5, md: 6 },
-                    fontSize: { xs: 18, md: 21 },
+                    fontSize: { xs: 16, md: 18 },
                   }}
                 >
                   Vill du veta mer eller ta del av guiden? Mer information om
@@ -123,6 +134,7 @@ export default function Information() {
                 </Typography>
               </Stack>
             </Box>
+            
             <CardActions
               className="bold"
               sx={{
@@ -139,20 +151,26 @@ export default function Information() {
                 role="button"
                 type="button"
                 sx={{
-                  marginBottom: { xs: 2, md: 3 },
-                  fontSize: { xs: 16, md: 20 },
-                  color: "black",
+                  marginBottom: { xs: 2, md: 4 },
+                  fontSize: { xs: 14, md: 16 },
                   fontWeight: "bold",
                   padding: 1,
+                  transition: 'transform 0.3s ease-in-out',
+                  '@media (min-width: 600px)': {
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    }, 
+                  },
                 }}
               >
                 {" "}
-                https://glavaenergycenter.se/sv/
+                https://glavaenergycenter.se/sv/ 
               </Link>
             </CardActions>
           </CardContent>
         </Card>
       </Container>
     </Box>
+    </Container>
   );
 }
