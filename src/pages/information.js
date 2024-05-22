@@ -19,7 +19,7 @@ export default function Information() {
       marginBottom: 6,
       width: "70%",
       padding: { xs: 0 },
-      "@media (max-width: 600px)": {
+      "@media (max-width: 800px)": {
         width: "100%",
       },
     }}
@@ -156,14 +156,13 @@ export default function Information() {
                   fontWeight: "bold",
                   padding: 1,
                   transition: 'transform 0.3s ease-in-out',
-                  '@media (min-width: 600px)': {
+                  '@media (min-width: 900px)': {
                     '&:hover': {
                       transform: 'scale(1.1)',
                     }, 
                   },
                 }}
               >
-                {" "}
                 https://glavaenergycenter.se/sv/ 
               </Link>
             </CardActions>

@@ -20,7 +20,6 @@ import sweModuleLogo from "@/images/cooperation/Swemodule.png";
 import karlstadsUniversitetLogo from "@/images/cooperation/Karlstads_Universitet.png";
 import lundsUniversitetLogo from "@/images/cooperation/Lunds_Universitet.png";
 import teknikiVastLogo from "@/images/cooperation/TeknikiVast.png";
-// import hillringsbergsIFLogo from "@/images/cooperation/Hillringsberg_IF.png";
 import glavaGymnastikföreningLogo from "@/images/cooperation/Glava_Gymnastikförening.png";
 import sCBurmanAbLogo from "@/images/cooperation/SC_Burman_AB.png";
 import Title from "@/components/title";
@@ -122,7 +121,7 @@ export default function Cooperation() {
                 fontWeight: "bold",
                 padding: 1,
                 transition: "transform 0.3s ease-in-out",
-                "@media (min-width: 600px)": {
+                "@media (min-width: 900px)": {
                   "&:hover": {
                     transform: "scale(1.1)",
                   },
@@ -144,7 +143,7 @@ export default function Cooperation() {
           sx={{
             flexDirection: {
               xs: "column",
-              sm: "column",
+              sm: "row",
               md: "row",
               lg: "row",
               xl: "row",
@@ -192,7 +191,7 @@ export default function Cooperation() {
           sx={{
             flexDirection: {
               xs: "column",
-              sm: "column",
+              sm: "row",
               md: "row",
               lg: "row",
               xl: "row",
