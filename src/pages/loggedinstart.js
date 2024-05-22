@@ -131,11 +131,11 @@ export default function LoggedInStart() {
         justifyContent="center"
         gap={6}
       >
-        <Container sx={{ padding: { xs: 0 } }}>
+        <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "60%" }}}>
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: { sm: 0, md: "56px" },
+              borderRadius: { sm: 0, md: "25px" },
               backgroundColor:
                 serverMode === "EKO" ? "rgba(162, 214, 163, 0.9)" : undefined,
               border: serverMode === "EKO" ? "3px solid green" : undefined,
@@ -156,7 +156,7 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
-                      fontSize: { xs: 28, md: 32 },
+                      fontSize: { xs: 20, md: 24 },
                       marginTop: serverMode === "EKO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
@@ -175,9 +175,9 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ marginTop: 4 }}
+              sx={{ marginTop: 4, padding: 0 }}
             />
-            <CardContent sx={{ padding: 0 }}>
+            <CardContent sx={{ padding: 0}}>
               <Box
                 component="div"
                 display="flex"
@@ -185,17 +185,14 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                paddingX={{ xs: "10px", md: "30px" }}
-                paddingBottom="30px"
               >
-                <Stack spacing={4} direction="column">
-                  <Box>
+                <Stack spacing={4} direction="column" >
+                  <Box sx={{padding: {xs: 2, sm: 3}}}>
                     <Typography
                       variant="body1"
                       component="p"
                       style={{ fontWeight: "bolder" }}
                       sx={{
-                        paddingX: { xs: 0.5, md: 8 },
                         fontSize: { xs: 16, md: 18 },
                         color: "black",
                       }}
@@ -206,7 +203,7 @@ export default function LoggedInStart() {
                     </Typography>
                     <List>
                       <ListItem
-                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 } }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -227,7 +224,7 @@ export default function LoggedInStart() {
                         />
                       </ListItem>
                       <ListItem
-                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 } }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -254,7 +251,7 @@ export default function LoggedInStart() {
                       display: "flex",
                       justifyContent: "space-between",
                     }}
-                  >
+                    >
                     <CardActions
                       className="bold"
                       sx={{
@@ -277,7 +274,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: 1.5,
+                            padding: {xs: 1, sm: 1.5},
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -321,11 +318,11 @@ export default function LoggedInStart() {
             </CardContent>
           </Card>
         </Container>
-        <Container sx={{ padding: { xs: 0 } }}>
+        <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "60%" }}}>
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: { sm: 0, md: "56px" },
+              borderRadius: { sm: 0, md: "25px" },
               backgroundColor:
                 serverMode === "ENV" ? "rgba(162, 214, 163, 0.9)" : undefined,
               border: serverMode === "ENV" ? "3px solid green" : undefined,
@@ -346,7 +343,7 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
-                      fontSize: { xs: 28, md: 32 },
+                      fontSize: { xs: 20, md: 24 },
                       marginTop: serverMode === "ENV" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
@@ -365,7 +362,7 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ marginTop: 4 }}
+              sx={{ marginTop: 4, padding: 0}}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -375,17 +372,14 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                paddingX={{ xs: "10px", md: "30px" }}
-                paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
-                  <Box>
+                  <Box sx={{padding: {xs: 2, sm: 3}}}>
                     <Typography
                       variant="body1"
                       component="p"
                       style={{ fontWeight: "bolder" }}
                       sx={{
-                        paddingX: { xs: 0.5, md: 8 },
                         fontSize: { xs: 16, md: 18 },
                         color: "black",
                       }}
@@ -399,7 +393,7 @@ export default function LoggedInStart() {
                     </Typography>
                     <List>
                       <ListItem
-                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 }  }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -420,7 +414,7 @@ export default function LoggedInStart() {
                         />
                       </ListItem>
                       <ListItem
-                        sx={{ padding: 0, marginLeft: { sm: 0, md: 8 } }}
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 } }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -470,7 +464,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: 1.5,
+                            padding: {xs: 1, sm: 1.5},
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -513,11 +507,11 @@ export default function LoggedInStart() {
             </CardContent>
           </Card>
         </Container>
-        <Container sx={{ padding: { xs: 0 } }}>
+        <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "60%" } }}>
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: { sm: 0, md: "56px" },
+              borderRadius: { sm: 0, md: "25px" },
               backgroundColor:
                 serverMode === "SNO" ? "rgba(162, 214, 163, 0.9)" : undefined,
               border: serverMode === "SNO" ? "3px solid green" : undefined,
@@ -538,10 +532,11 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
-                      fontSize: { xs: 28, md: 32 },
+                      fontSize: { xs: 20, md: 24 },
                       marginTop: serverMode === "SNO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
+                      marginTop: 0, 
                     }}
                   >
                     Snöläge
@@ -557,7 +552,7 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ marginTop: 4 }}
+              sx={{ marginTop: 4, padding: 0}}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -567,16 +562,14 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                paddingX={{ xs: "10px", md: "30px" }}
-                paddingBottom="30px"
               >
                 <Stack spacing={4} direction="column">
+                  <Box sx={{padding: {xs: 2, sm: 3}}}>
                   <Typography
                     variant="body1"
                     component="p"
                     style={{ fontWeight: "bolder" }}
                     sx={{
-                      paddingX: { xs: 0.5, md: 8 },
                       fontSize: { xs: 16, md: 18 },
                       color: "black",
                     }}
@@ -585,6 +578,7 @@ export default function LoggedInStart() {
                     Belysningen kommer att dämpas så ljuset inte bländar pga
                     snöns reflektion.
                   </Typography>
+                  </Box>
                   <Box
                     sx={{
                       display: "flex",
@@ -613,7 +607,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: 1.5,
+                            padding: {xs: 1, sm: 1.5},
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
