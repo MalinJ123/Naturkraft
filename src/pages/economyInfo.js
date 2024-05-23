@@ -29,7 +29,12 @@ const router = useRouter();
     >
       <Title />
       <Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "60%" },}}>
-        <Card sx={{padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", borderRadius: { sm: 0, sm:"25px"}}} elevation={2} >
+        <Card 
+			sx={{
+				padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", 
+				borderRadius: { sm: 0, sm:"25px"}
+			}} 
+				elevation={2} >
 			<Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
 				<Button
 					variant="outlined"
@@ -119,14 +124,19 @@ const router = useRouter();
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{marginLeft: {sm: 0, md: 2 }, fontSize: {xs: 15, md: 15}}}
+						sx={{
+							marginLeft: {sm: 0, md: 2 }, 
+							fontSize: {xs: 15, md: 15}}}
 					>
 						<b>Start:</b> 15% passivt, 70% aktivt
 					</Typography>
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{marginLeft: {sm: 0, md: 2 } ,fontSize: {xs: 15, md: 15}}}
+						sx={{
+							marginLeft: {sm: 0, md: 2 },
+							fontSize: {xs: 15, md: 15}
+						}}
 					>
 						<b>Resten:</b> 5% passivt, 70% aktivt
 					</Typography>

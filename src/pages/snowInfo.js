@@ -34,22 +34,35 @@ import {
 				  <Button
 					  variant="outlined"
 					  startIcon={<ArrowBackIcon />}
-					  sx={{color: "black", borderColor: "black", fontWeight: "bold", fontSize: "16px"}}
+					  sx={{
+						color: "black", 
+						borderColor: "black", 
+						fontWeight: "bold", 
+						fontSize: "14px"
+					}}
 					  onClick={() => router.push("/loggedinstart")}
 					  > 
-					  Tillbaka</Button>
-			  <Box sx={{ flexGrow: 1, textAlign: {xs: "flex-start", sm: "center", md: "left", }}}>
-			  <CardHeader
-				  title="Snöläge"
-				  titleTypographyProps={{
-					  textAlign: {xs: "flex-start", sm: "center", md: "center" },
-					  fontWeight: "bold",
-					  fontSize: { xs: 28, md: 32 },
-					  marginRight: {xs: 0, sm: 15},
-					  padding: {xs: 0, sm: 0,}
-				  }}
-				  />
-			  </Box>
+					  <Box sx={{display: {xs: "none", sm: "none", md: "block"}}}>
+						Tillbaka
+						</Box>
+					  </Button>
+			  		<Box 
+						sx={{ 
+						flexGrow: 1, 
+						textAlign: {xs: "flex-start", sm: "center", md: "left", }
+						}}
+					>
+					<CardHeader
+					title="Snöläge"
+					titleTypographyProps={{
+						textAlign: {xs: "flex-start", sm: "center", md: "center" },
+						fontWeight: "bold",
+						fontSize: { xs: 20, md: 24 },
+						marginRight: {xs: 0, sm: 15},
+						padding: {xs: 0, sm: 0,}
+					  }}
+				  	/>
+			  		</Box>
 			  </Box>
 			<CardContent sx={{ padding: 0 }}>
 			  <Box
@@ -71,7 +84,11 @@ import {
 				  <Typography
 					  variant="body1"
 					  component="p"
-					  sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 18, md: 20 }, }}
+					  sx={{ 
+						fontWeight: "bolder", 
+						marginBottom: 0.5, 
+						fontSize: { xs: 16, md: 18 } 
+					}}
 				  >
 					  Beskrivning:
 				  </Typography>
@@ -79,7 +96,7 @@ import {
 					  variant="body1"
 					  component="p"
 					  sx={{
-					  fontSize: { xs: 16, md: 18 },
+					  fontSize: { xs: 14, md: 16 },
 					  color: "black",
 					  }}
 					  >
@@ -97,21 +114,27 @@ import {
 					  <Typography
 						  variant="body1"
 						  component="p"
-						  sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 18, md: 20 } }}
+						  sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 16, md: 18 } }}
 					  >
 						  Belysning:
 					  </Typography>
 					  <Typography
 						  variant="body1"
 						  component="p"
-						  sx={{marginLeft: {sm: 0, md: 2 }}}
+						  sx={{
+							marginLeft: {sm: 0, md: 2 }, 
+						  	fontSize: {xs: 15, md: 15}
+						}}
 					  >
 						  <b>Start:</b> 15% passivt, 50% aktivt
 					  </Typography>
 					  <Typography
 						  variant="body1"
 						  component="p"
-						  sx={{marginLeft: {sm: 0, md: 2 }}}
+						  sx={{
+							marginLeft: {sm: 0, md: 2 },
+						  	fontSize: {xs: 15, md: 15}
+						}}
 					  >
 						  <b>Resten:</b> 5% passivt, 50% aktivt
 					  </Typography>
@@ -128,7 +151,7 @@ import {
 					   color="black"
 					   gutterBottom
 					   sx={{
-						 fontSize: { xs: 18, md: 20 },
+						 fontSize: { xs: 16, md: 18 },
 						 marginBottom: 0,
 						 color: "black",
 						 fontWeight: "bolder"
@@ -141,7 +164,7 @@ import {
 					   component="p"
 					   color="black"
 					   sx={{
-						 fontSize: { xs: 16, md: 18 },
+						 fontSize: { xs: 14, md: 16 },
 						 color: "black",
 						 marginBottom: 2
 					   }}
