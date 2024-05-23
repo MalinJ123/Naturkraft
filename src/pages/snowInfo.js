@@ -28,7 +28,7 @@ import {
 		marginBottom={6}
 	  >
 		<Title />
-		<Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "60%" },}}>
+		<Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "55%" },}}>
 		  <Card sx={{padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", borderRadius: { sm: 0, sm:"25px"}}} elevation={2} >
 			  <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
 				  <Button
@@ -166,7 +166,6 @@ import {
 					   sx={{
 						 fontSize: { xs: 14, md: 16 },
 						 color: "black",
-						 marginBottom: 2
 					   }}
 				  >
 					  Start är gruppen med lampor som inkluderar den första lampan vid starten av spåret och de första 5 lamporna i varje riktning.
