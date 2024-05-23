@@ -42,7 +42,7 @@ export default function LoggedInStart() {
   const handleModeChange = async (mode) => {
     try {
       const response = await axios.post(
-        `${process.env.BACKEND_LOCATION}postMode`,
+        `${process.env.BACKEND_LOCATION}/pie/postMode`,
         { mode: mode }
       );
       if (response.status === 200) {
@@ -90,7 +90,7 @@ export default function LoggedInStart() {
   const getMode = useCallback(async () => {
     try {
       const response = await axios.get(
-        `${process.env.BACKEND_LOCATION}getMode`
+        `${process.env.BACKEND_LOCATION}/pie/getMode`
       );
       if (response.status === 200) {
         return setServerMode(response.data);
@@ -133,7 +133,12 @@ export default function LoggedInStart() {
         gap={6}
         height={contentHeight}
       >
-        <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "55%" }}}>
+        <Container
+          sx={{
+            padding: { xs: 0 },
+            width: { xs: "100%", md: "80%", lg: "55%" },
+          }}
+        >
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
@@ -179,7 +184,7 @@ export default function LoggedInStart() {
               }
               sx={{ marginTop: 4, padding: 0 }}
             />
-            <CardContent sx={{ padding: 0}}>
+            <CardContent sx={{ padding: 0 }}>
               <Box
                 component="div"
                 display="flex"
@@ -188,8 +193,8 @@ export default function LoggedInStart() {
                 alignItems="center"
                 gap={2}
               >
-                <Stack spacing={4} direction="column" >
-                  <Box sx={{padding: {xs: 2, sm: 3}}}>
+                <Stack spacing={4} direction="column">
+                  <Box sx={{ padding: { xs: 2, sm: 3 } }}>
                     <Typography
                       variant="body1"
                       component="p"
@@ -251,16 +256,19 @@ export default function LoggedInStart() {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: serverMode === "EKO" ? {xs: "flex-end", sm: "flex-end"} : {xs: "center", sm:"flex-end", md:"flex-end"},
+                      justifyContent:
+                        serverMode === "EKO"
+                          ? { xs: "flex-end", sm: "flex-end" }
+                          : { xs: "center", sm: "flex-end", md: "flex-end" },
                     }}
-                    >
+                  >
                     <CardActions
                       className="bold"
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",
-                        marginX: {xs: 2, sm: 2, md: 0},
-                        padding: 0, 
+                        marginX: { xs: 2, sm: 2, md: 0 },
+                        padding: 0,
                       }}
                     >
                       {serverMode !== "EKO" && (
@@ -275,7 +283,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: { xs: 1, sm: 1.5 },
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -290,11 +298,11 @@ export default function LoggedInStart() {
                     <CardActions
                       className="bold"
                       sx={{
-                        mx: {xs: 2, sm: 1, md: 3},
-                        padding: 0
+                        mx: { xs: 2, sm: 1, md: 3 },
+                        padding: 0,
                       }}
                     >
-                    <Button
+                      <Button
                         component="button"
                         variant="outlined"
                         color="primary"
@@ -304,17 +312,18 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
-                          borderColor: serverMode === "EKO" ? "black" : undefined,
+                          padding: { xs: 1, sm: 1.5 },
+                          borderColor:
+                            serverMode === "EKO" ? "black" : undefined,
                           color: serverMode === "EKO" ? "black" : undefined,
                           "&:hover": {
                             color: "black",
                           },
                         }}
-                      onClick={() => router.push("/economyInfo")}
-                    >
-                      Mer info
-                    </Button>
+                        onClick={() => router.push("/economyInfo")}
+                      >
+                        Mer info
+                      </Button>
                     </CardActions>
                   </Box>
                 </Stack>
@@ -322,7 +331,12 @@ export default function LoggedInStart() {
             </CardContent>
           </Card>
         </Container>
-        <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "55%" }}}>
+        <Container
+          sx={{
+            padding: { xs: 0 },
+            width: { xs: "100%", md: "80%", lg: "55%" },
+          }}
+        >
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
@@ -366,7 +380,7 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ marginTop: 4, padding: 0}}
+              sx={{ marginTop: 4, padding: 0 }}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -378,7 +392,7 @@ export default function LoggedInStart() {
                 gap={2}
               >
                 <Stack spacing={4} direction="column">
-                  <Box sx={{padding: {xs: 2, sm: 3}}}>
+                  <Box sx={{ padding: { xs: 2, sm: 3 } }}>
                     <Typography
                       variant="body1"
                       component="p"
@@ -397,7 +411,7 @@ export default function LoggedInStart() {
                     </Typography>
                     <List>
                       <ListItem
-                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 }  }}
+                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 } }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -443,7 +457,10 @@ export default function LoggedInStart() {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: serverMode === "ENV" ? {xs: "flex-end", sm: "flex-end"} : {xs: "center", sm:"flex-end", md:"flex-end"},
+                      justifyContent:
+                        serverMode === "ENV"
+                          ? { xs: "flex-end", sm: "flex-end" }
+                          : { xs: "center", sm: "flex-end", md: "flex-end" },
                     }}
                   >
                     <CardActions
@@ -451,8 +468,8 @@ export default function LoggedInStart() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",
-                        marginX: {xs: 2, sm: 2, md: 0},
-                        padding: 0, 
+                        marginX: { xs: 2, sm: 2, md: 0 },
+                        padding: 0,
                       }}
                     >
                       {serverMode !== "ENV" && (
@@ -467,7 +484,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: { xs: 1, sm: 1.5 },
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -482,8 +499,8 @@ export default function LoggedInStart() {
                     <CardActions
                       className="bold"
                       sx={{
-                        mx: {xs: 2, sm: 1, md: 3},
-                        padding: 0, 
+                        mx: { xs: 2, sm: 1, md: 3 },
+                        padding: 0,
                       }}
                     >
                       <Button
@@ -496,17 +513,18 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
-                          borderColor: serverMode === "ENV" ? "black" : undefined,
+                          padding: { xs: 1, sm: 1.5 },
+                          borderColor:
+                            serverMode === "ENV" ? "black" : undefined,
                           color: serverMode === "ENV" ? "black" : undefined,
                           "&:hover": {
                             color: "black",
                           },
                         }}
-                      // onClick={() => router.push("/economyInfo")}
-                    >
-                      Mer info
-                    </Button>
+                        // onClick={() => router.push("/economyInfo")}
+                      >
+                        Mer info
+                      </Button>
                     </CardActions>
                   </Box>
                 </Stack>
@@ -514,7 +532,12 @@ export default function LoggedInStart() {
             </CardContent>
           </Card>
         </Container>
-        <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "55%" } }}>
+        <Container
+          sx={{
+            padding: { xs: 0 },
+            width: { xs: "100%", md: "80%", lg: "55%" },
+          }}
+        >
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
@@ -543,7 +566,7 @@ export default function LoggedInStart() {
                       marginTop: serverMode === "SNO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
-                      marginTop: 0, 
+                      marginTop: 0,
                     }}
                   >
                     Snöläge
@@ -559,7 +582,7 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ marginTop: 4, padding: 0}}
+              sx={{ marginTop: 4, padding: 0 }}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -571,25 +594,28 @@ export default function LoggedInStart() {
                 gap={2}
               >
                 <Stack spacing={4} direction="column">
-                  <Box sx={{padding: {xs: 2, sm: 3}}}>
-                  <Typography
-                    variant="body1"
-                    component="p"
-                    style={{ fontWeight: "bolder" }}
-                    sx={{
-                      fontSize: { xs: 16, md: 18 },
-                      color: "black",
-                    }}
-                  >
-                    Detta läge är ekonomiläge anpassat för när det kommit snö.
-                    Belysningen kommer att dämpas så ljuset inte bländar pga
-                    snöns reflektion.
-                  </Typography>
+                  <Box sx={{ padding: { xs: 2, sm: 3 } }}>
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      style={{ fontWeight: "bolder" }}
+                      sx={{
+                        fontSize: { xs: 16, md: 18 },
+                        color: "black",
+                      }}
+                    >
+                      Detta läge är ekonomiläge anpassat för när det kommit snö.
+                      Belysningen kommer att dämpas så ljuset inte bländar pga
+                      snöns reflektion.
+                    </Typography>
                   </Box>
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: serverMode ==="SNO" ? {xs: "flex-end", sm: "flex-end", md: "flex-end"} : {xs: "center", sm:"flex-end", md:"flex-end"},
+                      justifyContent:
+                        serverMode === "SNO"
+                          ? { xs: "flex-end", sm: "flex-end", md: "flex-end" }
+                          : { xs: "center", sm: "flex-end", md: "flex-end" },
                     }}
                   >
                     <CardActions
@@ -597,7 +623,7 @@ export default function LoggedInStart() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",
-                        marginX: {xs: 2, sm: 2, md: 0},
+                        marginX: { xs: 2, sm: 2, md: 0 },
                         padding: 0,
                       }}
                     >
@@ -613,7 +639,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: { xs: 1, sm: 1.5 },
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -628,11 +654,11 @@ export default function LoggedInStart() {
                     <CardActions
                       className="bold"
                       sx={{
-                        mx: {xs: 2, sm: 1, md: 3},
-                        padding: 0
+                        mx: { xs: 2, sm: 1, md: 3 },
+                        padding: 0,
                       }}
                     >
-                     <Button
+                      <Button
                         component="button"
                         variant="outlined"
                         color="primary"
@@ -642,17 +668,18 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
-                          borderColor: serverMode === "SNO" ? "black" : undefined,
+                          padding: { xs: 1, sm: 1.5 },
+                          borderColor:
+                            serverMode === "SNO" ? "black" : undefined,
                           color: serverMode === "SNO" ? "black" : undefined,
                           "&:hover": {
                             color: "black",
                           },
                         }}
-                      // onClick={() => router.push("/economyInfo")}
-                    >
-                      Mer info
-                    </Button>
+                        // onClick={() => router.push("/economyInfo")}
+                      >
+                        Mer info
+                      </Button>
                     </CardActions>
                   </Box>
                 </Stack>

@@ -1,8 +1,11 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const AuthInstance = axios.create({
-  baseURL: `${process.env.BACKEND_LOCATION}auth/callback/credentials`,
+  baseURL: process.env.BACKEND_LOCATION,
   headers: {
     "Content-Type": "application/json",
   },

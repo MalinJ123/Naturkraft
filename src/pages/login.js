@@ -1,5 +1,3 @@
-import dotenv from "dotenv";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
@@ -18,8 +16,6 @@ import { Error as ErrorIcon, Login as LoginIcon } from "@mui/icons-material/";
 import Title from "@/components/title";
 import AuthInstance from "@/auth/instance";
 import { darkTheme } from "@/styles/darkTheme";
-
-dotenv.config();
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -48,16 +44,10 @@ export default function Login() {
     }
 
     try {
-      const response = await AuthInstance.post("", {
+      const response = await AuthInstance.post("/auth/signin", {
         username,
         password: userPassword,
       });
-
-      if (response.status === 200) {
-        router.push("/loggedinstart");
-      } else {
-        console.log("Något gick snett!", response.data.message);
-      }
     } catch (error) {
       throw new Error(error);
     }
