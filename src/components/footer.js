@@ -34,7 +34,7 @@ function Footer() {
             xs: 12,
             sm: 12,
             md: 14,
-            lg: 18,
+            lg: 16,
           },
         },
       }}

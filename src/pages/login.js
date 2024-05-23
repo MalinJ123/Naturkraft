@@ -77,26 +77,38 @@ export default function Login() {
             md: "46%",
             lg: "38%",
             xl: "34%",
+                     display:"flex",
+            justifyContent:"center",
+            alignContent:"center"
           },
           padding: 0,
         }}
       >
         <Card
           sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.90)",
+            backgroundColor: "rgba(0, 0, 0, 0.97)",
             borderRadius: 5,
             paddingY: 1,
-            width: "100%",
+            width: {
+              xs: "100%",  
+              sm: "70%",   
+              "@media (min-width:400px) and (max-width:600px)": {
+                width: "70%",
+              },
+            },
+       
             borderRadius: {
-              xs: 0,
+              xs: 5,
             },
           }}
           elevation={6}
         >
           <CardHeader
+          
             title="Logga in"
             titleTypographyProps={{
               textAlign: "center",
+              fontFamily: 'Jura, sans-serif',
             }}
           />
           <CardContent>
@@ -121,7 +133,17 @@ export default function Login() {
                   id="username__input"
                   maxLength={24}
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value)} 
+                  InputProps={{
+                    style: {
+                      fontFamily: 'Jura, sans-serif',
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      fontFamily: 'Jura, sans-serif',
+                    },
+                  }}
                 />
               </FormControl>
               <FormControl>
@@ -136,6 +158,16 @@ export default function Login() {
                   maxLength={32}
                   value={userPassword}
                   onChange={(e) => setUserPassword(e.target.value)}
+                  InputProps={{
+                    style: {
+                      fontFamily: 'Jura, sans-serif',
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      fontFamily: 'Jura, sans-serif',
+                    },
+                  }}
                 />
               </FormControl>
               <Button
@@ -158,13 +190,18 @@ export default function Login() {
                     : "info"
                 }
                 sx={{
-                  marginTop: 1,
+                  fontFamily: 'Jura, sans-serif',
+                  marginTop: 2,
                   fontSize: {
-                    xs: "1rem",
-                    sm: "1.2rem",
+                    xs: "12px",
+                    sm: "14px",
+                  },
+                  width: {
+                    xs: "50%",  
+                    sm: "70%",   
                   },
                   borderRadius: "8.5px",
-                  width: "45%",
+                  fontWeight:"bold"
                 }}
               >
                 Logga in
