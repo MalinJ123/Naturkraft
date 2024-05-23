@@ -16,6 +16,7 @@ import {
 
 import { Error as ErrorIcon, Login as LoginIcon } from "@mui/icons-material/";
 import Title from "@/components/title";
+import AuthInstance from "@/auth/instance";
 import { darkTheme } from "@/styles/darkTheme";
 
 dotenv.config();
@@ -47,13 +48,10 @@ export default function Login() {
     }
 
     try {
-      const response = await axios.post(
-        `${process.env.BACKEND_LOCATION}login`,
-        {
-          username,
-          password: userPassword,
-        }
-      );
+      const response = await AuthInstance.post("", {
+        username,
+        password: userPassword,
+      });
 
       if (response.status === 200) {
         router.push("/loggedinstart");
