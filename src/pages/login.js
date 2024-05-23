@@ -77,6 +77,9 @@ export default function Login() {
             md: "46%",
             lg: "38%",
             xl: "34%",
+                     display:"flex",
+            justifyContent:"center",
+            alignContent:"center"
           },
           padding: 0,
         }}
@@ -86,7 +89,14 @@ export default function Login() {
             backgroundColor: "rgba(0, 0, 0, 0.90)",
             borderRadius: 5,
             paddingY: 1,
-            width: "100%",
+            width: {
+              xs: "100%",  
+              sm: "70%",   
+              "@media (min-width:400px) and (max-width:600px)": {
+                width: "70%",
+              },
+            },
+       
             borderRadius: {
               xs: 0,
             },
@@ -158,13 +168,17 @@ export default function Login() {
                     : "info"
                 }
                 sx={{
-                  marginTop: 1,
+                  marginTop: 2,
                   fontSize: {
-                    xs: "1rem",
-                    sm: "1.2rem",
+                    xs: "12px",
+                    sm: "14px",
+                  },
+                  width: {
+                    xs: "50%",  
+                    sm: "70%",   
                   },
                   borderRadius: "8.5px",
-                  width: "45%",
+                  fontWeight:"bold"
                 }}
               >
                 Logga in
