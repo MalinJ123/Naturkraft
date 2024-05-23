@@ -24,9 +24,8 @@ const router = useRouter();
       flexDirection="column"
       justifyContent="center"
       gap={12}
-      marginTop={10}
-      marginBottom={10}
-      height={contentHeight}
+	  marginTop={8}
+	  marginBottom={6}
     >
       <Title />
       <Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "60%" },}}>
