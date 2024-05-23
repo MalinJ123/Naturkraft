@@ -508,13 +508,11 @@ export default function LoggedInStart() {
                           type="button"
                           sx={{
                             marginTop: {xs: 1, },
-                            // marginBottom: { xs: 2, md: 3 },
                             marginRight: { xs: 2, md: 2 },
                             fontSize: { xs: 12, md: 14 },
                             color: "white",
                             fontWeight: "bold",
                             boxShadow: 'none', 
-                            // padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -534,10 +532,8 @@ export default function LoggedInStart() {
                         type="button"
                         sx={{
                           marginTop: {xs: 1, },
-                          // marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 12, md: 14 },
                           fontWeight: "bold",
-                          // padding: 1,
                           borderColor:
                             serverMode === "ENV" ? "black" : undefined,
                           color: serverMode === "ENV" ? "black" : undefined,
@@ -680,14 +676,6 @@ export default function LoggedInStart() {
                           Välj läge
                         </Button>
                       )}
-                    {/* </CardActions>
-                    <CardActions
-                      className="bold"
-                      sx={{
-                        mx: { xs: 2, sm: 1, md: 3 },
-                        padding: 0,
-                      }}
-                    > */}
                       <Button
                         component="button"
                         variant="outlined"
@@ -696,10 +684,8 @@ export default function LoggedInStart() {
                         type="button"
                         sx={{
                           marginTop: {xs: 1, },
-                          // marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 12, md: 14 },
-                          // fontWeight: "bold",
-                          // padding: 1,
+                          fontWeight: "bold",
                           borderColor:
                             serverMode === "SNO" ? "black" : undefined,
                           color: serverMode === "SNO" ? "black" : undefined,
