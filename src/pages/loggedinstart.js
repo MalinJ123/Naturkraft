@@ -131,7 +131,8 @@ export default function LoggedInStart() {
         flexDirection="column"
         justifyContent="center"
         gap={6}
-        height={contentHeight}
+        marginTop={8}
+        marginBottom={6}
       >
         <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "55%" }}}>
           <Card
@@ -275,7 +276,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -304,7 +305,7 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
+                          padding: 1,
                           borderColor: serverMode === "EKO" ? "black" : undefined,
                           color: serverMode === "EKO" ? "black" : undefined,
                           "&:hover": {
@@ -467,7 +468,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -496,7 +497,7 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
+                          padding: 1,
                           borderColor: serverMode === "ENV" ? "black" : undefined,
                           color: serverMode === "ENV" ? "black" : undefined,
                           "&:hover": {
@@ -613,7 +614,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -642,7 +643,7 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
+                          padding: 1,
                           borderColor: serverMode === "SNO" ? "black" : undefined,
                           color: serverMode === "SNO" ? "black" : undefined,
                           "&:hover": {
