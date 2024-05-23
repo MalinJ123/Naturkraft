@@ -131,7 +131,8 @@ export default function LoggedInStart() {
         flexDirection="column"
         justifyContent="center"
         gap={6}
-        height={contentHeight}
+        marginTop={8}
+        marginBottom={6}
       >
         <Container sx={{ padding: { xs: 0 }, width: { xs: "100%", md: "80%", lg: "55%" }}}>
           <Card
@@ -187,9 +188,10 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
+                padding={0}
               >
-                <Stack spacing={4} direction="column" >
-                  <Box sx={{padding: {xs: 2, sm: 3}}}>
+                <Stack direction="column">
+                  <Box sx={{paddingX: {xs: 2, sm: 3}, paddingTop: {xs: 2, sm: 3}}}>
                     <Typography
                       variant="body1"
                       component="p"
@@ -259,7 +261,7 @@ export default function LoggedInStart() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",
-                        marginX: {xs: 2, sm: 2, md: 0},
+                        marginX: {xs: 2, sm: 2, md: 6},
                         padding: 0, 
                       }}
                     >
@@ -272,10 +274,11 @@ export default function LoggedInStart() {
                           type="button"
                           sx={{
                             marginBottom: { xs: 2, md: 3 },
+                            marginRight: {xs: 2 ,md: 2},
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -286,35 +289,27 @@ export default function LoggedInStart() {
                           Välj läge
                         </Button>
                       )}
-                    </CardActions>
-                    <CardActions
-                      className="bold"
-                      sx={{
-                        mx: {xs: 2, sm: 1, md: 3},
-                        padding: 0
-                      }}
-                    >
-                    <Button
-                        component="button"
-                        variant="outlined"
-                        color="primary"
-                        role="button"
-                        type="button"
-                        sx={{
-                          marginBottom: { xs: 2, md: 3 },
-                          fontSize: { xs: 16, md: 16 },
-                          fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
-                          borderColor: serverMode === "EKO" ? "black" : undefined,
-                          color: serverMode === "EKO" ? "black" : undefined,
-                          "&:hover": {
-                            color: "black",
-                          },
-                        }}
-                      onClick={() => router.push("/economyInfo")}
-                    >
-                      Mer info
-                    </Button>
+                        <Button
+                          component="button"
+                          variant="outlined"
+                          color="primary"
+                          role="button"
+                          type="button"
+                          sx={{
+                            marginBottom: { xs: 2, md: 3 },
+                            fontSize: { xs: 16, md: 16 },
+                            fontWeight: "bold",
+                            padding: 1,
+                            borderColor: serverMode === "EKO" ? "black" : undefined,
+                            color: serverMode === "EKO" ? "black" : undefined,
+                            "&:hover": {
+                              color: "black",
+                            },
+                          }}
+                          onClick={() => router.push("/economyInfo")}
+                        >
+                          Mer info
+                        </Button>
                     </CardActions>
                   </Box>
                 </Stack>
@@ -377,7 +372,7 @@ export default function LoggedInStart() {
                 alignItems="center"
                 gap={2}
               >
-                <Stack spacing={4} direction="column">
+                <Stack direction="column">
                   <Box sx={{padding: {xs: 2, sm: 3}}}>
                     <Typography
                       variant="body1"
@@ -467,7 +462,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -496,7 +491,7 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
+                          padding: 1,
                           borderColor: serverMode === "ENV" ? "black" : undefined,
                           color: serverMode === "ENV" ? "black" : undefined,
                           "&:hover": {
@@ -570,7 +565,7 @@ export default function LoggedInStart() {
                 alignItems="center"
                 gap={2}
               >
-                <Stack spacing={4} direction="column">
+                <Stack direction="column">
                   <Box sx={{padding: {xs: 2, sm: 3}}}>
                   <Typography
                     variant="body1"
@@ -613,7 +608,7 @@ export default function LoggedInStart() {
                             fontSize: { xs: 16, md: 16 },
                             color: "black",
                             fontWeight: "bold",
-                            padding: {xs: 1, sm: 1.5},
+                            padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -642,7 +637,7 @@ export default function LoggedInStart() {
                           marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 16, md: 16 },
                           fontWeight: "bold",
-                          padding: {xs: 1, sm: 1.5},
+                          padding: 1,
                           borderColor: serverMode === "SNO" ? "black" : undefined,
                           color: serverMode === "SNO" ? "black" : undefined,
                           "&:hover": {
