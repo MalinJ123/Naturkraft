@@ -693,7 +693,7 @@ export default function LoggedInStart() {
                             color: "black",
                           },
                         }}
-                        // onClick={() => router.push("/economyInfo")}
+                        onClick={() => router.push("/snowInfo")}
                       >
                         Mer info
                       </Button>

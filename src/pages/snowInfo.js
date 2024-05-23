@@ -13,7 +13,7 @@ import {
   import ArrowBackIcon from "@mui/icons-material/ArrowBack";
   import { useRouter } from "next/router";
   
-  export default function EnvironmentInfo() {
+  export default function SnowInfo() {
   
   const router = useRouter(); 
   
@@ -25,7 +25,7 @@ import {
 		justifyContent="center"
 		gap={12}
 		marginTop={8}
-        marginBottom={6}
+		marginBottom={6}
 	  >
 		<Title />
 		<Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "60%" },}}>
@@ -40,7 +40,7 @@ import {
 					  Tillbaka</Button>
 			  <Box sx={{ flexGrow: 1, textAlign: {xs: "flex-start", sm: "center", md: "left", }}}>
 			  <CardHeader
-				  title="Miljöläge"
+				  title="Snöläge"
 				  titleTypographyProps={{
 					  textAlign: {xs: "flex-start", sm: "center", md: "center" },
 					  fontWeight: "bold",
@@ -83,10 +83,8 @@ import {
 					  color: "black",
 					  }}
 					  >
-					  	I detta läge kommer systemet att köpa så lite från nätet som möjligt 
-						för att säkerställa användandet av grön energi från panelerna och därmed 
-						ha så låg klimatpåverkan som möjligt. Detta läge är dyrare då mindre el kommer säljas från batteriet. 
-						Belysningen kommer att hållas på minimal nivå för att inte störa djur och insekter i skogen.
+						Detta läge är ekonomiläge anpassat för när det kommit snö. Belysningen kommer att dämpas så ljuset 
+						inte bländar pga snöns reflektion.
 					  </Typography>
 				  </Box>
 				  <Box
@@ -108,21 +106,14 @@ import {
 						  component="p"
 						  sx={{marginLeft: {sm: 0, md: 2 }}}
 					  >
-						  <b>Start:</b> 10% passivt, 70% aktivt
+						  <b>Start:</b> 15% passivt, 50% aktivt
 					  </Typography>
 					  <Typography
 						  variant="body1"
 						  component="p"
 						  sx={{marginLeft: {sm: 0, md: 2 }}}
 					  >
-						  <b>Resten:</b> 0% passivt, 70% aktivt
-					  </Typography>
-					  <Typography
-						  variant="body1"
-						  component="p"
-						  sx={{marginLeft: {sm: 0, md: 2 }}}
-					  >
-						Ev avslagen start efter visst klockslag
+						  <b>Resten:</b> 5% passivt, 50% aktivt
 					  </Typography>
 				  </Box>
 			  </Box>
@@ -166,3 +157,4 @@ import {
 	  </Box>
 	);
   }
+  
