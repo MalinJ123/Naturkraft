@@ -38,7 +38,7 @@ const router = useRouter();
 						color: "black", 
 						borderColor: "black", 
 						fontWeight: "bold", 
-						fontSize: "16px",
+						fontSize: "14px",
 					}}
 					onClick={() => router.push("/loggedinstart")}
 					> 
@@ -46,7 +46,9 @@ const router = useRouter();
 							Tillbaka
 						</Box>
 					</Button>
-			<Box sx={{ flexGrow: 1, textAlign: {xs: "flex-start", sm: "center", md: "left", }}}>
+				<Box sx={{ 
+					flexGrow: 1, 
+					textAlign: {xs: "flex-start", sm: "center", md: "left", }}}>
 			<CardHeader
 				title="Ekonomiläge"
 				titleTypographyProps={{
@@ -79,7 +81,10 @@ const router = useRouter();
 				<Typography
 					variant="body1"
 					component="p"
-					sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 16, md: 18 }, }}
+					sx={{ 
+						fontWeight: "bolder", 
+						marginBottom: 0.5, 
+						fontSize: { xs: 16, md: 18 }, }}
 				>
 					Beskrivning:
 				</Typography>
@@ -104,7 +109,10 @@ const router = useRouter();
 					<Typography
 						variant="body1"
 						component="p"
-						sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 16, md: 18 } }}
+						sx={{ 
+							fontWeight: "bolder", 
+							marginBottom: 0.5, 
+							fontSize: { xs: 16, md: 18 } }}
 					>
 						Belysning:
 					</Typography>
@@ -127,7 +135,6 @@ const router = useRouter();
 				<Box
 					component="div"
 					sx={{
-						// paddingX: {xs: 0.5, md: 8},
 						color: "black", 
 					}}
 				>
