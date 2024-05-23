@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
 import {
   Box,
@@ -14,7 +14,6 @@ import {
 
 import { Error as ErrorIcon, Login as LoginIcon } from "@mui/icons-material/";
 import Title from "@/components/title";
-import AuthInstance from "@/auth/instance";
 import { darkTheme } from "@/styles/darkTheme";
 
 export default function Login() {
@@ -22,8 +21,6 @@ export default function Login() {
   const [userPassword, setUserPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
-  const router = useRouter();
 
   const userCredentialsFilled = username.length > 0 && userPassword.length > 0;
 
@@ -44,7 +41,8 @@ export default function Login() {
     }
 
     try {
-      const response = await AuthInstance.post("/auth/signin", {
+      const response = await signIn("Credentials", {
+        redirect: false,
         username,
         password: userPassword,
       });
