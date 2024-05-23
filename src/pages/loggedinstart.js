@@ -188,10 +188,10 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                padding={0}
+                paddingBottom={0}
               >
                 <Stack direction="column">
-                  <Box sx={{paddingX: {xs: 2, sm: 3}, paddingTop: {xs: 2, sm: 3}}}>
+                  <Box sx={{padding: {xs: 2, sm: 3}}}>
                     <Typography
                       variant="body1"
                       component="p"
@@ -254,6 +254,7 @@ export default function LoggedInStart() {
                     sx={{
                       display: "flex",
                       justifyContent: serverMode === "EKO" ? {xs: "flex-end", sm: "flex-end"} : {xs: "center", sm:"flex-end", md:"flex-end"},
+                      marginTop: 0
                     }}
                     >
                     <CardActions
@@ -261,7 +262,7 @@ export default function LoggedInStart() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",
-                        marginX: {xs: 2, sm: 2, md: 6},
+                        marginX: {xs: 2, sm: 2, md: 5},
                         padding: 0, 
                       }}
                     >
