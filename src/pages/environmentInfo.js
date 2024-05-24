@@ -8,7 +8,6 @@ import {
 	Stack,
 	Button
   } from "@mui/material/";
-  import { contentHeight } from "@/components/layout";
   import Title from "@/components/title";
   import ArrowBackIcon from "@mui/icons-material/ArrowBack";
   import { useRouter } from "next/router";
@@ -24,13 +23,30 @@ import {
 		flexDirection="column"
 		justifyContent="center"
 		gap={12}
-		marginTop={8}
-        marginBottom={6}
+		marginTop={6}
+        marginBottom={10}
 	  >
 		<Title />
-		<Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "55%" },}}>
-		  <Card sx={{padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", borderRadius: { sm: 0, sm:"25px"}}} elevation={2} >
-			  <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
+		<Container 
+			sx={{ 
+				padding: {xs: 0, sm: 0}, 
+				width: { xs: "100%", md: "80%", lg: "55%" }
+				}}
+			>
+		  <Card 
+		  	sx={{
+				padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", 
+				borderRadius: { sm: 0, sm:"25px"}
+				}} 
+				elevation={2} 
+			>
+			  <Box 
+			  	sx={{ 
+					display: "flex", 
+					justifyContent: "space-between", 
+					alignItems: "center", 
+					}}
+				>
 				  <Button
 					  variant="outlined"
 					  startIcon={<ArrowBackIcon />}

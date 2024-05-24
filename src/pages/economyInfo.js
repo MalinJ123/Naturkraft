@@ -8,7 +8,6 @@ import {
   Stack,
   Button
 } from "@mui/material/";
-import { contentHeight } from "@/components/layout";
 import Title from "@/components/title";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useRouter } from "next/router";
@@ -24,15 +23,20 @@ const router = useRouter();
       flexDirection="column"
       justifyContent="center"
       gap={12}
-	  marginTop={8}
-	  marginBottom={6}
+	  marginTop={6}
+	  marginBottom={10}
     >
       <Title />
-      <Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "55%" },}}>
+      <Container 
+	  	sx={{ 
+			padding: {xs: 0, sm: 0}, 
+			width: { xs: "100%", md: "80%", lg: "55%" }
+			}}
+		>
         <Card 
 			sx={{
 				padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", 
-				borderRadius: { sm: 0, sm: "25px"}
+				borderRadius: { sm: 0, md: "5px"}
 			}} 
 				elevation={2} >
 			<Box 
@@ -40,17 +44,20 @@ const router = useRouter();
 					display: "flex", 
 					justifyContent: "space-between", 
 					alignItems: "center", 
-					flexWrap: "wrap" 
 					}}
 				>
 				<Button
 					variant="outlined"
-					startIcon={<ArrowBackIcon />}
+					startIcon={<ArrowBackIcon sx={{ fontSize: { xs: 40, sm: 40, md: 24 } }} />}
 					sx={{
 						color: "black", 
 						borderColor: "black", 
 						fontWeight: "bold", 
 						fontSize: "14px",
+						border: { xs: 'none', md: '1px solid black' }, 
+                		padding: { xs: '1px', md: '6px 16px' },
+						marginTop: {xs: 1},
+                		minWidth: 'auto'
 					}}
 					onClick={() => router.push("/loggedinstart")}
 					> 
@@ -60,53 +67,60 @@ const router = useRouter();
 					</Button>
 				<Box sx={{ 
 					flexGrow: 1, 
-					textAlign: {xs: "flex-start", sm: "center", md: "left", }}}>
-			<CardHeader
-				title="Ekonomiläge"
-				titleTypographyProps={{
-					textAlign: {xs: "flex-start", sm: "center", md: "center" },
-					fontWeight: "bold",
-					fontSize: { xs: 20, md: 24 },
-					marginRight: {xs: 0, sm: 15},
-					padding: {xs: 0, sm: 0,}
-				}}
-				/>
+					textAlign: {xs: "flex-start", sm: "flex-start", md: "center" },
+					width: { xs: "100%", md: "auto" },
+					}}
+				>
+					<CardHeader
+						title="Ekonomiläge"
+						sx={{
+							paddingX: {xs: 0, sm: 0 },
+							paddingBottom: {xs: 1, sm: 1, md: 2}
+						}}
+						titleTypographyProps={{
+							textAlign: {xs: "flex-start", sm: "flex-start", md: "center" },
+							fontWeight: "bold",
+							fontSize: { xs: 20, md: 20 },
+							marginRight: {xs: 0, sm: 0, md: 15},
+							padding: {xs: 0, sm: 0, md: 0}
+						}}
+					/>
+				</Box>
 			</Box>
-			</Box>
-          <CardContent sx={{ padding: 0 }}>
-            <Box
-              component="div"
-			  display="flex"
-			  flexDirection="column"
-			  alignItems="center"
-			  gap={2}
-			  marginTop={1}
-            >
-            <Stack spacing={4} direction="column">
-			<Box>
+          	<CardContent sx={{ padding: 0 }}>
 				<Box
 					component="div"
-					sx={{
-						color: "black", 
-					}}
+					display="flex"
+					flexDirection="column"
+					alignItems="center"
+					gap={2}
+					marginTop={1}
 				>
-				<Typography
-					variant="body1"
-					component="p"
-					sx={{ 
-						fontWeight: "bolder", 
-						marginBottom: 0.5, 
-						fontSize: { xs: 16, md: 18 }, }}
-				>
-					Beskrivning:
-				</Typography>
+            		<Stack spacing={4} direction="column">
+				<Box>
+					<Box
+						component="div"
+						sx={{
+							color: "black", 
+						}}
+					>
 					<Typography
-					variant="body1"
-					component="p"
-					sx={{
-					fontSize: { xs: 14, md: 16 },
-					color: "black",
-					}}
+						variant="body1"
+						component="p"
+						sx={{ 
+							fontWeight: "bolder", 
+							marginBottom: 0.5, 
+							fontSize: { xs: 16, md: 17 }, }}
+					>
+					Beskrivning:
+					</Typography>
+					<Typography
+							variant="body1"
+							component="p"
+							sx={{
+							fontSize: { xs: 14, md: 16 },
+							color: "black",
+						}}
 					>
 					I detta läge jobbar systemet för att minimera brukskostnaden. Systemet kommer att köpa från nätet när det är billigt och sälja från batteriet när det är dyrt.
 					</Typography>
@@ -117,16 +131,16 @@ const router = useRouter();
 						color: "black", 
 						marginTop: 2
 					}}
-				>
+					>
 					<Typography
 						variant="body1"
 						component="p"
 						sx={{ 
 							fontWeight: "bolder", 
 							marginBottom: 0.5, 
-							fontSize: { xs: 16, md: 18 } }}
+							fontSize: { xs: 16, md: 17 } }}
 					>
-						Belysning:
+					Belysning:
 					</Typography>
 					<Typography
 						variant="body1"
@@ -148,7 +162,7 @@ const router = useRouter();
 						<b>Resten:</b> 5% passivt, 70% aktivt
 					</Typography>
 				</Box>
-			</Box>
+				</Box>
 				<Box
 					component="div"
 					sx={{
@@ -160,7 +174,7 @@ const router = useRouter();
 					 color="black"
 					 gutterBottom
 					 sx={{
-					   fontSize: { xs: 16, md: 18 },
+					   fontSize: { xs: 16, md: 17 },
 					   marginBottom: 0,
 					   color: "black",
 					   fontWeight: "bolder"
