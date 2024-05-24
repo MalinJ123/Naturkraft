@@ -10,13 +10,11 @@ const providers = [
     name: "Credentials",
     authorize: async (credentials) => {
       try {
-        const user = await axios.post(
-          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/auth/login`,
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/auth/credentials`,
           {
-            user: {
-              username: credentials.username,
-              password: credentials.password,
-            },
+            username: credentials.username,
+            password: credentials.password,
           },
           {
             headers: {
@@ -26,29 +24,33 @@ const providers = [
           }
         );
 
+        const user = response.data;
         if (user) {
-          return { status: "success", data: user };
+          return user;
         } else {
-          return { status: "error", message: message };
+          return null;
         }
       } catch (e) {
-        const errorMessage = e.response.data.message;
-        throw new Error(errorMessage + "&username=" + credentials.username);
+        console.error("Error in authorize:", e);
+        return null;
       }
     },
   }),
 ];
 
 const callbacks = {
-  async jwt(token, user) {
+  async jwt({ token, user }) {
     if (user) {
-      token.accessToken = user.data.token;
+      token.id = user.id;
+      token.username = user.username;
+      token.accessToken = user.token;
     }
-
     return token;
   },
 
-  async session(session, token) {
+  async session({ session, token }) {
+    session.user.id = token.id;
+    session.user.username = token.username;
     session.accessToken = token.accessToken;
     return session;
   },
