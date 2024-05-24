@@ -15,22 +15,47 @@ export default function Contact() {
   return (
     <Container
       sx={{
-        backgroundColor: "opacityLight.main",
-        paddingTop: 0,
-        py: 6,
+        backgroundColor: "rgba(255, 255, 255, 0.85)",
+        paddingTop: 2,
+        paddingBottom: 2,
+        marginTop: 8,
+        marginBottom: 6,
         borderRadius: "10px",
         overflow: "hidden",
+
+        width: "90%",
+        "@media (max-width: 700px)": {
+          width: "100%",
+          paddingLeft: "0",
+          paddingRight: "0",
+          borderRadius: "0",
+          paddingBottom: 5,
+        },
       }}
     >
       <Title />
-      <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
+      <Typography
+        align="center"
+        marginBottom="1em"
+        fontWeight="bold"
+        sx={{
+          fontSize: "22px",
+        }}
+      >
         Hitta hit
       </Typography>
+
       <Typography
         sx={{
-          fontSize: "1.5rem",
-          textAlign: "center",
+          fontSize: "18px",
+          textAlign: "left",
           padding: "10px",
+          marginLeft: "1.5em",
+          fontWeight: "bold",
+          "@media (max-width: 700px)": {
+            marginLeft: "0",
+            fontSize: "16px",
+          },
         }}
         variant="body3"
         component="p"
@@ -39,10 +64,16 @@ export default function Contact() {
       </Typography>
       <Typography
         sx={{
-          fontSize: "1.2rem",
+          fontSize: "18px",
+          marginLeft: "1.5em",
+
           fontWeight: "bold",
-          textAlign: "center",
+          textAlign: "left",
           padding: "10px",
+          "@media (max-width: 700px)": {
+            marginLeft: "0",
+            fontSize: "16px",
+          },
         }}
         variant="body3"
         component="p"
@@ -64,65 +95,131 @@ export default function Contact() {
           alignItems="center"
           gap={2}
           flex="1"
-          height="25em"
-          width={{ xs: "120%", md: "100%" }}
+          height="20em"
+          width="70%"
           marginBottom={{ xs: 4, sm: 0, md: 4 }}
+          sx={{
+            "@media (max-width: 900px)": {
+              width: "100%",
+            },
+          }}
         >
           <Card
-            elevation={6}
             borderRadius="10px"
             sx={{
               paddingLeft: "1em",
-              paddingBottom: "2em",
-              width: "90%",
+              width: "100%",
             }}
           >
             <CardHeader
               title="Elljusspåret/ Hillringsbergs IF"
               titleTypographyProps={{
-                textAlign: "center",
-                padding: 0,
-                fontSize: "25px",
-                fontWeight: "bold",
+                sx: {
+                  textAlign: "center",
+                  padding: 0,
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  "@media (max-width: 700px)": {
+                    fontSize: "18px",
+                  },
+                },
               }}
             />
-            <Typography variant="body1" component="p" fontWeight="bold">
+
+            <Typography
+              variant="body1"
+              component="p"
+              fontWeight="bold"
+              sx={{
+                "@media (max-width: 700px)": {
+                  fontSize: "14px",
+                },
+              }}
+            >
               Bengt Danielsson
             </Typography>
-            <Typography variant="body3" component="p" fontWeight="bold">
+            <Typography variant="body3" component="p" fontSize="14px">
               Ordförande Hillringsbergs IF
             </Typography>
-            <Typography variant="body1" component="p" fontWeight="bold">
-              bengt@delabglava.se
+            <Typography
+              variant="body1"
+              component="p"
+              fontWeight="bold"
+              sx={{
+                "@media (max-width: 700px)": {
+                  fontSize: "14px",
+                },
+              }}
+            >
+              Bengt@delabglava.se
             </Typography>
-            <Typography variant="body1" component="p" fontWeight="bold">
-              0703426345
+            <Typography
+              variant="body1"
+              component="p"
+              fontWeight="bold"
+              sx={{
+                paddingBottom: "2em",
+
+                "@media (max-width: 700px)": {
+                  fontSize: "14px",
+                },
+              }}
+            >
+              070 342 63 45
             </Typography>
           </Card>
           <Card
-            elevation={6}
             borderRadius="10px"
             sx={{
               paddingLeft: "1em",
               paddingBottom: "2em",
-              width: "90%",
+              width: "100%",
+              "@media (max-width: 900px)": {
+                marginBottom: "1em",
+                paddingBottom: "2em",
+              },
             }}
           >
             <CardHeader
               title="Projektet Naturkraft"
               titleTypographyProps={{
-                textAlign: "center",
-                fontSize: "25px",
-                fontWeight: "bold",
+                sx: {
+                  textAlign: "center",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  "@media (max-width: 700px)": {
+                    fontSize: "18px",
+                  },
+                },
               }}
             />
-            <Typography variant="body1" component="p" fontWeight="bold">
+            <Typography
+              variant="body1"
+              component="p"
+              fontWeight="bold"
+              sx={{
+                "@media (max-width: 700px)": {
+                  fontSize: "14px",
+                },
+              }}
+            >
               Isac Myrén Andersson
             </Typography>
-            <Typography variant="body3" component="p" fontWeight="bold">
+            <Typography variant="body3" component="p" fontSize="14px">
               Glava Energy Center
             </Typography>
-            <Typography variant="body1" component="p" fontWeight="bold">
+            <Typography
+              variant="body1"
+              component="p"
+              fontWeight="bold"
+              sx={{
+                "@media (max-width: 700px)": {
+                  fontSize: "14px",
+                  height: "auto",
+                  wordBreak: "break-word",
+                },
+              }}
+            >
               Isac.Myren.Andersson@GlavaEnergyCenter.se
             </Typography>
           </Card>
@@ -130,19 +227,36 @@ export default function Contact() {
 
         {/* Höger sida med Google Maps */}
 
-        <Container fixed maxWidth="sm">
-          <Paper elevation={6} /* sx={{ borderRadius: "10px" }} */>
+        <Container
+          fixed
+          maxWidth="sm"
+          sx={{
+            "@media (max-width: 700px)": {
+              padding: "0",
+              margin: "0",
+            },
+          }}
+        >
+          <Paper elevation={6}>
             <Box
               component="iframe"
               src={googleMapsUrl}
-              borderRadius="10px"
+              borderRadius="5px"
               border="none"
               width="100%"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              sx={{ height: "365px" }}
-            ></Box>
+              sx={{
+                height: "320px",
+                "@media (max-width: 700px)": {
+                  // fontSize: "14px",
+                  width: "100%",
+                  padding: "0",
+                  margin: "0",
+                },
+              }}
+            />
           </Paper>
         </Container>
       </Box>
