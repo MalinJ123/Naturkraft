@@ -8,7 +8,6 @@ import {
 	Stack,
 	Button
   } from "@mui/material/";
-  import { contentHeight } from "@/components/layout";
   import Title from "@/components/title";
   import ArrowBackIcon from "@mui/icons-material/ArrowBack";
   import { useRouter } from "next/router";
@@ -24,55 +23,85 @@ import {
 		flexDirection="column"
 		justifyContent="center"
 		gap={12}
-		marginTop={8}
-		marginBottom={6}
+		marginTop={6}
+		marginBottom={10}
 	  >
 		<Title />
-		<Container sx={{ padding: {xs: 0, sm: 0}, width: { xs: "100%", md: "80%", lg: "55%" },}}>
-		  <Card sx={{padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", borderRadius: { sm: 0, sm:"25px"}}} elevation={2} >
-			  <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
-				  <Button
+		<Container 
+			sx={{ 
+				padding: {xs: 0, sm: 0}, 
+				width: { xs: "100%", md: "80%", lg: "55%" }
+				}}
+			>
+		  <Card 
+		  	sx={{
+				padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", 
+				borderRadius: { sm: 0, sm:"5px"}
+				}} 
+				elevation={2} 
+			>
+			  <Box 
+			  	sx={{ 
+					display: "flex", 
+					justifyContent: "space-between", 
+					alignItems: "center", 
+					}}
+				>
+				<Button
 					  variant="outlined"
-					  startIcon={<ArrowBackIcon />}
+					  startIcon={<ArrowBackIcon sx={{ fontSize: { xs: 40, sm: 40, md: 24 } }} />}
 					  sx={{
 						color: "black", 
 						borderColor: "black", 
 						fontWeight: "bold", 
-						fontSize: "14px"
+						fontSize: "14px",
+						border: { xs: 'none', md: '1px solid black' }, 
+                		padding: { xs: '1px', md: '6px 16px' },
+						marginTop: {xs: 1},
+                		minWidth: 'auto'
 					}}
 					  onClick={() => router.push("/loggedinstart")}
 					  > 
-					  <Box sx={{display: {xs: "none", sm: "none", md: "block"}}}>
+					<Box 
+					  	sx={{
+							display: {xs: "none", sm: "none", md: "block"}
+							}}
+						>
 						Tillbaka
-						</Box>
-					  </Button>
-			  		<Box 
-						sx={{ 
+					</Box>
+				</Button>
+			  	<Box 
+					sx={{ 
 						flexGrow: 1, 
-						textAlign: {xs: "flex-start", sm: "center", md: "left", }
-						}}
+						textAlign: {xs: "flex-start", sm: "flex-start", md: "center"},
+						width: { xs: "100%", md: "auto" },
+					}}
 					>
 					<CardHeader
-					title="Snöläge"
-					titleTypographyProps={{
-						textAlign: {xs: "flex-start", sm: "center", md: "center" },
-						fontWeight: "bold",
-						fontSize: { xs: 20, md: 24 },
-						marginRight: {xs: 0, sm: 15},
-						padding: {xs: 0, sm: 0,}
-					  }}
+						title="Snöläge"
+						sx={{
+							paddingX: {xs: 0, sm: 0 },
+							paddingBottom: {xs: 1, sm: 1, md: 2}
+						}}
+						titleTypographyProps={{
+							textAlign: {xs: "flex-start", sm: "flex-start", md: "center" },
+							fontWeight: "bold",
+							fontSize: { xs: 18, md: 20 },
+							marginRight: {xs: 0, sm: 0, md: 15},
+							padding: {xs: 0, sm: 0, md: 0}
+					  	}}
 				  	/>
 			  		</Box>
 			  </Box>
-			<CardContent sx={{ padding: 0 }}>
-			  <Box
-				component="div"
-				display="flex"
-				flexDirection="column"
-				alignItems="center"
-				gap={2}
-				marginTop={1}
-			  >
+				<CardContent sx={{ padding: 0 }}>
+					<Box
+						component="div"
+						display="flex"
+						flexDirection="column"
+						alignItems="center"
+						gap={2}
+						marginTop={1}
+					>
 			  <Stack spacing={4} direction="column">
 			  <Box>
 				  <Box
@@ -81,28 +110,28 @@ import {
 						  color: "black", 
 					  }}
 				  >
-				  <Typography
+				  	<Typography
 					  variant="body1"
 					  component="p"
 					  sx={{ 
 						fontWeight: "bolder", 
 						marginBottom: 0.5, 
-						fontSize: { xs: 16, md: 18 } 
+						fontSize: { xs: 16, md: 17 } 
 					}}
-				  >
-					  Beskrivning:
-				  </Typography>
-					  <Typography
-					  variant="body1"
-					  component="p"
-					  sx={{
-					  fontSize: { xs: 14, md: 16 },
-					  color: "black",
-					  }}
-					  >
+				  	>
+					Beskrivning:
+					</Typography>
+					<Typography
+						variant="body1"
+						component="p"
+						sx={{
+						fontSize: { xs: 14, md: 16 },
+						color: "black",
+						}}
+						>
 						Detta läge är ekonomiläge anpassat för när det kommit snö. Belysningen kommer att dämpas så ljuset 
 						inte bländar pga snöns reflektion.
-					  </Typography>
+					</Typography>
 				  </Box>
 				  <Box
 					  component="div"
@@ -110,11 +139,14 @@ import {
 						  color: "black", 
 						  marginTop: 2
 					  }}
-				  >
+						>
 					  <Typography
 						  variant="body1"
 						  component="p"
-						  sx={{ fontWeight: "bolder", marginBottom: 0.5, fontSize: { xs: 16, md: 18 } }}
+						  sx={{ 
+							fontWeight: "bolder", 
+							marginBottom: 0.5, 
+							fontSize: { xs: 16, md: 17 } }}
 					  >
 						  Belysning:
 					  </Typography>
@@ -123,7 +155,7 @@ import {
 						  component="p"
 						  sx={{
 							marginLeft: {sm: 0, md: 2 }, 
-						  	fontSize: {xs: 15, md: 15}
+						  	fontSize: {xs: 14, md: 15}
 						}}
 					  >
 						  <b>Start:</b> 15% passivt, 50% aktivt
@@ -133,7 +165,7 @@ import {
 						  component="p"
 						  sx={{
 							marginLeft: {sm: 0, md: 2 },
-						  	fontSize: {xs: 15, md: 15}
+						  	fontSize: {xs: 14, md: 15}
 						}}
 					  >
 						  <b>Resten:</b> 5% passivt, 50% aktivt
@@ -151,7 +183,7 @@ import {
 					   color="black"
 					   gutterBottom
 					   sx={{
-						 fontSize: { xs: 16, md: 18 },
+						 fontSize: { xs: 16, md: 17 },
 						 marginBottom: 0,
 						 color: "black",
 						 fontWeight: "bolder"

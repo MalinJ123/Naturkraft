@@ -36,46 +36,56 @@ import {
 		  <Card 
 		  	sx={{
 				padding: { xs: 2, sm: 2, md: 4, lg: 4 }, backgroundColor: "white", 
-				borderRadius: { sm: 0, sm:"25px"}
+				borderRadius: { sm: 0, sm:"5px"}
 				}} 
 				elevation={2} 
 			>
-			  <Box 
+			<Box 
 			  	sx={{ 
 					display: "flex", 
 					justifyContent: "space-between", 
 					alignItems: "center", 
 					}}
 				>
-				  <Button
-					  variant="outlined"
-					  startIcon={<ArrowBackIcon />}
-					  sx={{
-						color: "black", 
-						borderColor: "black", 
-						fontWeight: "bold", 
-						fontSize: "14px"
-					}}
-					  onClick={() => router.push("/loggedinstart")}
-					  > 
-						<Box sx={{display: {xs: "none", sm: "none", md: "block"}}}>
-							Tillbaka
-						</Box>
-					  </Button>
+				<Button
+					variant="outlined"
+					startIcon={<ArrowBackIcon sx={{ fontSize: { xs: 40, sm: 40, md: 24 } }} />}
+					sx={{
+					color: "black", 
+					borderColor: "black", 
+					fontWeight: "bold", 
+					fontSize: "14px",
+					border: { xs: 'none', md: '1px solid black' }, 
+					padding: { xs: '1px', md: '6px 16px' },
+					marginTop: {xs: 1},
+					minWidth: 'auto'
+				}}
+					onClick={() => router.push("/loggedinstart")}
+					> 
+					<Box sx={{display: {xs: "none", sm: "none", md: "block"}}}>
+						Tillbaka
+					</Box>
+				</Button>
 			  	<Box sx={{ 
 					flexGrow: 1, 
-					textAlign: {xs: "flex-start", sm: "center", md: "left", }}}>
-			  <CardHeader
-				  title="Miljöläge"
-				  titleTypographyProps={{
-					  textAlign: {xs: "flex-start", sm: "center", md: "center" },
-					  fontWeight: "bold",
-					  fontSize: { xs: 20, md: 24 },
-					  marginRight: {xs: 0, sm: 15},
-					  padding: {xs: 0, sm: 0,}
-				  }}
-				  />
-			  </Box>
+					textAlign: {xs: "flex-start", sm: "flex-start", md: "center", }
+					}}
+				>
+					<CardHeader
+						title="Miljöläge"
+						sx={{
+							paddingX: {xs: 0, sm: 0 },
+							paddingBottom: {xs: 1, sm: 1, md: 2}
+						}}
+						titleTypographyProps={{
+							textAlign: {xs: "flex-start", sm: "flex-start", md: "center" },
+							fontWeight: "bold",
+							fontSize: { xs: 18, md: 20 },
+							marginRight: {xs: 0, sm: 0, md: 15},
+							padding: {xs: 0, sm: 0, md: 0}
+						}}
+						/>
+			  	</Box>
 			  </Box>
 			<CardContent sx={{ padding: 0 }}>
 			  <Box
@@ -100,7 +110,7 @@ import {
 					  sx={{ 
 						fontWeight: "bolder", 
 						marginBottom: 0.5, 
-						fontSize: { xs: 16, md: 18 }, }}
+						fontSize: { xs: 16, md: 17 }, }}
 				  >
 					  Beskrivning:
 				  </Typography>
@@ -131,7 +141,7 @@ import {
 						  sx={{ 
 							fontWeight: "bolder", 
 							marginBottom: 0.5, 
-							fontSize: { xs: 16, md: 18 } }}
+							fontSize: { xs: 16, md: 17 } }}
 					  >
 						  Belysning:
 					  </Typography>
@@ -140,7 +150,7 @@ import {
 						  component="p"
 						  sx={{
 							marginLeft: {sm: 0, md: 2 }, 
-							fontSize: {xs: 15, md: 15}}}
+							fontSize: {xs: 14, md: 15}}}
 					  >
 						  <b>Start:</b> 10% passivt, 70% aktivt
 					  </Typography>
@@ -149,7 +159,7 @@ import {
 						  component="p"
 						  sx={{
 							marginLeft: {sm: 0, md: 2 },
-							fontSize: {xs: 15, md: 15}}}
+							fontSize: {xs: 14, md: 15}}}
 					  >
 						  <b>Resten:</b> 0% passivt, 70% aktivt
 					  </Typography>
@@ -158,7 +168,7 @@ import {
 						  component="p"
 						  sx={{
 							marginLeft: {sm: 0, md: 2 },
-							fontSize: {xs: 15, md: 15}
+							fontSize: {xs: 14, md: 15}
 						}}
 					  >
 						Eventuellt avslagen start efter visst klockslag
@@ -176,7 +186,7 @@ import {
 					   color="black"
 					   gutterBottom
 					   sx={{
-						 fontSize: { xs: 16, md: 18 },
+						 fontSize: { xs: 16, md: 17 },
 						 marginBottom: 0,
 						 color: "black",
 						 fontWeight: "bolder"

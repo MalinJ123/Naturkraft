@@ -61,14 +61,19 @@ const router = useRouter();
 					}}
 					onClick={() => router.push("/loggedinstart")}
 					> 
-						<Box sx={{display: {xs: "none", sm: "none", md: "block"}}}>
+						<Box 
+							sx={{
+								display: {xs: "none", sm: "none", md: "block"}
+								}}
+							>
 							Tillbaka
 						</Box>
-					</Button>
-				<Box sx={{ 
-					flexGrow: 1, 
-					textAlign: {xs: "flex-start", sm: "flex-start", md: "center" },
-					width: { xs: "100%", md: "auto" },
+				</Button>
+				<Box 
+					sx={{ 
+						flexGrow: 1, 
+						textAlign: {xs: "flex-start", sm: "flex-start", md: "center" },
+						width: { xs: "100%", md: "auto" },
 					}}
 				>
 					<CardHeader
@@ -80,7 +85,7 @@ const router = useRouter();
 						titleTypographyProps={{
 							textAlign: {xs: "flex-start", sm: "flex-start", md: "center" },
 							fontWeight: "bold",
-							fontSize: { xs: 20, md: 20 },
+							fontSize: { xs: 18, md: 20 },
 							marginRight: {xs: 0, sm: 0, md: 15},
 							padding: {xs: 0, sm: 0, md: 0}
 						}}
@@ -147,7 +152,7 @@ const router = useRouter();
 						component="p"
 						sx={{
 							marginLeft: {sm: 0, md: 2 }, 
-							fontSize: {xs: 15, md: 15}}}
+							fontSize: {xs: 14, md: 15}}}
 					>
 						<b>Start:</b> 15% passivt, 70% aktivt
 					</Typography>
@@ -156,7 +161,7 @@ const router = useRouter();
 						component="p"
 						sx={{
 							marginLeft: {sm: 0, md: 2 },
-							fontSize: {xs: 15, md: 15}
+							fontSize: {xs: 14, md: 15}
 						}}
 					>
 						<b>Resten:</b> 5% passivt, 70% aktivt
