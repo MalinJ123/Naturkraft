@@ -112,7 +112,7 @@ export default function Contact() {
             }}
           >
             <CardHeader
-              title="Elljusspåret/ Hillringsbergs IF"
+              title="Hillringsbergs IF"
               titleTypographyProps={{
                 sx: {
                   textAlign: "center",
