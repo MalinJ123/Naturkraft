@@ -18,6 +18,8 @@ const nextConfig = {
   env: {
     BACKEND_LOCATION: process.env.BACKEND_LOCATION,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXT_PUBLIC_NEXTAUTH_URL: process.env.NEXT_PUBLIC_NEXTAUTH_URL,
   },
 };
 

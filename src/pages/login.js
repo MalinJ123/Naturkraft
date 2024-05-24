@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
+import dotenv from "dotenv";
 import {
   Box,
   Container,
@@ -16,13 +18,25 @@ import { Error as ErrorIcon, Login as LoginIcon } from "@mui/icons-material/";
 import Title from "@/components/title";
 import { darkTheme } from "@/styles/darkTheme";
 
+dotenv.config();
+
 export default function Login() {
   const [username, setUsername] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const userCredentialsFilled = username.length > 0 && userPassword.length > 0;
+  const router = useRouter();
+
+  const userCredentialsFilled = username.length > 0 && password.length > 0;
+
+  useEffect(() => {
+    // Getting the error details from URL
+    if (router.query.error) {
+      console.log(router.query.error); // Shown below the input field in my example
+      setUsername(router.query.username); // To prefill the email after redirect
+    }
+  }, [router]);
 
   // För användare från ev backend
   const onHandleSubmit = async (e) => {
@@ -34,18 +48,22 @@ export default function Login() {
       setUsernameError("");
     }
 
-    if (!userPassword) {
+    if (!password) {
       setPasswordError("Du måste fylla i lösenord");
     } else {
       setPasswordError("");
     }
 
     try {
-      const response = await signIn("Credentials", {
-        redirect: false,
+      const result = await signIn("credentials", {
         username,
-        password: userPassword,
+        password,
+        callbackUrl: `${window.location.origin}/admin/dashboard`,
       });
+
+      if (result?.ok) {
+        router.push(result.url);
+      }
     } catch (error) {
       throw new Error(error);
     }
@@ -113,15 +131,15 @@ export default function Login() {
               <FormControl>
                 <TextField
                   error={passwordError ? true : false}
-                  color={userPassword.length > 0 ? "success" : undefined}
+                  color={password.length > 0 ? "success" : undefined}
                   type="password"
                   label="Lösenord*"
                   helperText={passwordError ? passwordError : ""}
                   variant="filled"
                   placeholder="****"
                   maxLength={32}
-                  value={userPassword}
-                  onChange={(e) => setUserPassword(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </FormControl>
               <Button
