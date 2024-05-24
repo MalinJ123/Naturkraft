@@ -195,7 +195,7 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
-                padding={0}
+                paddingBottom={0}
               >
                 <Stack direction="column">
                   <Box
@@ -220,7 +220,7 @@ export default function LoggedInStart() {
                     <List>
                       <ListItem
                         sx={{ 
-                          marginRight:1,
+                          marginRight: 1,
                           padding: 0, marginLeft: { 
                           sm: 0,
                            md: 2 
@@ -229,7 +229,6 @@ export default function LoggedInStart() {
                         <ListItemIcon
                           sx={{ minWidth: "unset",
                            paddingRight: 1
-
                            }}
                         >
                           <FiberManualRecord
@@ -250,7 +249,7 @@ export default function LoggedInStart() {
                       <ListItem
                         sx={{ 
                           padding: 0,
-                           marginLeft: { sm: 0, md: 2 } }}
+                          marginLeft: { sm: 0, md: 2 } }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -299,13 +298,11 @@ export default function LoggedInStart() {
                           type="button"
                           sx={{
                             marginTop: {xs: 1, },
-                            // marginBottom: { xs: 2, md: 3 },
                             marginRight: { xs: 2, md: 2 },
                             fontSize: { xs: 12, md: 14 },
                             color: "white",
                             fontWeight: "bold",
-                            boxShadow: 'none', 
-                            // padding: 1,
+                            boxShadow: 'none',
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -325,11 +322,8 @@ export default function LoggedInStart() {
                         type="button"
                         sx={{
                           marginTop: {xs: 1, },
-                          // marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 12, md: 14 },
                           fontWeight: "bold",
-                         
-                          // padding: 1,
                           borderColor:
                             serverMode === "EKO" ? "black" : undefined,
                           color: serverMode === "EKO" ? "black" : undefined,
@@ -358,7 +352,7 @@ export default function LoggedInStart() {
           <Card
             sx={{
               backgroundColor: "opacityLight.main",
-              borderRadius: { sm: 0, md: "25px" },
+              borderRadius: { sm: 0, md: "5px" },
               backgroundColor:
                 serverMode === "ENV" ? "rgba(162, 214, 163, 0.9)" : undefined,
               border: serverMode === "ENV" ? "3px solid green" : undefined,
@@ -379,7 +373,7 @@ export default function LoggedInStart() {
                     sx={{
                       fontWeight: "bolder",
                       color: "black",
-                      fontSize: { xs: 20, md: 24 },
+                      fontSize: { xs: 18, md: 20 },
                       marginTop: serverMode === "ENV" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
@@ -398,7 +392,9 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ marginTop: 4, padding: 0 }}
+              sx={{ 
+                marginTop: 4, 
+                padding: 0 }}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -408,15 +404,20 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
+                paddingBottom={0}
               >
                 <Stack direction="column">
-                  <Box sx={{ padding: { xs: 2, sm: 3 } }}>
+                  <Box 
+                    sx={{ 
+                      paddingX: { xs: 2, sm: 3 },
+                      paddingTop: {xs: 2, sm: 3}
+                       }}>
                     <Typography
                       variant="body1"
                       component="p"
                       style={{ fontWeight: "bolder" }}
                       sx={{
-                        fontSize: { xs: 16, md: 18 },
+                        fontSize: { xs: 14, md: 16 },
                         color: "black",
                       }}
                     >
@@ -429,10 +430,16 @@ export default function LoggedInStart() {
                     </Typography>
                     <List>
                       <ListItem
-                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 } }}
+                        sx={{
+                          marginRight: 1,  
+                          padding: 0, 
+                          marginLeft: { sm: 0, md: 2 } }}
                       >
                         <ListItemIcon
-                          sx={{ minWidth: "unset", paddingRight: 1 }}
+                          sx={{ 
+                            minWidth: "unset", 
+                            paddingRight: 1 
+                          }}
                         >
                           <FiberManualRecord
                             style={{ fontSize: 10, color: "black" }}
@@ -444,13 +451,15 @@ export default function LoggedInStart() {
                             style: {
                               fontWeight: "bold",
                               color: "black",
-                              fontSize: "16px",
+                              fontSize: "15px",
                             },
                           }}
                         />
                       </ListItem>
                       <ListItem
-                        sx={{ padding: 0, marginLeft: { sm: 0, md: 2 } }}
+                        sx={{ 
+                          padding: 0, 
+                          marginLeft: { sm: 0, md: 2 } }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -465,7 +474,7 @@ export default function LoggedInStart() {
                             style: {
                               fontWeight: "bold",
                               color: "black",
-                              fontSize: "16px",
+                              fontSize: "15px",
                             },
                           }}
                         />
@@ -486,7 +495,7 @@ export default function LoggedInStart() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",
-                        marginX: { xs: 2, sm: 2, md: 0 },
+                        marginX: { xs: 2, sm: 2, md: 6 },
                         padding: 0,
                       }}
                     >
@@ -498,14 +507,16 @@ export default function LoggedInStart() {
                           role="button"
                           type="button"
                           sx={{
-                            marginBottom: { xs: 2, md: 3 },
-                            fontSize: { xs: 16, md: 16 },
-                            color: "black",
+                            marginTop: {xs: 1, },
+                            marginRight: { xs: 2, md: 2 },
+                            fontSize: { xs: 12, md: 14 },
+                            color: "white",
                             fontWeight: "bold",
-                            padding: 1,
+                            boxShadow: 'none', 
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
+                              boxShadow: 'none', 
                             },
                           }}
                           onClick={() => handleClickOpen("ENV")}
@@ -513,14 +524,6 @@ export default function LoggedInStart() {
                           Välj läge
                         </Button>
                       )}
-                    </CardActions>
-                    <CardActions
-                      className="bold"
-                      sx={{
-                        mx: { xs: 2, sm: 1, md: 3 },
-                        padding: 0,
-                      }}
-                    >
                       <Button
                         component="button"
                         variant="outlined"
@@ -528,10 +531,9 @@ export default function LoggedInStart() {
                         role="button"
                         type="button"
                         sx={{
-                          marginBottom: { xs: 2, md: 3 },
-                          fontSize: { xs: 16, md: 16 },
+                          marginTop: {xs: 1, },
+                          fontSize: { xs: 12, md: 14 },
                           fontWeight: "bold",
-                          padding: 1,
                           borderColor:
                             serverMode === "ENV" ? "black" : undefined,
                           color: serverMode === "ENV" ? "black" : undefined,
@@ -539,7 +541,7 @@ export default function LoggedInStart() {
                             color: "black",
                           },
                         }}
-                        // onClick={() => router.push("/economyInfo")}
+                        onClick={() => router.push("/environmentInfo")}
                       >
                         Mer info
                       </Button>
@@ -584,7 +586,6 @@ export default function LoggedInStart() {
                       marginTop: serverMode === "SNO" ? 1 : 0,
                       textAlign: "center",
                       flex: 1,
-                      marginTop: 0,
                     }}
                   >
                     Snöläge
@@ -600,7 +601,9 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ marginTop: 4, padding: 0 }}
+              sx={{ 
+                marginTop: 4, 
+                padding: 0 }}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -610,9 +613,12 @@ export default function LoggedInStart() {
                 flexDirection="column"
                 alignItems="center"
                 gap={2}
+                paddingBottom={0}
               >
                 <Stack direction="column">
-                  <Box sx={{ padding: { xs: 2, sm: 3 } }}>
+                  <Box 
+                    sx={{ 
+                    padding: { xs: 2, sm: 3 } }}>
                     <Typography
                       variant="body1"
                       component="p"
@@ -641,7 +647,7 @@ export default function LoggedInStart() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-end",
-                        marginX: { xs: 2, sm: 2, md: 0 },
+                        marginX: { xs: 2, sm: 2, md: 6 },
                         padding: 0,
                       }}
                     >
@@ -653,14 +659,12 @@ export default function LoggedInStart() {
                           role="button"
                           type="button"
                           sx={{
-                            // marginBottom: { xs: 2, md: 3 },
                             marginTop: {xs: 1, },
-
+                            marginRight: { xs: 2, md: 2 },
                             fontSize: { xs: 12, md: 14 },
                             color: "white",
                             fontWeight: "bold",
                             boxShadow: 'none', 
-                            // padding: 1,
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
@@ -672,14 +676,6 @@ export default function LoggedInStart() {
                           Välj läge
                         </Button>
                       )}
-                    </CardActions>
-                    <CardActions
-                      className="bold"
-                      sx={{
-                        mx: { xs: 2, sm: 1, md: 3 },
-                        padding: 0,
-                      }}
-                    >
                       <Button
                         component="button"
                         variant="outlined"
@@ -688,10 +684,8 @@ export default function LoggedInStart() {
                         type="button"
                         sx={{
                           marginTop: {xs: 1, },
-                          // marginBottom: { xs: 2, md: 3 },
                           fontSize: { xs: 12, md: 14 },
-                          // fontWeight: "bold",
-                          // padding: 1,
+                          fontWeight: "bold",
                           borderColor:
                             serverMode === "SNO" ? "black" : undefined,
                           color: serverMode === "SNO" ? "black" : undefined,
@@ -699,7 +693,7 @@ export default function LoggedInStart() {
                             color: "black",
                           },
                         }}
-                        // onClick={() => router.push("/economyInfo")}
+                        onClick={() => router.push("/snowInfo")}
                       >
                         Mer info
                       </Button>
