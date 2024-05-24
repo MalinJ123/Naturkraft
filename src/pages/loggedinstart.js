@@ -149,7 +149,7 @@ export default function LoggedInStart() {
               border: serverMode === "EKO" ? "3px solid green" : undefined,
             }}
             elevation={2}
-          >
+          >       
             <CardHeader
               title={
                 <Box
@@ -173,14 +173,14 @@ export default function LoggedInStart() {
                     Ekonomiläge
                   </Typography>
                   {serverMode === "EKO" && (
-                    <Check
-                      sx={{
-                        color: "#ff",
-                        fontSize: "25px",
-                        marginRight: 1,
-                      }}
-                    />
-                  )}
+                  <Check
+                    sx={{
+                      color: "#ff",
+                      fontSize: "25px",
+                      marginRight: 1.7,
+                    }}
+                  />
+                )}
                 </Box>
               }
               sx={{ 
@@ -386,7 +386,7 @@ export default function LoggedInStart() {
                       sx={{
                         color: "#ff",
                         fontSize: "25px",
-                        marginRight: 1,
+                        marginRight: 1.7,
                       }}
                     />
                   )}
@@ -595,7 +595,7 @@ export default function LoggedInStart() {
                       sx={{
                         color: "#ff",
                         fontSize: "25px",
-                        marginRight: 1,
+                        marginRight: 1.7,
                       }}
                     />
                   )}
@@ -710,9 +710,9 @@ export default function LoggedInStart() {
         onClose={handleClose}
         aria-labelledby="mode-dialog-title"
       >
-        <DialogTitle id="mode-dialog-title">Byta styrläge?</DialogTitle>
+        <DialogTitle id="mode-dialog-title">Byta styrläge</DialogTitle>
         <DialogContent>
-          <Typography variant="body1" fontWeight="bold" marginTop="5px">
+          <Typography variant="body1" fontWeight="bold" marginTop="5px" fontSize={{xs: 14, sm: 16 }}>
             Vill du byta styrningen till {renderDialogModeContent()}?
           </Typography>
         </DialogContent>
