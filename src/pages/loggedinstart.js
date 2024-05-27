@@ -746,7 +746,7 @@ export default function LoggedInStart() {
               sx={{
                 margin: "15px",
                 "&:hover": {
-                  backgroundColor: "#33b249",
+                  backgroundColor: "#BB6246",
                   color: "white",
                 },
               }}
