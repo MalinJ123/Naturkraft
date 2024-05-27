@@ -46,17 +46,50 @@ function Start() {
             <Stack spacing={2} direction="column">
               <Stack spacing={-1} direction="column">
                 <ThemeProvider theme={themePoppins}>
-                  <Typography variant="h5">Projektet</Typography>
-                  <Typography variant="h3">Naturkraft</Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      "@media (max-width: 700px)": {
+                        fontSize: "16px",
+                        lineHeight: "2",
+                      },
+                    }}
+                  >
+                    Projektet
+                  </Typography>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      "@media (max-width: 700px)": {
+                        fontSize: "20px",
+                      },
+                    }}
+                  >
+                    Naturkraft
+                  </Typography>
                 </ThemeProvider>
               </Stack>
               <ThemeProvider theme={themeRoboto}>
-                <Typography variant="h4">
+                <Typography
+                  variant="h5"
+                  sx={{
+                    "@media (max-width: 700px)": {
+                      fontSize: "16px",
+                    },
+                  }}
+                >
                   Framtidens smarta elljusspår
                 </Typography>
                 <Stack direction="row" spacing={2} alignContent="center">
                   <Explore />
-                  <Typography variant="h5">
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      "@media (max-width: 700px)": {
+                        fontSize: "18px",
+                      },
+                    }}
+                  >
                     59&lsquo;33&apos;30.9&ldquo;N 12&lsquo;33&apos;48.3&ldquo;E
                   </Typography>
                 </Stack>
