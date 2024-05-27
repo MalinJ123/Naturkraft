@@ -2,6 +2,11 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { ThemeProvider } from "@mui/material/styles";
 import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Typography,
   Container,
   Box,
   AppBar,
@@ -43,6 +48,23 @@ export default function Header() {
 
   // Drawer
   const [headerDrawer, setHeaderDrawer] = useState(false);
+
+  // Logout overlay
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false)
+
+  const handleLogoutOpen = () => {
+    setLogoutDialogOpen(true);
+  };
+  
+  const handleLogoutClose = () => {
+    setLogoutDialogOpen(false);
+  };
+  
+  const handleLogout = () => {
+    setAuthedState(false);
+    router.push("/"); 
+    setLogoutDialogOpen(false);
+  };
 
   return (
     <ThemeProvider theme={{ darkTheme, mainTheme }}>
@@ -209,7 +231,8 @@ export default function Header() {
                   variant="outlined"
                   type="button"
                   role="button"
-                  onClick={() => router.push("/")}
+                  onClick={handleLogoutOpen}
+                  // onClick={() => router.push("/")}
                   sx={{
                     backgroundColor: "transparent",
                     color: "#fff",
@@ -349,6 +372,58 @@ export default function Header() {
           </Toolbar>
         </Container>
       </AppBar>
+      <Dialog
+        open={logoutDialogOpen}
+        onClose={handleLogoutClose}
+        aria-labelledby="logout-dialog-title"
+      >
+        <DialogTitle id="logout-dialog-title">Du är på väg att logga ut?</DialogTitle>
+        <DialogContent>
+          <Typography variant="body1" fontWeight="bold" marginTop="5px" fontSize={{ xs: 14, sm: 16 }}>
+            Är du säker på att du vill logga ut?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              marginBottom: "15px",
+            }}
+          >
+            <Button
+              onClick={handleLogout}
+              color="primary"
+              variant="contained"
+              sx={{
+                margin: "15px",
+                "&:hover": {
+                  backgroundColor: "#33b249",
+                  color: "white",
+                },
+              }}
+            >
+              Ja
+            </Button>
+            <Button
+              onClick={handleLogoutClose}
+              color="primary"
+              variant="contained"
+              sx={{
+                margin: "15px",
+                "&:hover": {
+                  backgroundColor: "#BB6246",
+                  color: "white",
+                },
+              }}
+            >
+              Nej
+            </Button>
+          </Box>
+        </DialogActions>
+      </Dialog>
+
     </ThemeProvider>
   );
 }
