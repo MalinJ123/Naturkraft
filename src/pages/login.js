@@ -1,8 +1,9 @@
-import dotenv from "dotenv";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
+import dotenv from "dotenv";
 import {
   Box,
   Container,
@@ -21,14 +22,21 @@ import { darkTheme } from "@/styles/darkTheme";
 dotenv.config();
 
 export default function Login() {
+  const { data: session } = useSession();
   const [username, setUsername] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const router = useRouter();
 
-  const userCredentialsFilled = username.length > 0 && userPassword.length > 0;
+  useEffect(() => {
+    if (session) {
+      router.push("/admin/dashboard");
+    }
+  }, [session, router]);
+
+  const userCredentialsFilled = username.length > 0 && password.length > 0;
 
   // För användare från ev backend
   const onHandleSubmit = async (e) => {
@@ -40,25 +48,22 @@ export default function Login() {
       setUsernameError("");
     }
 
-    if (!userPassword) {
+    if (!password) {
       setPasswordError("Du måste fylla i lösenord");
     } else {
       setPasswordError("");
     }
 
     try {
-      const response = await axios.post(
-        `${process.env.BACKEND_LOCATION}login`,
-        {
-          username,
-          password: userPassword,
-        }
-      );
+      const result = await signIn("credentials", {
+        redirect: false,
+        username,
+        password,
+        callBackUrl: "/admin/dashboard",
+      });
 
-      if (response.status === 200) {
-        router.push("/loggedinstart");
-      } else {
-        console.log("Något gick snett!", response.data.message);
+      if (result?.status === 200) {
+        router.push(result.url);
       }
     } catch (error) {
       throw new Error(error);
@@ -77,9 +82,9 @@ export default function Login() {
             md: "46%",
             lg: "38%",
             xl: "34%",
-                     display:"flex",
-            justifyContent:"center",
-            alignContent:"center"
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
           },
           padding: 0,
         }}
@@ -90,13 +95,13 @@ export default function Login() {
             borderRadius: 5,
             paddingY: 1,
             width: {
-              xs: "100%",  
-              sm: "70%",   
+              xs: "100%",
+              sm: "70%",
               "@media (min-width:400px) and (max-width:600px)": {
                 width: "70%",
               },
             },
-       
+
             borderRadius: {
               xs: 5,
             },
@@ -104,11 +109,10 @@ export default function Login() {
           elevation={6}
         >
           <CardHeader
-          
             title="Logga in"
             titleTypographyProps={{
               textAlign: "center",
-              fontFamily: 'Jura, sans-serif',
+              fontFamily: "Jura, sans-serif",
             }}
           />
           <CardContent>
@@ -133,15 +137,15 @@ export default function Login() {
                   id="username__input"
                   maxLength={24}
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)} 
+                  onChange={(e) => setUsername(e.target.value)}
                   InputProps={{
                     style: {
-                      fontFamily: 'Jura, sans-serif',
+                      fontFamily: "Jura, sans-serif",
                     },
                   }}
                   InputLabelProps={{
                     style: {
-                      fontFamily: 'Jura, sans-serif',
+                      fontFamily: "Jura, sans-serif",
                     },
                   }}
                 />
@@ -149,25 +153,15 @@ export default function Login() {
               <FormControl>
                 <TextField
                   error={passwordError ? true : false}
-                  color={userPassword.length > 0 ? "success" : undefined}
+                  color={password.length > 0 ? "success" : undefined}
                   type="password"
                   label="Lösenord*"
                   helperText={passwordError ? passwordError : ""}
                   variant="filled"
                   placeholder="****"
                   maxLength={32}
-                  value={userPassword}
-                  onChange={(e) => setUserPassword(e.target.value)}
-                  InputProps={{
-                    style: {
-                      fontFamily: 'Jura, sans-serif',
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: {
-                      fontFamily: 'Jura, sans-serif',
-                    },
-                  }}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </FormControl>
               <Button
@@ -190,18 +184,18 @@ export default function Login() {
                     : "info"
                 }
                 sx={{
-                  fontFamily: 'Jura, sans-serif',
+                  fontFamily: "Jura, sans-serif",
                   marginTop: 2,
                   fontSize: {
                     xs: "12px",
                     sm: "14px",
                   },
                   width: {
-                    xs: "50%",  
-                    sm: "70%",   
+                    xs: "50%",
+                    sm: "70%",
                   },
                   borderRadius: "8.5px",
-                  fontWeight:"bold"
+                  fontWeight: "bold",
                 }}
               >
                 Logga in

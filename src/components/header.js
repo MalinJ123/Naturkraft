@@ -32,15 +32,15 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
 
 import { headerHeight } from "./layout";
-import { useStore } from "@/stores/store";
 import hillringsbergIFLogo from "@/images/main/logotype.png";
 import { darkTheme } from "@/styles/darkTheme";
 import { mainTheme } from "@/styles/mainTheme";
+import { useStore } from "@/stores/store";
 
 export default function Header() {
   const router = useRouter();
 
-  const { authedState, setAuthedState } = useStore();
+  const { authorizedState, setAuthorizedState } = useStore();
 
   // Dropdown
   const [headerDropdown, setHeaderDropdown] = useState(false);
@@ -212,7 +212,7 @@ export default function Header() {
               >
                 Hitta hit
               </Button>
-              {!authedState ? (
+              {!authorizedState ? (
                 <Button
                   variant="outlined"
                   type="button"

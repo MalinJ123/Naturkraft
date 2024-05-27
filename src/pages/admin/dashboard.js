@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useSession } from "next-auth/react";
 import {
   Box,
   Container,
@@ -8,7 +9,6 @@ import {
   CardContent,
   CardActions,
   Stack,
-  Link,
   Button,
   Alert,
   AlertTitle,
@@ -26,23 +26,52 @@ import { useStore } from "@/stores/store";
 import dotenv from "dotenv";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { contentHeight } from "@/components/layout";
 
 export default function LoggedInStart() {
-  const { authedState, setAuthedState } = useStore();
+  const { data: session, status } = useSession();
   const [systemStatus, setSystemStatus] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [serverMode, setServerMode] = useState("");
   const [changeMode, setChangeMode] = useState("");
 
   const router = useRouter();
+  const { authorizedState, setAuthorizedState } = useStore();
 
   dotenv.config();
+
+  const renderDialogModeContent = () => {
+    switch (serverMode) {
+      case "EKO":
+        return "Ekonomiläge";
+      case "ENV":
+        return "Miljöläge";
+      case "SNO":
+        return "Snöläge";
+      default:
+        return "";
+    }
+  };
+
+  const getMode = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.BACKEND_LOCATION}/pie/getMode`
+      );
+      if (response.status === 200) {
+        return setServerMode(response.data);
+      } else {
+        console.error("Något gick snett!", response.data.message);
+      }
+    } catch (error) {
+      console.error("Ett fel uppstod:", error.message);
+    }
+    return null;
+  }, []);
 
   const handleModeChange = async (mode) => {
     try {
       const response = await axios.post(
-        `${process.env.BACKEND_LOCATION}postMode`,
+        `${process.env.BACKEND_LOCATION}/pie/postMode`,
         { mode: mode }
       );
       if (response.status === 200) {
@@ -67,48 +96,29 @@ export default function LoggedInStart() {
   };
 
   useEffect(() => {
-    setAuthedState(true);
-
-    return () => {
-      setAuthedState(false);
-    };
-  }, [authedState, setAuthedState]);
-
-  const renderDialogModeContent = () => {
-    switch (serverMode) {
-      case "EKO":
-        return "Ekonomiläge";
-      case "ENV":
-        return "Miljöläge";
-      case "SNO":
-        return "Snöläge";
-      default:
-        return "";
-    }
-  };
-
-  const getMode = useCallback(async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.BACKEND_LOCATION}getMode`
-      );
-      if (response.status === 200) {
-        return setServerMode(response.data);
-      } else {
-        console.error("Något gick snett!", response.data.message);
-      }
-    } catch (error) {
-      console.error("Ett fel uppstod:", error.message);
-    }
-    return null;
-  }, []);
-
-  useEffect(() => {
     getMode();
   }, [getMode]);
 
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    } else if (status === "authenticated") {
+      setAuthorizedState(true);
+    }
+  }, [status, router, setAuthorizedState]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Box component="section">
+      <Typography
+        variant="h4"
+        sx={{ textAlign: "center", marginTop: 4, color: "#fff" }}
+      >
+        Välkommen till styrpanelen {session.user.username}!
+      </Typography>
       <Alert variant="filled" severity={systemStatus ? "success" : "error"}>
         <AlertTitle>{systemStatus ? "Inget fel!" : "Kritiskt fel!"}</AlertTitle>
         {systemStatus
@@ -149,7 +159,7 @@ export default function LoggedInStart() {
               border: serverMode === "EKO" ? "3px solid green" : undefined,
             }}
             elevation={2}
-          >       
+          >
             <CardHeader
               title={
                 <Box
@@ -173,19 +183,20 @@ export default function LoggedInStart() {
                     Ekonomiläge
                   </Typography>
                   {serverMode === "EKO" && (
-                  <Check
-                    sx={{
-                      color: "#ff",
-                      fontSize: "25px",
-                      marginRight: 1.7,
-                    }}
-                  />
-                )}
+                    <Check
+                      sx={{
+                        color: "#ff",
+                        fontSize: "25px",
+                        marginRight: 1.7,
+                      }}
+                    />
+                  )}
                 </Box>
               }
-              sx={{ 
-                marginTop: 4, 
-                padding: 0 }}
+              sx={{
+                marginTop: 4,
+                padding: 0,
+              }}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -219,17 +230,17 @@ export default function LoggedInStart() {
                     </Typography>
                     <List>
                       <ListItem
-                        sx={{ 
+                        sx={{
                           marginRight: 1,
-                          padding: 0, marginLeft: { 
-                          sm: 0,
-                           md: 2 
-                          } }}
+                          padding: 0,
+                          marginLeft: {
+                            sm: 0,
+                            md: 2,
+                          },
+                        }}
                       >
                         <ListItemIcon
-                          sx={{ minWidth: "unset",
-                           paddingRight: 1
-                           }}
+                          sx={{ minWidth: "unset", paddingRight: 1 }}
                         >
                           <FiberManualRecord
                             style={{ fontSize: 10, color: "black" }}
@@ -247,9 +258,10 @@ export default function LoggedInStart() {
                         />
                       </ListItem>
                       <ListItem
-                        sx={{ 
+                        sx={{
                           padding: 0,
-                          marginLeft: { sm: 0, md: 2 } }}
+                          marginLeft: { sm: 0, md: 2 },
+                        }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -297,16 +309,16 @@ export default function LoggedInStart() {
                           role="button"
                           type="button"
                           sx={{
-                            marginTop: {xs: 1, },
+                            marginTop: { xs: 1 },
                             marginRight: { xs: 2, md: 2 },
                             fontSize: { xs: 12, md: 14 },
                             color: "white",
                             fontWeight: "bold",
-                            boxShadow: 'none',
+                            boxShadow: "none",
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
-                              boxShadow: 'none', 
+                              boxShadow: "none",
                             },
                           }}
                           onClick={() => handleClickOpen("EKO")}
@@ -321,7 +333,7 @@ export default function LoggedInStart() {
                         role="button"
                         type="button"
                         sx={{
-                          marginTop: {xs: 1, },
+                          marginTop: { xs: 1 },
                           fontSize: { xs: 12, md: 14 },
                           fontWeight: "bold",
                           borderColor:
@@ -329,7 +341,6 @@ export default function LoggedInStart() {
                           color: serverMode === "EKO" ? "black" : undefined,
                           "&:hover": {
                             color: "black",
-                      
                           },
                         }}
                         onClick={() => router.push("/economyInfo")}
@@ -392,9 +403,10 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ 
-                marginTop: 4, 
-                padding: 0 }}
+              sx={{
+                marginTop: 4,
+                padding: 0,
+              }}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -407,11 +419,12 @@ export default function LoggedInStart() {
                 paddingBottom={0}
               >
                 <Stack direction="column">
-                  <Box 
-                    sx={{ 
+                  <Box
+                    sx={{
                       paddingX: { xs: 2, sm: 3 },
-                      paddingTop: {xs: 2, sm: 3}
-                       }}>
+                      paddingTop: { xs: 2, sm: 3 },
+                    }}
+                  >
                     <Typography
                       variant="body1"
                       component="p"
@@ -431,14 +444,15 @@ export default function LoggedInStart() {
                     <List>
                       <ListItem
                         sx={{
-                          marginRight: 1,  
-                          padding: 0, 
-                          marginLeft: { sm: 0, md: 2 } }}
+                          marginRight: 1,
+                          padding: 0,
+                          marginLeft: { sm: 0, md: 2 },
+                        }}
                       >
                         <ListItemIcon
-                          sx={{ 
-                            minWidth: "unset", 
-                            paddingRight: 1 
+                          sx={{
+                            minWidth: "unset",
+                            paddingRight: 1,
                           }}
                         >
                           <FiberManualRecord
@@ -457,9 +471,10 @@ export default function LoggedInStart() {
                         />
                       </ListItem>
                       <ListItem
-                        sx={{ 
-                          padding: 0, 
-                          marginLeft: { sm: 0, md: 2 } }}
+                        sx={{
+                          padding: 0,
+                          marginLeft: { sm: 0, md: 2 },
+                        }}
                       >
                         <ListItemIcon
                           sx={{ minWidth: "unset", paddingRight: 1 }}
@@ -507,16 +522,16 @@ export default function LoggedInStart() {
                           role="button"
                           type="button"
                           sx={{
-                            marginTop: {xs: 1, },
+                            marginTop: { xs: 1 },
                             marginRight: { xs: 2, md: 2 },
                             fontSize: { xs: 12, md: 14 },
                             color: "white",
                             fontWeight: "bold",
-                            boxShadow: 'none', 
+                            boxShadow: "none",
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
-                              boxShadow: 'none', 
+                              boxShadow: "none",
                             },
                           }}
                           onClick={() => handleClickOpen("ENV")}
@@ -531,7 +546,7 @@ export default function LoggedInStart() {
                         role="button"
                         type="button"
                         sx={{
-                          marginTop: {xs: 1, },
+                          marginTop: { xs: 1 },
                           fontSize: { xs: 12, md: 14 },
                           fontWeight: "bold",
                           borderColor:
@@ -601,9 +616,10 @@ export default function LoggedInStart() {
                   )}
                 </Box>
               }
-              sx={{ 
-                marginTop: 4, 
-                padding: 0 }}
+              sx={{
+                marginTop: 4,
+                padding: 0,
+              }}
             />
             <CardContent sx={{ padding: 0 }}>
               <Box
@@ -616,9 +632,11 @@ export default function LoggedInStart() {
                 paddingBottom={0}
               >
                 <Stack direction="column">
-                  <Box 
-                    sx={{ 
-                    padding: { xs: 2, sm: 3 } }}>
+                  <Box
+                    sx={{
+                      padding: { xs: 2, sm: 3 },
+                    }}
+                  >
                     <Typography
                       variant="body1"
                       component="p"
@@ -659,16 +677,16 @@ export default function LoggedInStart() {
                           role="button"
                           type="button"
                           sx={{
-                            marginTop: {xs: 1, },
+                            marginTop: { xs: 1 },
                             marginRight: { xs: 2, md: 2 },
                             fontSize: { xs: 12, md: 14 },
                             color: "white",
                             fontWeight: "bold",
-                            boxShadow: 'none', 
+                            boxShadow: "none",
                             "&:hover": {
                               backgroundColor: "#33b249",
                               color: "white",
-                              boxShadow: 'none', 
+                              boxShadow: "none",
                             },
                           }}
                           onClick={() => handleClickOpen("SNO")}
@@ -683,7 +701,7 @@ export default function LoggedInStart() {
                         role="button"
                         type="button"
                         sx={{
-                          marginTop: {xs: 1, },
+                          marginTop: { xs: 1 },
                           fontSize: { xs: 12, md: 14 },
                           fontWeight: "bold",
                           borderColor:
@@ -712,7 +730,12 @@ export default function LoggedInStart() {
       >
         <DialogTitle id="mode-dialog-title">Byta styrläge</DialogTitle>
         <DialogContent>
-          <Typography variant="body1" fontWeight="bold" marginTop="5px" fontSize={{xs: 14, sm: 16 }}>
+          <Typography
+            variant="body1"
+            fontWeight="bold"
+            marginTop="5px"
+            fontSize={{ xs: 14, sm: 16 }}
+          >
             Vill du byta styrningen till {renderDialogModeContent()}?
           </Typography>
         </DialogContent>
