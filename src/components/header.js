@@ -266,10 +266,11 @@ export default function Header() {
                   variant="outlined"
                   type="button"
                   role="button"
-                  onClick={() => {
-                    setAuthedState(false);
-                    router.push("/");
-                  }}
+                  onClick={handleLogoutOpen}
+                  // onClick={() => {
+                  //   setAuthedState(false);
+                  //   router.push("/");
+                  // }}
                   sx={{
                     backgroundColor: "transparent",
                     color: "#fff",
