@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { signOut } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
 import {
   Dialog,
@@ -50,20 +51,27 @@ export default function Header() {
   const [headerDrawer, setHeaderDrawer] = useState(false);
 
   // Logout overlay
-  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false)
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
 
   const handleLogoutOpen = () => {
     setLogoutDialogOpen(true);
   };
-  
+
   const handleLogoutClose = () => {
     setLogoutDialogOpen(false);
   };
-  
-  const handleLogout = () => {
-    setAuthedState(false);
-    router.push("/"); 
-    setLogoutDialogOpen(false);
+
+  const handleLogout = async () => {
+    try {
+      await signOut({ redirect: false });
+
+      setAuthorizedState(false);
+
+      router.push("/");
+      setLogoutDialogOpen(false);
+    } catch (error) {
+      return null;
+    }
   };
 
   return (
@@ -247,7 +255,7 @@ export default function Header() {
               justifyContent="flex-end"
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             >
-              {!authedState ? (
+              {!authorizedState ? (
                 <IconButton
                   variant="outlined"
                   type="button"
@@ -397,9 +405,16 @@ export default function Header() {
         onClose={handleLogoutClose}
         aria-labelledby="logout-dialog-title"
       >
-        <DialogTitle id="logout-dialog-title">Du är på väg att logga ut?</DialogTitle>
+        <DialogTitle id="logout-dialog-title">
+          Du är på väg att logga ut?
+        </DialogTitle>
         <DialogContent>
-          <Typography variant="body1" fontWeight="bold" marginTop="5px" fontSize={{ xs: 14, sm: 16 }}>
+          <Typography
+            variant="body1"
+            fontWeight="bold"
+            marginTop="5px"
+            fontSize={{ xs: 14, sm: 16 }}
+          >
             Är du säker på att du vill logga ut?
           </Typography>
         </DialogContent>
@@ -443,7 +458,6 @@ export default function Header() {
           </Box>
         </DialogActions>
       </Dialog>
-
     </ThemeProvider>
   );
 }

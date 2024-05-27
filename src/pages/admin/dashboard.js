@@ -22,10 +22,11 @@ import {
   DialogActions,
 } from "@mui/material/";
 import { FiberManualRecord, Check } from "@mui/icons-material";
-import { useStore } from "@/stores/store";
 import dotenv from "dotenv";
 import axios from "axios";
 import { useRouter } from "next/router";
+
+import { useStore } from "@/stores/store";
 
 export default function LoggedInStart() {
   const { data: session, status } = useSession();
@@ -117,7 +118,7 @@ export default function LoggedInStart() {
         variant="h4"
         sx={{ textAlign: "center", marginTop: 4, color: "#fff" }}
       >
-        Välkommen till styrpanelen {session.user.username}!
+        Välkommen till styrpanelen {session?.user.username}!
       </Typography>
       <Alert variant="filled" severity={systemStatus ? "success" : "error"}>
         <AlertTitle>{systemStatus ? "Inget fel!" : "Kritiskt fel!"}</AlertTitle>
@@ -343,7 +344,7 @@ export default function LoggedInStart() {
                             color: "black",
                           },
                         }}
-                        onClick={() => router.push("/economyInfo")}
+                        onClick={() => router.push("/admin/info/economyInfo")}
                       >
                         Mer info
                       </Button>
@@ -556,7 +557,9 @@ export default function LoggedInStart() {
                             color: "black",
                           },
                         }}
-                        onClick={() => router.push("/environmentInfo")}
+                        onClick={() =>
+                          router.push("/admin/info/environmentInfo")
+                        }
                       >
                         Mer info
                       </Button>
@@ -711,7 +714,7 @@ export default function LoggedInStart() {
                             color: "black",
                           },
                         }}
-                        onClick={() => router.push("/snowInfo")}
+                        onClick={() => router.push("/admin/info/snowInfo")}
                       >
                         Mer info
                       </Button>
