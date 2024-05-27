@@ -86,7 +86,7 @@ function Footer() {
             </ListItem>
 
             <ListItem disablePadding>
-              <Typography variant="body1">Bengt@delabglava.se</Typography>
+              <Typography variant="body1">bengt@delabglava.se</Typography>
             </ListItem>
 
             <ListItem disablePadding>
@@ -132,7 +132,7 @@ function Footer() {
           >
             <ListItem disablePadding>
               <Typography variant="body1">
-                Isac.Myren.Andersson@GlavaEnergyCenter.se
+                isac.myren.andersson@glavaenergycenter.se
               </Typography>
             </ListItem>
 

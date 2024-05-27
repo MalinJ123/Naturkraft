@@ -151,7 +151,7 @@ export default function Contact() {
                 },
               }}
             >
-              Bengt@delabglava.se
+              bengt@delabglava.se
             </Typography>
             <Typography
               variant="body1"
@@ -220,7 +220,7 @@ export default function Contact() {
                 },
               }}
             >
-              Isac.Myren.Andersson@GlavaEnergyCenter.se
+              isac.myren.andersson@glavaenergycenter.se
             </Typography>
           </Card>
         </Box>
