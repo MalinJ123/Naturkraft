@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
@@ -21,6 +22,7 @@ import { darkTheme } from "@/styles/darkTheme";
 dotenv.config();
 
 export default function Login() {
+  const { data: session } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -28,15 +30,13 @@ export default function Login() {
 
   const router = useRouter();
 
-  const userCredentialsFilled = username.length > 0 && password.length > 0;
-
   useEffect(() => {
-    // Getting the error details from URL
-    if (router.query.error) {
-      console.log(router.query.error); // Shown below the input field in my example
-      setUsername(router.query.username); // To prefill the email after redirect
+    if (session) {
+      router.push("/admin/dashboard");
     }
-  }, [router]);
+  }, [session, router]);
+
+  const userCredentialsFilled = username.length > 0 && password.length > 0;
 
   // För användare från ev backend
   const onHandleSubmit = async (e) => {
@@ -56,12 +56,13 @@ export default function Login() {
 
     try {
       const result = await signIn("credentials", {
+        redirect: false,
         username,
         password,
-        callbackUrl: `${window.location.origin}/admin/dashboard`,
+        callBackUrl: "/admin/dashboard",
       });
 
-      if (result?.ok) {
+      if (result?.status === 200) {
         router.push(result.url);
       }
     } catch (error) {

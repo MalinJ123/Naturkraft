@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useSession } from "next-auth/react";
 import {
   Box,
   Container,
@@ -8,7 +9,6 @@ import {
   CardContent,
   CardActions,
   Stack,
-  Link,
   Button,
   Alert,
   AlertTitle,
@@ -29,50 +29,16 @@ import { useRouter } from "next/router";
 import { contentHeight } from "@/components/layout";
 
 export default function LoggedInStart() {
-  const { authedState, setAuthedState } = useStore();
+  const { data: session, status } = useSession();
   const [systemStatus, setSystemStatus] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [serverMode, setServerMode] = useState("");
   const [changeMode, setChangeMode] = useState("");
 
   const router = useRouter();
+  const { authorizedState, setAuthorizedState } = useStore();
 
   dotenv.config();
-
-  const handleModeChange = async (mode) => {
-    try {
-      const response = await axios.post(
-        `${process.env.BACKEND_LOCATION}/pie/postMode`,
-        { mode: mode }
-      );
-      if (response.status === 200) {
-        console.log(response.data);
-        setServerMode(response.data);
-      } else {
-        console.error("Något gick snett!", response.data.message);
-      }
-    } catch (error) {
-      console.error("Ett fel uppstod:", error.message);
-    }
-    setDialogOpen(false);
-  };
-
-  const handleClickOpen = (mode) => {
-    setChangeMode(mode);
-    setDialogOpen(true);
-  };
-
-  const handleClose = () => {
-    setDialogOpen(false);
-  };
-
-  useEffect(() => {
-    setAuthedState(true);
-
-    return () => {
-      setAuthedState(false);
-    };
-  }, [authedState, setAuthedState]);
 
   const renderDialogModeContent = () => {
     switch (serverMode) {
@@ -103,12 +69,57 @@ export default function LoggedInStart() {
     return null;
   }, []);
 
+  const handleModeChange = async (mode) => {
+    try {
+      const response = await axios.post(
+        `${process.env.BACKEND_LOCATION}/pie/postMode`,
+        { mode: mode }
+      );
+      if (response.status === 200) {
+        console.log(response.data);
+        setServerMode(response.data);
+      } else {
+        console.error("Något gick snett!", response.data.message);
+      }
+    } catch (error) {
+      console.error("Ett fel uppstod:", error.message);
+    }
+    setDialogOpen(false);
+  };
+
+  const handleClickOpen = (mode) => {
+    setChangeMode(mode);
+    setDialogOpen(true);
+  };
+
+  const handleClose = () => {
+    setDialogOpen(false);
+  };
+
   useEffect(() => {
     getMode();
   }, [getMode]);
 
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    } else if (status === "authenticated") {
+      setAuthorizedState(true);
+    }
+  }, [status, router, setAuthorizedState]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Box component="section">
+      <Typography
+        variant="h4"
+        sx={{ textAlign: "center", marginTop: 4, color: "#fff" }}
+      >
+        Välkommen till styrpanelen {session.user.username}!
+      </Typography>
       <Alert variant="filled" severity={systemStatus ? "success" : "error"}>
         <AlertTitle>{systemStatus ? "Inget fel!" : "Kritiskt fel!"}</AlertTitle>
         {systemStatus

@@ -1,3 +1,5 @@
+// FRONTEND PROJECT, Page: Src/pages/api/auth/[...nextauth].js Does: Connecting to and receiving data from the backend
+
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
@@ -30,8 +32,7 @@ const providers = [
         } else {
           return null;
         }
-      } catch (e) {
-        console.error("Error in authorize:", e);
+      } catch {
         return null;
       }
     },
@@ -53,6 +54,12 @@ const callbacks = {
     session.user.username = token.username;
     session.accessToken = token.accessToken;
     return session;
+  },
+  async redirect({ url, baseUrl }) {
+    if (url === "/") {
+      return `${baseUrl}/admin/dashboard`;
+    }
+    return `${baseUrl}/admin/dashboard`;
   },
 };
 
