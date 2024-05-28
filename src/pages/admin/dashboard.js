@@ -120,7 +120,7 @@ export default function LoggedInStart() {
         variant="h4"
         sx={{ textAlign: "center", marginTop: 4, color: "#fff" }}
       >
-        Välkommen till styrpanelen {session?.user.username}!
+        Välkommen {session?.user.username}!
       </Typography>
       <Alert variant="filled" severity={systemStatus ? "success" : "error"}>
         <AlertTitle>{systemStatus ? "Inget fel!" : "Kritiskt fel!"}</AlertTitle>
