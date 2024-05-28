@@ -30,12 +30,12 @@ import { useRouter } from "next/router";
 import { useStore } from "@/stores/store";
 
 export default function LoggedInStart() {
-  const { data: session, status } = useSession();
+  const { data: status } = useSession();
   const [systemStatus, setSystemStatus] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [serverMode, setServerMode] = useState("");
   const [changeMode, setChangeMode] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
   const { authorizedState, setAuthorizedState } = useStore();
@@ -72,7 +72,7 @@ export default function LoggedInStart() {
   }, []);
 
   const handleModeChange = async (mode) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await axios.post(
         `${process.env.BACKEND_LOCATION}/pie/postMode`,
@@ -81,16 +81,18 @@ export default function LoggedInStart() {
       if (response.status === 200) {
         console.log(response.data);
         setServerMode(response.data);
+        setLoading(false);
+        setDialogOpen(false);
       } else {
+        setLoading(false);
+        setDialogOpen(false);
         console.error("Något gick snett!", response.data.message);
       }
     } catch (error) {
-      console.error("Ett fel uppstod:", error.message);
-    }
-    setTimeout(() => {
       setLoading(false);
       setDialogOpen(false);
-    }, 5000); 
+      console.error("Ett fel uppstod:", error.message);
+    }
   };
 
   const handleClickOpen = (mode) => {
@@ -178,7 +180,7 @@ export default function LoggedInStart() {
                       fontSize: { xs: 18, md: 20 },
                       marginTop: serverMode === "EKO" ? 1 : 0,
                       textAlign: "center",
-                      display: "inline-block"
+                      display: "inline-block",
                     }}
                   >
                     Ekonomiläge
@@ -379,7 +381,7 @@ export default function LoggedInStart() {
                     gridTemplateColumns: "75px 1fr 75px",
                   }}
                 >
-                 <Box width="30px"></Box>
+                  <Box width="30px"></Box>
                   <Typography
                     variant="h5"
                     sx={{
@@ -388,7 +390,7 @@ export default function LoggedInStart() {
                       fontSize: { xs: 18, md: 20 },
                       marginTop: serverMode === "ENV" ? 1 : 0,
                       textAlign: "center",
-                      display: "inline-block"
+                      display: "inline-block",
                     }}
                   >
                     Miljöläge
@@ -603,7 +605,7 @@ export default function LoggedInStart() {
                       fontSize: { xs: 18, md: 20 },
                       marginTop: serverMode === "SNO" ? 1 : 0,
                       textAlign: "center",
-                      display: "inline-block"
+                      display: "inline-block",
                     }}
                   >
                     Snöläge
@@ -782,17 +784,14 @@ export default function LoggedInStart() {
           </Box>
         </DialogActions>
       </Dialog>
-      <Dialog
-        open={loading}
-        aria-labelledby="loading-dialog-title"
-      >
+      <Dialog open={loading} aria-labelledby="loading-dialog-title">
         <DialogContent
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '30px',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "30px",
           }}
         >
           <CircularProgress />
