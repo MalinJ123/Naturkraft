@@ -20,6 +20,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  CircularProgress,
 } from "@mui/material/";
 import { FiberManualRecord, Check } from "@mui/icons-material";
 import dotenv from "dotenv";
@@ -34,6 +35,7 @@ export default function LoggedInStart() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [serverMode, setServerMode] = useState("");
   const [changeMode, setChangeMode] = useState("");
+  // const [loading, setLoading] = useState(false)
 
   const router = useRouter();
   const { authorizedState, setAuthorizedState } = useStore();
@@ -782,6 +784,26 @@ export default function LoggedInStart() {
           </Box>
         </DialogActions>
       </Dialog>
+      {/* <Dialog>
+      <Box sx={{ position: "relative", display: "inline-flex"}}>
+            <CircularProgress variant="determinate"/>
+            <Box sx={{
+                  top: 0, 
+                  left: 0, 
+                  bottom: 0, 
+                  right: 0, 
+                  position: "absolute", 
+                  display: "flex",
+                  alignItems: "center", 
+                  justifyContent: "center"
+            }}>
+              <Typography variant="caption" component="div" color="text.secondary">
+                {`${Math.round(CircularProgress)}%`}
+              </Typography>
+
+            </Box>
+          </Box>
+      </Dialog> */}
     </Box>
   );
 }
