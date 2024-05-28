@@ -35,7 +35,7 @@ export default function LoggedInStart() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [serverMode, setServerMode] = useState("");
   const [changeMode, setChangeMode] = useState("");
-  // const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const router = useRouter();
   const { authorizedState, setAuthorizedState } = useStore();
@@ -43,7 +43,7 @@ export default function LoggedInStart() {
   dotenv.config();
 
   const renderDialogModeContent = () => {
-    switch (serverMode) {
+    switch (changeMode) {
       case "EKO":
         return "Ekonomiläge";
       case "ENV":
@@ -72,6 +72,7 @@ export default function LoggedInStart() {
   }, []);
 
   const handleModeChange = async (mode) => {
+    setLoading(true)
     try {
       const response = await axios.post(
         `${process.env.BACKEND_LOCATION}/pie/postMode`,
@@ -86,7 +87,10 @@ export default function LoggedInStart() {
     } catch (error) {
       console.error("Ett fel uppstod:", error.message);
     }
-    setDialogOpen(false);
+    setTimeout(() => {
+      setLoading(false);
+      setDialogOpen(false);
+    }, 5000); 
   };
 
   const handleClickOpen = (mode) => {
@@ -168,10 +172,10 @@ export default function LoggedInStart() {
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "1fr auto",
-                    alignItems: "center",
+                    gridTemplateColumns: "75px 1fr 75px",
                   }}
                 >
+                  <Box width="30px"></Box>
                   <Typography
                     variant="h5"
                     sx={{
@@ -180,7 +184,7 @@ export default function LoggedInStart() {
                       fontSize: { xs: 18, md: 20 },
                       marginTop: serverMode === "EKO" ? 1 : 0,
                       textAlign: "center",
-                      flex: 1,
+                      display: "inline-block"
                     }}
                   >
                     Ekonomiläge
@@ -189,8 +193,8 @@ export default function LoggedInStart() {
                     <Check
                       sx={{
                         color: "#ff",
-                        fontSize: "25px",
-                        marginRight: 1.7,
+                        fontSize: "30px",
+                        marginTop: 0.7,
                       }}
                     />
                   )}
@@ -378,10 +382,10 @@ export default function LoggedInStart() {
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "1fr auto",
-                    alignItems: "center",
+                    gridTemplateColumns: "75px 1fr 75px",
                   }}
                 >
+                 <Box width="30px"></Box>
                   <Typography
                     variant="h5"
                     sx={{
@@ -390,7 +394,7 @@ export default function LoggedInStart() {
                       fontSize: { xs: 18, md: 20 },
                       marginTop: serverMode === "ENV" ? 1 : 0,
                       textAlign: "center",
-                      flex: 1,
+                      display: "inline-block"
                     }}
                   >
                     Miljöläge
@@ -399,8 +403,8 @@ export default function LoggedInStart() {
                     <Check
                       sx={{
                         color: "#ff",
-                        fontSize: "25px",
-                        marginRight: 1.7,
+                        fontSize: "30px",
+                        marginTop: 0.7,
                       }}
                     />
                   )}
@@ -593,10 +597,10 @@ export default function LoggedInStart() {
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "1fr auto",
-                    alignItems: "center",
+                    gridTemplateColumns: "75px 1fr 75px",
                   }}
                 >
+                  <Box width="30px"></Box>
                   <Typography
                     variant="h5"
                     sx={{
@@ -605,7 +609,7 @@ export default function LoggedInStart() {
                       fontSize: { xs: 18, md: 20 },
                       marginTop: serverMode === "SNO" ? 1 : 0,
                       textAlign: "center",
-                      flex: 1,
+                      display: "inline-block"
                     }}
                   >
                     Snöläge
@@ -614,8 +618,8 @@ export default function LoggedInStart() {
                     <Check
                       sx={{
                         color: "#ff",
-                        fontSize: "25px",
-                        marginRight: 1.7,
+                        fontSize: "30px",
+                        marginTop: 0.7,
                       }}
                     />
                   )}
@@ -783,6 +787,40 @@ export default function LoggedInStart() {
             </Button>
           </Box>
         </DialogActions>
+      </Dialog>
+      <Dialog
+        open={loading}
+        aria-labelledby="loading-dialog-title"
+      >
+        <DialogContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '30px',
+          }}
+        >
+          <CircularProgress />
+          <Typography
+            variant="body1"
+            fontWeight="bold"
+            marginTop="20px"
+            fontSize={{ xs: 14, sm: 16 }}
+            textAlign="center"
+          >
+            Laddar...
+          </Typography>
+          <Typography
+            variant="body1"
+            fontWeight="bold"
+            marginTop="20px"
+            fontSize={{ xs: 14, sm: 16 }}
+            textAlign="center"
+          >
+            Kan ta upp till 40s - 4min
+          </Typography>
+        </DialogContent>
       </Dialog>
     </Box>
   );
