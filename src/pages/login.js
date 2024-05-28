@@ -5,6 +5,9 @@ import { signIn } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
 import dotenv from "dotenv";
 import {
+  Dialog,
+  DialogContent,
+  Typography,
   Box,
   Container,
   Card,
@@ -13,6 +16,7 @@ import {
   FormControl,
   TextField,
   Button,
+  CircularProgress
 } from "@mui/material/";
 
 import { Error as ErrorIcon, Login as LoginIcon } from "@mui/icons-material/";
@@ -27,6 +31,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -54,6 +59,11 @@ export default function Login() {
       setPasswordError("");
     }
 
+    if (username && password) {
+      setLoading(true); // Visa laddningsdialogen 
+    }
+
+
     try {
       const result = await signIn("credentials", {
         redirect: false,
@@ -67,6 +77,8 @@ export default function Login() {
       }
     } catch (error) {
       throw new Error(error);
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -162,8 +174,19 @@ export default function Login() {
                   maxLength={32}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  InputProps={{
+                    style: {
+                      fontFamily: "Jura, sans-serif",
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      fontFamily: "Jura, sans-serif",
+                    },
+                  }}
                 />
               </FormControl>
+
               <Button
                 className="primary__button"
                 startIcon={
@@ -204,6 +227,31 @@ export default function Login() {
           </CardContent>
         </Card>
       </Container>
+      <Dialog
+        open={loading}
+        aria-labelledby="loading-dialog-title"
+      >
+        <DialogContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+        >
+          <CircularProgress />
+          <Typography
+            variant="body1"
+            fontWeight="bold"
+            marginTop="20px"
+            fontSize={{ xs: 14, sm: 16 }}
+            textAlign="center"
+          >
+            Laddar...
+          </Typography>
+        </DialogContent>
+      </Dialog>
     </ThemeProvider>
   );
 }
