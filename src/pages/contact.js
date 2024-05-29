@@ -7,11 +7,13 @@ import {
   CardHeader,
   Paper,
 } from "@mui/material/";
+import { useRedirect } from "@/hooks/useRedirect";
 
 const googleMapsUrl =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8093.380804462477!2d12.607034483359932!3d59.52734047717524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46436c4780203bcf%3A0x391fe2ed2c2d864e!2s671%2097%20Hillringsberg!5e0!3m2!1ssv!2sse!4v1714116722209!5m2!1ssv!2sse";
 
 export default function Contact() {
+  const session = useRedirect();
   return (
     <Container
       sx={{

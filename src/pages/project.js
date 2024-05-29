@@ -10,8 +10,10 @@ import {
   Link,
 } from "@mui/material/";
 import { useRouter } from "next/router";
+import { useRedirect } from "@/hooks/useRedirect";
 
 export default function Project() {
+  const session = useRedirect();
   const router = useRouter();
   return (
     <Container

@@ -29,7 +29,6 @@ import {
   KeyboardArrowDown,
   Close,
   Person,
-  AdminPanelSettingsOutlined,
 } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -115,8 +114,6 @@ export default function Header() {
               <IconButton
                 size="small"
                 type="button"
-                title="Navigera till kontrollpanelen"
-                onClick={() => router.push("/admin/dashboard")}
                 sx={{
                   "*": {
                     width: "55px",
@@ -177,9 +174,8 @@ export default function Header() {
                   alignContent="center"
                   alignItems="center"
                   spacing={1}
-                  marginRight="7.5px"
                 >
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction="row" spacing={0.5}>
                     <Typography
                       variant="body1"
                       sx={{
@@ -187,7 +183,7 @@ export default function Header() {
                         display: { xs: "none", md: "block" },
                       }}
                     >
-                      Välkommen,
+                      Välkommen
                     </Typography>
                     <Typography variant="body1" sx={{ color: "#fff" }}>
                       {session.user.username}
@@ -200,28 +196,6 @@ export default function Header() {
                     sx={{ backgroundColor: "#fff" }}
                   />
                 </Stack>
-                <Button
-                  disableElevation
-                  variant="outlined"
-                  type="button"
-                  role="button"
-                  onClick={() => router.push("/admin/dashboard")}
-                  sx={{
-                    backgroundColor: "transparent",
-                    color: "#fff",
-                    border: "1px solid transparent",
-                  }}
-                >
-                  <AdminPanelSettingsOutlined
-                    sx={{ display: { xs: "block", md: "none" } }}
-                  />
-                  <Typography
-                    variant="body1"
-                    sx={{ display: { xs: "none", md: "block" } }}
-                  >
-                    Kontrollpanel
-                  </Typography>
-                </Button>
                 <Button
                   variant="outlined"
                   type="button"
