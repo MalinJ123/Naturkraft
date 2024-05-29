@@ -1,19 +1,18 @@
 import Title from "@/components/title";
-import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
+import { Box, Card, CardContent, Link, Stack, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import {
   createCustomTheme,
   poppinsFont,
   robotoFont,
 } from "@/styles/fontsPalette";
-import { Explore } from "@mui/icons-material";
-import { useRedirect } from "@/hooks/useRedirect";
+import { useRouter } from "next/router";
 
-function Start() {
-  const session = useRedirect();
+export default function Custom404() {
+  const router = useRouter();
+
   const themePoppins = createCustomTheme(poppinsFont);
   const themeRoboto = createCustomTheme(robotoFont);
-
   return (
     <Box
       component="section"
@@ -39,55 +38,56 @@ function Start() {
             component="div"
           >
             <Stack spacing={2} direction="column">
-              <Stack spacing={-1} direction="column">
+              <Stack spacing={0.015} direction="column">
                 <ThemeProvider theme={themePoppins}>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      "@media (max-width: 700px)": {
-                        fontSize: "16px",
-                        lineHeight: "2",
-                      },
-                    }}
-                  >
-                    Projektet
-                  </Typography>
                   <Typography
                     variant="h4"
                     sx={{
                       "@media (max-width: 700px)": {
                         fontSize: "20px",
+                        lineHeight: "2",
                       },
                     }}
                   >
-                    Naturkraft
+                    Felmeddelande 404
                   </Typography>
-                </ThemeProvider>
-              </Stack>
-              <ThemeProvider theme={themeRoboto}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    "@media (max-width: 700px)": {
-                      fontSize: "16px",
-                    },
-                  }}
-                >
-                  Framtidens smarta elljusspår
-                </Typography>
-                <Stack direction="row" spacing={2} alignContent="center">
-                  <Explore />
                   <Typography
-                    variant="h6"
+                    variant="h5"
                     sx={{
                       "@media (max-width: 700px)": {
                         fontSize: "18px",
                       },
                     }}
                   >
-                    59&lsquo;33&apos;30.9&ldquo;N 12&lsquo;33&apos;48.3&ldquo;E
+                    Sidan kunde inte hittas!
                   </Typography>
-                </Stack>
+                </ThemeProvider>
+              </Stack>
+              <ThemeProvider theme={themeRoboto}>
+                <Typography
+                  variant="body1"
+                  fontSize="18px"
+                  sx={{
+                    "@media (max-width: 700px)": {
+                      fontSize: "16px",
+                    },
+                  }}
+                >
+                  Sidan du söker efter finns inte. Kanske har du skrivit in en
+                  felaktig adress eller så har sidan tagits bort.
+                </Typography>
+                <Link
+                  underline="hover"
+                  onClick={() => router.push("/")}
+                  sx={{
+                    color: "white",
+                    "@media (max-width: 700px)": {
+                      fontSize: "18px",
+                    },
+                  }}
+                >
+                  Tillbaka till startsidan
+                </Link>
               </ThemeProvider>
             </Stack>
           </Box>
@@ -96,4 +96,3 @@ function Start() {
     </Box>
   );
 }
-export default Start;
