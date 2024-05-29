@@ -294,6 +294,9 @@ export default function Header() {
                         router.push("/project");
                         setHeaderDropdown(false);
                       }}
+                      sx={{
+                        fontSize: "15px",
+                      }}
                     >
                       Elljusspåret i Glava
                     </MenuItem>
@@ -303,6 +306,9 @@ export default function Header() {
                         router.push("/cooperation");
                         setHeaderDropdown(false);
                       }}
+                      sx={{
+                        fontSize: "15px",
+                      }}
                     >
                       Samarbetspartners
                     </MenuItem>
@@ -311,6 +317,9 @@ export default function Header() {
                       onClick={() => {
                         router.push("/information");
                         setHeaderDropdown(false);
+                      }}
+                      sx={{
+                        fontSize: "15px",
                       }}
                     >
                       Vill du veta mer?
