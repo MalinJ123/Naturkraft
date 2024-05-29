@@ -57,7 +57,7 @@ export default function Login() {
     }
 
     if (!username || !password) {
-      return; 
+      return;
     }
     if (username && password) {
       setLoading(true); // Visa laddningsdialogen
@@ -73,17 +73,17 @@ export default function Login() {
         callBackUrl: "/admin/dashboard",
       });
 
-      if(result?.error) {
-        setAuthError("Fel användarnamn eller lösenord. Försök igen.")
-      } else {
-        router.push(result.url)
+      if (
+        result?.status === 400 ||
+        result?.status === 401 ||
+        result?.status === 404
+      ) {
+        setAuthError("Fel användarnamn eller lösenord. Försök igen.");
+      } else if (result?.status === 200) {
+        router.push(result.url);
       }
-      // if (result?.status === 200) {
-      //   router.push(result.url);
-      // }
     } catch (error) {
-      setAuthError("Ett fel inträffade, Försök igen.")
-      // throw new Error(error);
+      setAuthError("Ett fel inträffade, Försök igen.");
     } finally {
       setLoading(false);
     }
@@ -193,15 +193,19 @@ export default function Login() {
                   }}
                 />
               </FormControl>
-            <Box>
-              {authError && (
-              <Typography 
-                  color="error"
-                  helperText={authError ? authError : ""} sx={{ fontFamily: "Roboto Helvetica, Arial, sans-serif", fontSize: "12px" }}>
-                {authError}
-              </Typography>
-            )}
-            </Box>
+              <Box>
+                {authError && (
+                  <Typography
+                    color="error"
+                    helperText={authError ? authError : ""}
+                    sx={{
+                      fontSize: "12px",
+                    }}
+                  >
+                    {authError}
+                  </Typography>
+                )}
+              </Box>
               <Button
                 className="primary__button"
                 startIcon={
