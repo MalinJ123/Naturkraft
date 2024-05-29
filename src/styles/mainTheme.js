@@ -26,7 +26,7 @@ export const mainTheme = createTheme({
   },
   palette: {
     opacityLight: {
-      main: "rgba FAFEFF",
+      main: "#FAFEFF",
       contrastText: "#000",
     },
     opacityDark: {

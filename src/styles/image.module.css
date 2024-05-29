@@ -3,11 +3,11 @@
   width: 6em;
   height: auto;
 }
-.image-glavaenergy {
+.image__glavaenergy {
   width: 8em;
   height: auto;
 }
-.teknik-loggo {
+.teknik__loggo {
   font-size: 23px;
   border: 2px solid rgb(179, 177, 177);
 }
@@ -15,7 +15,7 @@
 .sCbruma,
 .swemodule,
 .energimyndigheten,
-.image-text {
+.image__text {
   width: 10em;
   height: auto;
   /* border: 2px solid rgb(105, 170, 255); */
@@ -27,18 +27,18 @@
     width: 5em;
     height: auto;
   }
-  .image-text {
+  .image__text {
     width: 7em;
     height: auto;
     /* border: 2px solid rgb(105, 170, 255); */
   }
 
-  .image-glavaenergy {
+  .image__glavaenergy {
     width: 6em;
     height: auto;
     /* border: 2px solid rgb(6, 36, 75); */
   }
-  
+
   .energimyndigheten {
     width: 8em;
     height: 3em;
@@ -50,7 +50,7 @@
     height: 2em;
     /* border: 2px solid rgb(181, 135, 211); */
   }
-  
+
   .swemodule,
   .sCbruma {
     /* border: 2px solid rgb(75, 15, 6); */
@@ -64,19 +64,18 @@
     width: 6em;
     height: auto;
   }
-  .image-glavaenergy {
+  .image__glavaenergy {
     width: 8em;
     height: auto;
   }
-  .teknik-loggo {
+  .teknik__loggo {
     font-size: 23px;
   }
-  .image-text {
+  .image__text {
     width: 10em;
     height: 3em;
   }
 
- 
   .energimyndigheten {
     width: 10em;
     height: 3em;

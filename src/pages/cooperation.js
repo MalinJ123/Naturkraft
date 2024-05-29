@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import "../styles/image.css";
+import img from "../styles/image.module.css";
 
 import {
   Box,
@@ -35,7 +35,6 @@ export default function Cooperation() {
       display="flex"
       flexDirection="column"
       justifyContent="center"
-      // gap={12}
       marginBottom={10}
     >
       <Title />
@@ -57,7 +56,6 @@ export default function Cooperation() {
               textAlign: "center",
               fontWeight: "bold",
               fontSize: { xs: 20, md: 25 },
-              // marginBottom: 4,
               marginTop: 4,
             }}
           />
@@ -67,13 +65,11 @@ export default function Cooperation() {
               display="flex"
               flexDirection="column"
               alignItems="center"
-              // gap={2}
             >
               <Stack spacing={4} direction="column">
                 <Typography
                   variant="body1"
                   component="p"
-                  // lineHeight={1.8}
                   sx={{
                     paddingX: { xs: 0.55, md: 6 },
                     fontSize: { xs: 16, md: 18 },
@@ -89,7 +85,6 @@ export default function Cooperation() {
                 <Typography
                   variant="body1"
                   component="p"
-                  // lineHeight={1.8}
                   sx={{
                     paddingX: { xs: 0.55, md: 6 },
                     fontSize: { xs: 16, md: 18 },
@@ -160,39 +155,36 @@ export default function Cooperation() {
           }}
           alignItems="center"
           spacing={3}
-          // gap={2}
-          // p={4}
         >
           <Image
-            className="energimyndigheten"
+            className={img.energimyndigheten}
             src={energimyndighetenLogo}
             alt="Energimyndigheten logotyp"
           />
           <Image
-            className="image"
+            className={img.image}
             src={lundsUniversitetLogo}
             alt="Lunds Universitet logotyp"
           />
 
           <Image
-            className="image-text"
+            className={img.image__text}
             src={sweModuleLogo}
             alt="SWEMODULE logotyp"
           />
           <Image
-            className="image"
+            className={img.image}
             src={karlstadsUniversitetLogo}
             alt="Karlstads Universitet logotyp"
           />
           <Image
-            className="swemodule"
+            className={img.swemodule}
             src={sun4EnergyLogo}
             alt="Sun 4 Energy logotyp"
           />
         </Stack>
 
         <Stack
-          className="stack-column"
           sx={{
             flexDirection: {
               xs: "column",
@@ -203,36 +195,36 @@ export default function Cooperation() {
             },
             width: "100%",
             justifyContent: "space-around",
+            alignContent: "center",
           }}
           alignItems="center"
           spacing={4}
           gap={2}
-          // p={4}
         >
           <Image
-            className="image"
+            className={img.image}
             src={glavaGymnastikföreningLogo}
             alt="Glava Gymnastikförening"
           />
-          <Box className="teknik-loggo">
+          <Box className={img.teknik__loggo}>
             <Typography variant="body1">
               <b>Teknik o Gårdstjänster</b>
             </Typography>
           </Box>
 
           <Image
-            className="image-glavaenergy"
+            className={img.image__glavaenergy}
             src={glavaEnergyCenterLogo}
             alt="Glava Engergy Center logotyp"
           />
 
           <Image
-            className="teknikvast"
+            className={img.teknikvast}
             src={teknikiVastLogo}
             alt="Teknik i Väst logotyp"
           />
           <Image
-            className="sCbruma"
+            className={img.sCbruma}
             src={sCBurmanAbLogo}
             alt="SC Burman AB logotyp"
           />
