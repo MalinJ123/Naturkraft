@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react";
 
 import RootLayout from "@/components/layout";
 import "@/styles/index.css";
+import "@/styles/image.css";
 import { mainTheme } from "@/styles/mainTheme";
 
 export default function App({ Component, pageProps, props }) {

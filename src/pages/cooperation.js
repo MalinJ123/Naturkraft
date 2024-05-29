@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import "../styles/image.css";
+import styles from "../styles/image.module.css";
 
 import {
   Box,
@@ -14,6 +14,7 @@ import {
   Link,
 } from "@mui/material/";
 import { useRedirect } from "@/hooks/useRedirect";
+
 
 import glavaEnergyCenterLogo from "@/images/cooperation/Glava_Energy_Center.png";
 import energimyndighetenLogo from "@/images/cooperation/Energimyndigheten.png";
