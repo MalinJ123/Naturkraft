@@ -26,6 +26,7 @@ import { FiberManualRecord, Check } from "@mui/icons-material";
 import dotenv from "dotenv";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Title from "@/components/title";
 
 import { useStore } from "@/stores/store";
 
@@ -122,6 +123,7 @@ export default function LoggedInStart() {
 
   return (
     <Box component="section">
+      <Title />
       <Alert variant="filled" severity={systemStatus ? "success" : "error"}>
         <AlertTitle>{systemStatus ? "Inget fel!" : "Kritiskt fel!"}</AlertTitle>
         {systemStatus

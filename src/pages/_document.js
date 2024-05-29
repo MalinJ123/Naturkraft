@@ -9,7 +9,23 @@ export default function Document(props) {
     <Html lang="sv">
       <Head>
         <DocumentHeadTags {...props} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/src/images/main/logotype.png" />
+        <meta
+          name="description"
+          content="Naturkraft är ett innovationsprojekt för att skapa en smart soldriven belysning."
+        />
+        <meta
+          name="keywords"
+          content="Naturkraft, solenergi, energi, Glava, Glava Energy Center, Värmland, elljusspår"
+        />
+        <meta
+          property="og:title"
+          content="Naturkraft | Projektsida skapad av Techseed"
+        />
+        <meta
+          property="og:description"
+          content="Naturkraft är ett innovationsprojekt."
+        />
       </Head>
       <body>
         <Main />

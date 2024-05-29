@@ -9,8 +9,10 @@ import {
   CardActions,
   Link,
 } from "@mui/material/";
+import { useRouter } from "next/router";
 
 export default function Project() {
+  const router = useRouter();
   return (
     <Container
       sx={{
@@ -88,17 +90,18 @@ export default function Project() {
               component="button"
               variant="body1"
               role="button"
+              onClick={() => router.push("/cooperation")}
               type="button"
               sx={{
                 marginBottom: { xs: 2, md: 4 },
                 fontSize: { xs: 14, md: 16 },
                 fontWeight: "bold",
                 padding: 1,
-                transition: 'transform 0.3s ease-in-out',
-                '@media (min-width: 900px)': {
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                  }, 
+                transition: "transform 0.3s ease-in-out",
+                "@media (min-width: 900px)": {
+                  "&:hover": {
+                    transform: "scale(1.1)",
+                  },
                 },
               }}
             >

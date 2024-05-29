@@ -334,14 +334,14 @@ export default function Header() {
                     variant="outlined"
                     type="button"
                     role="button"
-                    onClick={handleLogoutOpen}
+                    onClick={() => router.push("/login")}
                     sx={{
                       backgroundColor: "transparent",
                       color: "#fff",
                       border: "1px solid transparent",
                     }}
                   >
-                    <LogoutIcon />
+                    <Person />
                   </Button>
                 </Box>
                 <Box

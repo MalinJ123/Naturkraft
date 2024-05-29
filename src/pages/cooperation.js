@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import "../styles/image.css";
 
 import {
@@ -25,6 +26,7 @@ import sCBurmanAbLogo from "@/images/cooperation/SC_Burman_AB.png";
 import Title from "@/components/title";
 
 export default function Cooperation() {
+  const router = useRouter();
   return (
     <Box
       component="section"
@@ -115,6 +117,7 @@ export default function Cooperation() {
               variant="body1"
               role="button"
               type="button"
+              onClick={() => router.push("/information")}
               sx={{
                 marginBottom: { xs: 2, md: 4 },
                 fontSize: { xs: 14, md: 16 },
@@ -128,7 +131,7 @@ export default function Cooperation() {
                 },
               }}
             >
-              [Klicka här om du vill veta mer eller ta del av guiden]
+              [Klicka här om du vill veta mer]
             </Link>
           </CardActions>
         </Card>
