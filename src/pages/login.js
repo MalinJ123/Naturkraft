@@ -31,6 +31,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [authError, setAuthError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -40,6 +41,8 @@ export default function Login() {
   // För användare från ev backend
   const onHandleSubmit = async (e) => {
     e.preventDefault();
+
+    setAuthError("");
 
     if (!username) {
       setUsernameError("Du måste fylla i användarnamn");
@@ -53,6 +56,9 @@ export default function Login() {
       setPasswordError("");
     }
 
+    if (!username || !password) {
+      return; 
+    }
     if (username && password) {
       setLoading(true); // Visa laddningsdialogen
     }
@@ -67,11 +73,17 @@ export default function Login() {
         callBackUrl: "/admin/dashboard",
       });
 
-      if (result?.status === 200) {
-        router.push(result.url);
+      if(result?.error) {
+        setAuthError("Fel användarnamn eller lösenord. Försök igen.")
+      } else {
+        router.push(result.url)
       }
+      // if (result?.status === 200) {
+      //   router.push(result.url);
+      // }
     } catch (error) {
-      throw new Error(error);
+      setAuthError("Ett fel inträffade, Försök igen.")
+      // throw new Error(error);
     } finally {
       setLoading(false);
     }
@@ -181,7 +193,15 @@ export default function Login() {
                   }}
                 />
               </FormControl>
-
+            <Box>
+              {authError && (
+              <Typography 
+                  color="error"
+                  helperText={authError ? authError : ""} sx={{ fontFamily: "Roboto Helvetica, Arial, sans-serif", fontSize: "12px" }}>
+                {authError}
+              </Typography>
+            )}
+            </Box>
               <Button
                 className="primary__button"
                 startIcon={
