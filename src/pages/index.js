@@ -14,8 +14,10 @@ import {
   robotoFont,
 } from "@/styles/fontsPalette";
 import { Explore } from "@mui/icons-material";
+import { useRedirect } from "@/hooks/useRedirect";
 
 function Start() {
+  const session = useRedirect();
   const themePoppins = createCustomTheme(poppinsFont);
   const themeRoboto = createCustomTheme(robotoFont);
 
