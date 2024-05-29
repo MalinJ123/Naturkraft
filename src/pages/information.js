@@ -10,10 +10,10 @@ import {
   CardActions,
   Link,
 } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRedirect } from "@/hooks/useRedirect";
 
 export default function Information() {
-  const router = useRouter();
+  const session = useRedirect();
   return (
     <Container
       sx={{

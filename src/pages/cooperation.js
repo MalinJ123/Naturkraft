@@ -13,6 +13,7 @@ import {
   Stack,
   Link,
 } from "@mui/material/";
+import { useRedirect } from "@/hooks/useRedirect";
 
 import glavaEnergyCenterLogo from "@/images/cooperation/Glava_Energy_Center.png";
 import energimyndighetenLogo from "@/images/cooperation/Energimyndigheten.png";
@@ -26,6 +27,7 @@ import sCBurmanAbLogo from "@/images/cooperation/SC_Burman_AB.png";
 import Title from "@/components/title";
 
 export default function Cooperation() {
+  const session = useRedirect();
   const router = useRouter();
   return (
     <Box

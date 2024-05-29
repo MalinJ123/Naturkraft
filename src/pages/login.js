@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { ThemeProvider } from "@mui/material/styles";
@@ -16,8 +15,9 @@ import {
   FormControl,
   TextField,
   Button,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material/";
+import { useRedirect } from "@/hooks/useRedirect";
 
 import { Error as ErrorIcon, Login as LoginIcon } from "@mui/icons-material/";
 import Title from "@/components/title";
@@ -26,7 +26,7 @@ import { darkTheme } from "@/styles/darkTheme";
 dotenv.config();
 
 export default function Login() {
-  const { data: session } = useSession();
+  const session = useRedirect();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -34,12 +34,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
-  useEffect(() => {
-    if (session) {
-      router.push("/admin/dashboard");
-    }
-  }, [session, router]);
 
   const userCredentialsFilled = username.length > 0 && password.length > 0;
 
@@ -60,14 +54,15 @@ export default function Login() {
     }
 
     if (username && password) {
-      setLoading(true); // Visa laddningsdialogen 
+      setLoading(true); // Visa laddningsdialogen
     }
 
+    const formattedUsername = username.toLowerCase().trim();
 
     try {
       const result = await signIn("credentials", {
         redirect: false,
-        username,
+        username: formattedUsername,
         password,
         callBackUrl: "/admin/dashboard",
       });
@@ -78,7 +73,7 @@ export default function Login() {
     } catch (error) {
       throw new Error(error);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -227,17 +222,14 @@ export default function Login() {
           </CardContent>
         </Card>
       </Container>
-      <Dialog
-        open={loading}
-        aria-labelledby="loading-dialog-title"
-      >
+      <Dialog open={loading} aria-labelledby="loading-dialog-title">
         <DialogContent
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '20px'
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px",
           }}
         >
           <CircularProgress />
