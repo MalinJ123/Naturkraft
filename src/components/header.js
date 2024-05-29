@@ -187,7 +187,7 @@ export default function Header() {
                         display: { xs: "none", md: "block" },
                       }}
                     >
-                      Välkommen,
+                      Välkommen
                     </Typography>
                     <Typography variant="body1" sx={{ color: "#fff" }}>
                       {session.user.username}
