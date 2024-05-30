@@ -69,6 +69,7 @@ const options = {
   pages: {
     error: "/login",
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const authHandler = (req, res) => NextAuth(req, res, options);
